@@ -1,0 +1,8 @@
+compiler/*
+*.o
+.vscode/*
+.ninja_log
+*.nso
+*.map
+__pycache__/*
+build.ninja

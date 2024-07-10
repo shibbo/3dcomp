@@ -1,6 +1,7 @@
 import glob, nso, os, sys
 from colorama import Fore, Style
 from capstone import *
+from capstone.arm64 import *
 from elftools.elf.elffile import ELFFile
 
 LIBRARIES = ["ActionLibrary", "agl", "eui", "nn", "sead"]
@@ -35,8 +36,6 @@ if "-no-diff" in sys.argv:
 else:
     sym = sys.argv[1]
 
-sym = "_ZN2al19CameraPoserParallel25checkEnableCameraApproachEv"
-
 # first let's see if our symbol even exists somewhere
 path = getModule("map", sym)
 
@@ -60,13 +59,13 @@ with open("data/main.map", "r") as f:
     for line in lines:
         spl = line.split("=")
         name = spl[0]
-        addr = int(spl[1], 16)
-        size = int(spl[2].replace("\n", ""), 16)
+        addr = spl[1]
+        addr = int(addr[10:], 16)
+        size = int(spl[2], 16)
 
         if sym == name:
             functionSize = size
-            # this is to adjust from the address in the NSO to the local address in the text section
-            functionAddr = addr - 0x0000007100000000
+            functionAddr = addr
             break
 
 with open("fury.nso", "rb") as f:
@@ -129,10 +128,10 @@ for i in range(orig_length):
     for j in range(len(orig_operands)):
         if orig_operands[j].reg != cust_operands[j]:
             # ADRP and ADD can give of wrong operands because of us not linking, same with LDR
-            if curOrigInstr.id == 9 or curOrigInstr.id == 6 or curOrigInstr.id == 162:
+            if curOrigInstr.id == ARM64_INS_ADRP or curOrigInstr.id == ARM64_INS_ADD or curOrigInstr.id == ARM64_INS_LDR:
                 print(f"{Fore.YELLOW}{str(curOrigInstr):<80}{curCustInstr}{Style.RESET_ALL}")
             # B and BL instructions
-            elif curOrigInstr.id == 21 or curOrigInstr.id == 16:
+            elif curOrigInstr.id == ARM64_INS_B or curOrigInstr.id == ARM64_INS_BL:
                 print(f"{Fore.YELLOW}{str(curOrigInstr):<80}{curCustInstr}{Style.RESET_ALL}")
             else:
                 print(f"{Fore.RED}{str(curOrigInstr):<80}{curCustInstr}{Style.RESET_ALL}")
@@ -150,10 +149,9 @@ if instr_equal == True and regs_equal == True:
 
     for c in csvData:
         spl = c.split("=")
-    
-        if spl[1] == sym and spl[3] == "false\n":
-            outCsv.append(f"{spl[0]},{spl[1]},{spl[2]},true\n")
-        elif spl[1] == sym and spl[3] == "true\n":
+        if spl[0] == sym and spl[3] == "false\n":
+            outCsv.append(f"{spl[0]}={spl[1]}={spl[2]}=true\n")
+        elif spl[0] == sym and spl[3] == "true\n":
             isAlreadyMarked = True
             outCsv.append(c)
         else:

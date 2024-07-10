@@ -3,6 +3,13 @@ compiler/*
 .vscode/*
 .ninja_log
 *.nso
-*.map
 __pycache__/*
 build.ninja
+lib/**/map/*
+map/*
+*.id0
+*.id1
+*.id2
+*.nam
+*.til
+*.idb

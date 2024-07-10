@@ -14,28 +14,32 @@ if "-non-matching" in sys.argv:
     nonmatching_str = "-DNON_MATCHING"
     print("Non-functions matches will be compiled")
 
-INCLUDE_DIRS = ["include", "lib\\ActionLibrary\\include", "lib\\agl\\include", "lib\\eui\\incldue", "lib\\nn\\include", "lib\\sead\\include", "compiler\\nx\\aarch64\\include"]
-LIBRARIES = ["ActionLibrary", "agl", "eui", "nn", "sead"]
+INCLUDE_DIRS = ["include", "lib\\ActionLibrary\\include", "lib\\agl\\include", "lib\\eui\\incldue", "lib\\nn\\include", "lib\\sead\\include", "compiler\\nx\\aarch64\\include", "compiler\\nx\\aarch64\\include\\c++" ]
+LIBRARIES = [ "Game", "ActionLibrary", "agl", "eui", "nn", "sead"]
 
 incdirs = ""
 for dir in INCLUDE_DIRS:
     incdirs += f'-I {dir} '
 
-COMPILER_CMD = f"-x c++ -O3 -std=gnu++1z --target=aarch64-linux-elf -mcpu=cortex-a57+fp+simd+crypto+crc -fno-exceptions -fms-extensions -mno-implicit-float -fno-strict-aliasing -fno-short-enums -fdata-sections -fPIC -g -Wall {nonmatching_str} {incdirs} -c "
-COMPILER_PATH = pathlib.Path("compiler\\bin\\nx-clang++")
+COMPILER_CMD = f"-x c++ -O3 -fno-omit-frame-pointer -fno-cxx-exceptions -std=gnu++14 -fno-common -fno-short-enums -fdata-sections -fPIC -mcpu=cortex-a57+fp+simd+crypto+crc -g -Wall {nonmatching_str} {incdirs} -c "
+COMPILER_PATH = pathlib.Path("compiler\\nx\\aarch64\\bin\\clang++")
 OBJDUMP_PATH = pathlib.Path("compiler\\nx\\aarch64\\bin\\llvm-objdump")
 
 def genNinja(tasks):
     with open('build.ninja', 'w') as ninja_file:
         ninja_writer = Writer(ninja_file)
+        ninja_writer.rule("compile", command=f'{COMPILER_PATH} {COMPILER_CMD} $in -o $out',description=f'Compiling $in')
 
         for task in tasks:
             source_path, build_path = task
-            ninja_writer.rule('compile', command=f'{COMPILER_PATH} {COMPILER_CMD} $in -o $out',description=f'Compiling {source_path}')
-            ninja_writer.build(outputs=[build_path], rule='compile', inputs=[source_path])
+            ninja_writer.build(outputs=[build_path], rule="compile", inputs=[source_path])
 
-def compileLibrary(path):
+def compileLibrary(name, path):
     compile_tasks = list()
+
+    if name == "Game":
+        path = "source"
+
     # let's do our source files first which we use ninja for
     for root, dirs, files in os.walk(path):
         for file in files:
@@ -89,7 +93,5 @@ def generateMaps(path):
         with open(map_path, "w") as w:
             w.writelines(newOutput)
 
-compileLibrary("source")
-
 for lib in LIBRARIES:
-    compileLibrary(f"lib\\{lib}\\source")
+    compileLibrary(lib, f"lib\\{lib}\\source")

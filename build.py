@@ -21,7 +21,7 @@ incdirs = ""
 for dir in INCLUDE_DIRS:
     incdirs += f'-I {dir} '
 
-COMPILER_CMD = f"-x c++ -O3 -fno-omit-frame-pointer -fno-cxx-exceptions -std=gnu++14 -fno-common -fno-short-enums -fdata-sections -fPIC -mcpu=cortex-a57+fp+simd+crypto+crc -g -Wall {nonmatching_str} {incdirs} -c "
+COMPILER_CMD = f"-x c++ -O3 -fno-omit-frame-pointer -mno-implicit-float -fno-cxx-exceptions -fno-strict-aliasing -std=gnu++14 -fno-common -fno-short-enums -fdata-sections -fPIC -mcpu=cortex-a57+fp+simd+crypto+crc -g -Wall {nonmatching_str} {incdirs} -c "
 COMPILER_PATH = pathlib.Path("compiler\\nx\\aarch64\\bin\\clang++")
 OBJDUMP_PATH = pathlib.Path("compiler\\nx\\aarch64\\bin\\llvm-objdump")
 

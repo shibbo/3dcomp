@@ -10,7 +10,7 @@ namespace al {
         mItemKeeper = 0;
         mScreenPointKeeper = 0;
         mCollider = 0; 
-        _88 = 0;
+        _88 = 0; 
         mModelKeeper = 0; 
         mNerveKeeper = 0;
         mHitSensorKeeper = 0; 

@@ -5,8 +5,8 @@ compiler/*
 *.nso
 __pycache__/*
 build.ninja
-lib/**/map/*
-map/*
+lib/**/*.map
+map/*.map
 *.id0
 *.id1
 *.id2

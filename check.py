@@ -1,10 +1,54 @@
-import glob, nso, os, sys
+import glob, math, nso, os, sys
 from colorama import Fore, Style
 from capstone import *
 from capstone.arm64 import *
 from elftools.elf.elffile import ELFFile
 
 LIBRARIES = ["ActionLibrary", "agl", "eui", "nn", "sead"]
+
+def truncate(number, digits) -> float:
+    stepper = 10.0 ** digits
+    return math.trunc(stepper * number) / stepper
+
+def genProgress():
+    done_size = 0
+    TOTAL_GAME_SIZE = 0xA0F5A0
+    total_funcs = 0
+    done_funcs = 0
+
+    with open("data/main.map", "r") as f:
+        csvData = f.readlines()
+
+    for c in csvData:
+        spl = c.split("=")
+        isDone = spl[3].replace("\n", "")
+        total_funcs += 1
+        
+        if isDone == "true":
+            funcSize = int(spl[2])
+            done_size = done_size + funcSize
+            done_funcs += 1
+
+    prog = (done_size / TOTAL_GAME_SIZE) * 100.0
+    func_prog = (done_funcs / total_funcs)
+    print("Progress:")
+    print(f"{truncate(prog, 4)}% [{done_size} / {TOTAL_GAME_SIZE}]")
+    print("Functions:")
+    print(f"{truncate(func_prog, 4)}% [{done_funcs} / {total_funcs}]")
+
+    print("Generating JSON...")
+
+    # generate our JSON for the tags on the github page
+    json = []
+    json.append("{\n")
+    json.append("\t\"schemaVersion\": 1,\n")
+    json.append("\t\"label\": \"decompiled\",\n")
+    json.append(f"\t\"message\": \"{truncate(prog, 4)}%\",\n")
+    json.append("\t\"color\": \"blue\"\n")
+    json.append("}")
+
+    with open("data/percent.json", "w") as w:
+        w.writelines(json)
 
 def getModule(map, sym):
     for root, dirs, files in os.walk(map):
@@ -164,6 +208,7 @@ if instr_equal == True and regs_equal == True:
         print("Function is already marked as decompiled.")
     else:
         print("Function is matching! Marking as decompiled...")
+        genProgress()
 
 elif instr_equal == True and regs_equal == False:
     print("Function has matching instructions, but operands are not equal.")

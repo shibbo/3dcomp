@@ -5,10 +5,11 @@
 #include "Library/Camera/IUseCameraDirector.hpp"
 #include "Library/Collision/IUseCollision.hpp"
 #include "Library/Effect/IUseEffectKeeper.hpp"
+#include "Library/HostIO/IUseHioNode.hpp"
+#include "Library/Map/IUseOceanWave.hpp"
 #include "Library/Nerve/IUseNerve.hpp"
 #include "Library/Scene/IUseSceneObjHolder.hpp"
 #include "Library/Stage/IUseStageSwitch.hpp"
-#include "Library/HostIO/IUseHioNode.hpp"
 #include <types.hpp>
 #include <math/seadMatrix.hpp>
 #include <math/seadVector.hpp>
@@ -37,16 +38,17 @@ namespace al {
     class ScreenPointer;
     class ScreenPointTarget;
 
-    class LiveActor :   public IUseNerve, // 0x0
-                        public IUseEffectKeeper, // 0x8
-                        public IUseAudioKeeper, // 0x10
-                        public IUseStageSwitch, // 0x18
-                        public IUseSceneObjHolder, // 0x20
-                        public IUseAreaObj,        // 0x28
-                        public IUseCamera,      // 0x30
-                        public IUseCamera_RS,   // 0x38
-                        public IUseCollision, // 0x40,
-                        public IUseHioNode  // 0x48
+    class LiveActor :   public IUseNerve,
+                        public IUseEffectKeeper,
+                        public IUseAudioKeeper,
+                        public IUseOceanWave,
+                        public IUseStageSwitch,
+                        public IUseSceneObjHolder,
+                        public IUseAreaObj,
+                        public IUseCamera_RS,
+                        public IUseCamera,
+                        public IUseCollision,
+                        public IUseHioNode
     {
     public:
 

@@ -25,7 +25,7 @@ def genProgress():
         total_funcs += 1
         
         if isDone == "true":
-            funcSize = int(spl[2])
+            funcSize = int(spl[2], 16)
             done_size = done_size + funcSize
             done_funcs += 1
 
@@ -69,7 +69,11 @@ def getModule(map, sym):
     return ""
 
 if len(sys.argv) < 2:
-    print("python check.py [-no-diff] <mangled symbol>")
+    print("python check.py [-prog] [-no-diff] <mangled symbol>")
+    sys.exit(1)
+
+if "-prog" in sys.argv:
+    genProgress()
     sys.exit(1)
 
 printDiff = True

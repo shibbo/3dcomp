@@ -27,7 +27,7 @@ namespace al {
         void validateBySystem();
         void invalidateBySystem();
 
-        void* _0;
+        const char* mName;                          // 0x00
         void* _8;
         void* _10;
         u32 _18;

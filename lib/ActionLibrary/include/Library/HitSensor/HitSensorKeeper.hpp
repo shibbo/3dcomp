@@ -22,5 +22,9 @@ namespace al {
         void validateBySystem();
         void invalidateBySystem();
         HitSensor* getSensor(const char *) const;
+        
+        s32 mMaxSensorCount;        // 0x00
+        s32 mSensorCount;           // 0x04
+        HitSensor** mSensors;       // 0x08
     };
 };

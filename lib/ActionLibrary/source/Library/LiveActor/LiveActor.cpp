@@ -1,11 +1,15 @@
 #include "Library/Action/ActionSeCtrl.hpp"
 #include "Library/Action/ActorActionKeeper.hpp"
+#include "Library/Actor/ActorAlphaCtrl.hpp"
 #include "Library/Actor/ActorPoseFunction.hpp"
 #include "Library/Actor/ActorPrePassLightKeeper.hpp"
 #include "Library/Audio/AudioKeeper.hpp"
 #include "Library/Clipping/ClippingFunction.hpp"
+#include "Library/Clipping/ClippingUtil.hpp"
+#include "Library/Collision/Collider.hpp"
 #include "Library/Collision/CollisionParts.hpp"
 #include "Library/Collision/CollisionUtil.hpp"
+#include "Library/Effect/EffectKeeper.hpp"
 #include "Library/Execute/ActorExecuteInfo.hpp"
 #include "Library/Execute/ActorSystemFunction.hpp"
 #include "Library/HitSensor/HitSensorKeeper.hpp"
@@ -126,8 +130,92 @@ namespace al {
         kill();
     }
 
-    // al::LiveActor::makeActorDead
-    // al::LiveActor::showActor
+    void LiveActor::makeActorDead() {
+        if (mFarLodActor != nullptr) {
+            endFarLod();
+        }
+
+        if (mActorPoseKeeper != nullptr) {
+            al::setVelocityZero(this);
+        }
+
+        mActorFlags->mIsDead = true;
+
+        if (mHitSensorKeeper != nullptr) {
+            mHitSensorKeeper->invalidateBySystem();
+        }
+
+        if (mScreenPointKeeper != nullptr) {
+            mScreenPointKeeper->invalidateBySystem();
+        }
+
+        alClippingFunction::removeFromClippingTarget(this);
+
+        if (mCollider != nullptr) {
+            mCollider->onInvalidate();
+        }
+
+        if (mCollisionParts != nullptr) {
+            al::invalidateCollisionPartsBySystem(this);
+        }
+
+        if (mModelKeeper != nullptr) {
+            mModelKeeper->hide();
+        }
+
+        if (getEffectKeeper() != nullptr) {
+            getEffectKeeper()->deleteAndClearEffectAll();
+        }
+
+        if (getAudioKeeper() != nullptr) {
+            getAudioKeeper()->kill();
+        }
+
+        if (mLightKeeper != nullptr) {
+            mLightKeeper->requestKill();
+        }
+
+        if (mShadowKeeper != nullptr) {
+            mShadowKeeper->hide();
+        }
+
+        if (mActorExecuteInfo != nullptr) {
+            alActorSystemFunction::removeFromExecutorMovement(this);
+
+            if (mActorExecuteInfo->mNumDrawerBases >= 1) {
+                alActorSystemFunction::removeFromExecutorDraw(this);
+            }
+        }
+
+        if (mSubActorKeeper != nullptr) {
+            alSubActorFunction::trySyncDead(mSubActorKeeper);
+        }
+    }
+
+    bool LiveActor::showActor() {
+        if (mActorFlags->_1C) {
+            if (al::isDead(this)) {
+                return true;
+            }
+        }
+        else {
+            al::validateClipping(this);
+            if (al::isDead(this)) {
+                return true;
+            }
+        }
+
+        if (mActorFlags->_1C && al::isClipped(this)) {
+            endClipped();
+        }
+
+        if (mCollisionParts != nullptr) {
+            mCollisionParts->validateBySystem();
+            return true;
+        }
+
+        return true;
+    }
 
     bool LiveActor::hideActor() {
         if (!mActorFlags->_1C && !al::isDead(this)) {
@@ -170,9 +258,45 @@ namespace al {
     }
 
     // al::LiveActor::movement
-    // al::LiveActor::calcAnim
-    // al::LiveActor::modelUpdate
-    // al::LiveActor::pausedModelUpdate
+
+    void LiveActor::calcAnim() {
+        if (!mActorFlags->mIsDead && (!mActorFlags->mIsClipped || mActorFlags->mIsDrawClipping) && !_140) {
+            if (mActorPoseKeeper != nullptr) {
+                alLiveActorFunction::calcAnimDirect(this);
+            }
+
+            if (mAudioKeeper != nullptr) {
+                mAudioKeeper->update();
+            }
+        }
+    }
+
+    bool LiveActor::modelUpdate() {
+        if (mActorFlags->mIsDead) {
+            return false;
+        }
+
+        if (mActorFlags->mIsClipped && !mActorFlags->mIsDrawClipping) {
+            return false;
+        }
+
+        if (mAlphaCtrl != nullptr) {
+            f32 alph = mAlphaCtrl->update(al::getClippingJudge(this));
+            if (!al::isInvalidCliping(this)) {
+                alph *= mGlobalAlpha;
+            }
+
+            mGlobalAlpha = alph;
+        }
+
+        return true;
+    }
+
+    void LiveActor::pausedModelUpdate() {
+        if (modelUpdate() != false) {
+            mGlobalAlphaLastFrame = mGlobalAlpha;
+        }
+    }
 
     void LiveActor::draw() const {
         return;

@@ -43,6 +43,7 @@ namespace al {
     class HitReactionKeeper;
     class CollisionParts;
     class ActorParamHolder;
+    class ActorAlphaCtrl;
 
     class LiveActor :   public IUseNerve,
                         public IUseEffectKeeper,
@@ -82,7 +83,7 @@ namespace al {
         virtual void kill();
         virtual void killComplete(bool);
         virtual void makeActorDead();
-        virtual void showActor();
+        virtual bool showActor();
         virtual bool hideActor();
         virtual void startDemoActor(s32);
         virtual void endDemoActor(s32);
@@ -91,7 +92,7 @@ namespace al {
         virtual void movement();
         virtual void movementPaused(bool);
         virtual void calcAnim();
-        virtual void modelUpdate();
+        virtual bool modelUpdate();
         virtual void pausedModelUpdate();
         virtual void draw() const;
         virtual void pause();
@@ -202,7 +203,7 @@ namespace al {
         ActorSceneInfo* mActorSceneInfo = nullptr;                  // 0xF8
         u64* _100 = nullptr;
         LiveActorFlag* mActorFlags = nullptr;                       // 0x108
-        u64* _110 = nullptr;
+        ActorAlphaCtrl* mAlphaCtrl = nullptr;                       // 0x110
         PlacementHolder* mPlacementHolder = nullptr;                // 0x118
         f32 mGlobalAlphaLastFrame = 1.0f;                           // 0x120
         f32 mGlobalAlpha = 1.0f;                                    // 0x124

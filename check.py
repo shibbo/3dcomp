@@ -146,7 +146,7 @@ with open(path, "rb") as f:
     compiled_symbol = symtab.get_symbol_by_name(sym)[0]
     custom_offset = compiled_symbol["st_value"]
     custom_size = compiled_symbol['st_size']
-    text = elf_file.get_section_by_name('.text')
+    text = elf_file.get_section_by_name(f".text.{sym}")
     custom_data = text.data()[custom_offset:custom_offset + custom_size]
     custom_instructions = list(capstone_inst.disasm(custom_data, 0))
 

@@ -6,4 +6,6 @@ namespace al {
     void tryInitFixedModelGpuBuffer(LiveActor *);
 
     bool isHideModel(const LiveActor *);
+
+    void setNeedSetBaseMtxAndCalcAnimFlag(LiveActor *, bool);
 };

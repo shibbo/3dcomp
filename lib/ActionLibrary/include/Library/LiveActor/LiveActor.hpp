@@ -176,6 +176,7 @@ namespace al {
         void setGlobalYOffsetRef(f32 *);
         f32 getGlobalYOffset() const;
         void setFarLodActor(LiveActor *);
+        void setIsFarLodModel(bool);
 
         const char* mActorName = nullptr;                           // 0x50
         ActorPoseKeeperBase* mActorPoseKeeper = nullptr;            // 0x58
@@ -203,9 +204,10 @@ namespace al {
         LiveActorFlag* mActorFlags = nullptr;                       // 0x108
         u64* _110 = nullptr;
         PlacementHolder* mPlacementHolder = nullptr;                // 0x118
-        f32* mGlobalAlpha = (f32*)0x3F8000003F800000;                // 0x120
-        f32* mGlobalYOffset = nullptr;                              // 0x128
-        f32 _130 = 0;
+        f32 mGlobalAlphaLastFrame = 1.0f;                           // 0x120
+        f32 mGlobalAlpha = 1.0f;                                    // 0x124
+        f32* mGlobalYOffsetRef = nullptr;                           // 0x128
+        f32 mGlobalYOffset = 0;                                     // 0x130
         f32 _134;
         LiveActor* mFarLodActor;                                    // 0x138
         u8 _140 = 0;
@@ -213,8 +215,4 @@ namespace al {
         u8 _142 = 0;
         u8 _143 = 0;
     };
-}
-
-namespace alSubActorFunction {
-    void setGlobalYOffset(al::SubActorKeeper *, f32 *);
 }

@@ -6,5 +6,7 @@ namespace al {
 
     ClippingJudge* getClippingJudge(LiveActor *);
 
+    bool isClipped(const LiveActor *);
+
     bool isInvalidCliping(const LiveActor *);
 };

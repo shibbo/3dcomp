@@ -1,7 +1,10 @@
+#include "Library/Action/ActionSeCtrl.hpp"
+#include "Library/Action/ActorActionKeeper.hpp"
 #include "Library/LiveActor/LiveActor.hpp"
 #include "Library/LiveActor/ActorPoseUtil.hpp"
 #include "Library/LiveActor/LiveActorFlag.hpp"
 #include "Library/LiveActor/LiveActorUtil.hpp"
+#include "Library/LiveActor/LiveActorFunction.hpp"
 #include "Library/Placement/PlacementHolder.hpp"
 #include "Library/Model/ModelKeeper.hpp"
 #include "Library/Model/ModelUtil.hpp"
@@ -16,14 +19,14 @@ namespace al {
         mPlacementHolder = new PlacementHolder();
     }
 
-    LiveActor::~LiveActor() {
+    LiveActor::~LiveActor() { 
         if (mShadowKeeper != nullptr) {
             delete mShadowKeeper;
             mShadowKeeper = nullptr;
         }
         
         if (mLightKeeper != nullptr) {
-            delete mLightKeeper;
+            delete mLightKeeper; 
             mLightKeeper = nullptr;
         }
     }
@@ -36,7 +39,15 @@ namespace al {
         }
     }
 
-    // al::LiveActor::appear
+    void LiveActor::appear() {
+        makeActorAppeared();
+
+        if (mActionKeeper != nullptr) {
+            if (mActionKeeper->mSeCtrl != nullptr) {
+                mActionKeeper->mSeCtrl->resetAction();
+            }
+        }
+    }
 
     void LiveActor::reappear() {
 
@@ -115,13 +126,13 @@ namespace al {
     // al::LiveActor::startClipped
     // al::LiveActor::endClipped
     //al::LiveActor::startClippedByLod
-    // al::LiveActor::endClippedByLod
+    // al::LiveActor::endClippedByLod 
 
     void LiveActor::setGlobalYOffsetRef(f32 *pOffs) {
         LiveActor* curActor = this;
  
        do {
-            curActor->mGlobalYOffset = pOffs;
+            curActor->mGlobalYOffset = *pOffs;
 
             if (curActor->mModelKeeper != nullptr) {
                 curActor->mModelKeeper->setGlobalYOffset(pOffs);
@@ -136,7 +147,7 @@ namespace al {
     }
 
     f32 LiveActor::getGlobalYOffset() const {
-        const f32* ptr = (mGlobalYOffset != nullptr ? mGlobalYOffset : &_130);
+        const f32* ptr = (mGlobalYOffsetRef != nullptr ? mGlobalYOffsetRef : &mGlobalYOffset);
         return *ptr;
     }
 
@@ -147,6 +158,10 @@ namespace al {
     // al::LiveActor::startFarLod
     // al::LiveActor::endFarLod
     // al::LiveActor::getBaseMtx
-    // al::LiveActor::setIsFarLodModel
+
+    void al::LiveActor::setIsFarLodModel(bool flag) {
+        mIsFarLodModel = flag;
+    }
+
     // al::LiveActor::getSceneObjHolder
 }; 

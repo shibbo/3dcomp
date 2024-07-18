@@ -1,15 +1,23 @@
 #include "Library/Action/ActionSeCtrl.hpp"
 #include "Library/Action/ActorActionKeeper.hpp"
+#include "Library/Actor/ActorPoseFunction.hpp"
+#include "Library/Actor/ActorPrePassLightKeeper.hpp"
+#include "Library/Audio/AudioKeeper.hpp"
+#include "Library/Clipping/ClippingFunction.hpp"
+#include "Library/Collision/CollisionParts.hpp"
+#include "Library/Collision/CollisionUtil.hpp"
+#include "Library/Execute/ActorExecuteInfo.hpp"
+#include "Library/Execute/ActorSystemFunction.hpp"
+#include "Library/HitSensor/HitSensorKeeper.hpp"
 #include "Library/LiveActor/LiveActor.hpp"
 #include "Library/LiveActor/ActorPoseUtil.hpp"
 #include "Library/LiveActor/LiveActorFlag.hpp"
 #include "Library/LiveActor/LiveActorUtil.hpp"
 #include "Library/LiveActor/LiveActorFunction.hpp"
-#include "Library/Placement/PlacementHolder.hpp"
 #include "Library/Model/ModelKeeper.hpp"
 #include "Library/Model/ModelUtil.hpp"
-#include "Library/Actor/ActorPrePassLightKeeper.hpp"
-#include "Library/Collision/CollisionParts.hpp"
+#include "Library/Placement/PlacementHolder.hpp"
+#include "Library/Screen/ScreenPointKeeper.hpp"
 #include "Library/Shadow/ShadowKeeper.hpp"
 
 namespace al {
@@ -53,7 +61,62 @@ namespace al {
 
     }
 
-    // al::LiveActor::makeActorAppeared
+    void LiveActor::makeActorAppeared() {
+        if (mHitSensorKeeper != nullptr) {
+            mHitSensorKeeper->validateBySystem();
+        }
+
+        if (mScreenPointKeeper != nullptr) {
+            mScreenPointKeeper->validateBySystem();
+        }
+
+        mActorFlags->mIsDead = false;
+
+        if (al::isClipped(this)) {
+            endClipped();
+        }
+
+        if (!al::isHideModel(this)) {
+            if (mModelKeeper != nullptr) {
+                mModelKeeper->show();
+            }
+        }
+
+        al::resetPosition(this, false);
+
+        if (mCollisionParts != nullptr) {
+            al::validateCollisionPartsBySystem(this);
+        }
+
+        if (mHitSensorKeeper != nullptr) {
+            mHitSensorKeeper->update();
+        }
+ 
+        alClippingFunction::addToClippingTarget(this);
+
+        if (mActorExecuteInfo != nullptr) {
+            alActorSystemFunction::addToExecutorMovement(this);
+            if (!al::isHideModel(this) && mActorExecuteInfo->mNumDrawerBases >= 1) {
+                alActorSystemFunction::addToExecutorDraw(this);
+            }
+        }
+
+        if (getAudioKeeper() != nullptr) {
+            getAudioKeeper()->appear();
+        }
+
+        if (mLightKeeper != nullptr) {
+            mLightKeeper->appear(al::isHideModel(this));
+        }
+
+        if (mShadowKeeper != nullptr && !al::isHideModel(this)) {
+            mShadowKeeper->show();
+        }
+
+        if (mSubActorKeeper != nullptr) {
+            alSubActorFunction::trySyncAlive(mSubActorKeeper);
+        }
+    }
 
     void LiveActor::kill() {
         makeActorDead();

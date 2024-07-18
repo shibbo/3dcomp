@@ -11,7 +11,7 @@ namespace al {
 
     class ModelKeeper {
     public:
-        ModelKeeper();
+        ModelKeeper() = default;
         ~ModelKeeper();
 
         void setGlobalAlpha(f32 *);
@@ -32,9 +32,13 @@ namespace al {
         sead::Matrix34f& getWorldMtxPtrByIndex(int) const;
         void initLightCtrl(int);
 
-        alModelCafe* mModelCafe;            // 0x00
-        const char* mModelName;             // 0x08
-
-        bool _1C;
+        alModelCafe* mModelCafe = nullptr;            // 0x00
+        const char* mModelName = nullptr;             // 0x08
+        void* _10 = nullptr;
+        bool _18 = false;
+        bool _19 = false;
+        bool _1A = false;
+        bool _1B = false;
+        bool _1C = false;
     };
 };

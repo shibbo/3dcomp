@@ -60,19 +60,30 @@ namespace al {
 
         LiveActor(const char *);
 
-        virtual NerveKeeper* getNerveKeeper() const;
+        virtual NerveKeeper* getNerveKeeper() const {
+            return mNerveKeeper;
+        }
+
         virtual ~LiveActor();
-        virtual void init(const ActorInitInfo &);
+
+        virtual void init(const ActorInitInfo &) {
+
+        }
+
         virtual void initAfterPlacement();
         virtual void appear();
         virtual void reappear();
-        virtual void respawn();
+
+        virtual void respawn() {
+
+        }
+
         virtual void makeActorAppeared();
         virtual void kill();
         virtual void killComplete(bool);
         virtual void makeActorDead();
         virtual void showActor();
-        virtual void hideActor();
+        virtual bool hideActor();
         virtual void startDemoActor(s32);
         virtual void endDemoActor(s32);
         virtual void changeScenarioID(s32, bool);
@@ -91,29 +102,75 @@ namespace al {
         virtual void endClippedByLod();
         virtual void startFarLod();
         virtual void endFarLod();
-        virtual bool isFarLodSwitchOkay();
-        virtual bool canLinkYOffset();
-        virtual void attackSensor(HitSensor *, HitSensor *);
-        virtual bool receiveMsg(const SensorMsg *, HitSensor *, HitSensor *);
-        virtual bool receiveMsgScreenPoint(const SensorMsg *, ScreenPointer *, ScreenPointTarget *);
-        virtual bool receiveMsgScreenPointSM(const SensorMsg *, ScreenPointer *, ScreenPointTarget *);
-        virtual const char* getName() const;
+
+        virtual bool isFarLodSwitchOkay() {
+            return true;
+        }
+    
+        virtual bool canLinkYOffset() const {
+            return true;
+        }
+    
+        virtual void attackSensor(HitSensor *, HitSensor *) {
+
+        }
+
+        virtual bool receiveMsg(const SensorMsg *, HitSensor *, HitSensor *) {
+            return false;
+        }
+
+        virtual bool receiveMsgScreenPoint(const SensorMsg *, ScreenPointer *, ScreenPointTarget *) {
+            return false;
+        }
+
+        virtual bool receiveMsgScreenPointSM(const SensorMsg *, ScreenPointer *, ScreenPointTarget *) {
+            return false;
+        }
+
+        virtual const char* getName() const {
+            return mActorName;
+        }
+
         virtual sead::Matrix34f& getBaseMtx() const;
-        virtual EffectKeeper* getEffectKeeper() const;
-        virtual AudioKeeper* getAudioKeeper() const;
-        virtual StageSwitchKeeper* getStageSwitchKeeper() const;
+
+        virtual EffectKeeper* getEffectKeeper() const {
+            return mEffectKeeper;
+        }
+
+        virtual AudioKeeper* getAudioKeeper() const {
+            return mAudioKeeper;
+        }
+
+        virtual StageSwitchKeeper* getStageSwitchKeeper() const {
+            return mStageSwitchKeeper;
+        }
+
         virtual SceneObjHolder* getSceneObjHolder() const;
         virtual CollisionDirector* getCollisionDirector() const;
         virtual AreaObjDirector* getAreaObjDirector() const;
         virtual SceneCameraInfo* getSceneCameraInfo() const;
         virtual CameraDirector_RS* getCameraDirector_RS() const;
-        virtual bool isInRouteDokan() const;
+
+        virtual bool isInRouteDokan() const {
+            return false;
+        }
+
         virtual void initStageSwitchKeeper();
-        virtual LiveActor* getLinkedActor();
+
+        virtual LiveActor* getLinkedActor() {
+            return nullptr;
+        }
+
         virtual void control();
-        virtual void calcAndSetBaseMtx();
+
+        virtual void calcAndSetBaseMtx() {
+
+        }
+
         virtual void updateCollider();
 
+
+        ActorSceneInfo* getSceneInfo() const;
         void initNerveKeeper(NerveKeeper *);
 
         void setGlobalYOffsetRef(f32 *);

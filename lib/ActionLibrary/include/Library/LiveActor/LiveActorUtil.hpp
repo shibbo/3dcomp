@@ -11,5 +11,6 @@ namespace al {
 
     void setVelocityZero(LiveActor *);
 
+    void invalidateClipping(LiveActor *);
     void validateClipping(LiveActor *);
 };

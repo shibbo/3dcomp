@@ -52,8 +52,8 @@ namespace al {
                         public IUseStageSwitch,
                         public IUseSceneObjHolder,
                         public IUseAreaObj,
-                        public IUseCamera_RS,
                         public IUseCamera,
+                        public IUseCamera_RS,
                         public IUseCollision,
                         public IUseHioNode
     {
@@ -178,6 +178,9 @@ namespace al {
         f32 getGlobalYOffset() const;
         void setFarLodActor(LiveActor *);
         void setIsFarLodModel(bool);
+
+        inline void updateLOD();
+        inline void setMaterial();
 
         const char* mActorName = nullptr;                           // 0x50
         ActorPoseKeeperBase* mActorPoseKeeper = nullptr;            // 0x58

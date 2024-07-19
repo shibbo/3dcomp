@@ -11,4 +11,6 @@ namespace alActorSystemFunction {
     void addToExecutorDraw(al::LiveActor *);
     void removeFromExecutorMovement(al::LiveActor *);
     void removeFromExecutorDraw(al::LiveActor *);
+
+    void addToExecutorDrawImmediate(al::LiveActor *);    
 };

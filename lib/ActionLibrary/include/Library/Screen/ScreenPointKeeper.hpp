@@ -15,6 +15,8 @@ namespace al {
         void validateBySystem();
         void invalidateBySystem();
 
+        void update();
+
         s32 mMaxNumTargets;                 // 0x00
         s32 mCurNumTargets;                 // 0x04
         ScreenPointTarget** mTargets;       // 0x08

@@ -2,13 +2,16 @@
 #include "Library/Action/ActorActionKeeper.hpp"
 #include "Library/Actor/ActorAlphaCtrl.hpp"
 #include "Library/Actor/ActorPoseFunction.hpp"
+#include "Library/Actor/ActorPoseKeeperBase.hpp"
 #include "Library/Actor/ActorPrePassLightKeeper.hpp"
+#include "Library/Actor/ActorSceneInfo.hpp"
 #include "Library/Audio/AudioKeeper.hpp"
 #include "Library/Clipping/ClippingFunction.hpp"
 #include "Library/Clipping/ClippingUtil.hpp"
 #include "Library/Collision/Collider.hpp"
 #include "Library/Collision/CollisionParts.hpp"
 #include "Library/Collision/CollisionUtil.hpp"
+#include "Library/Demo/DemoDirector.hpp"
 #include "Library/Effect/EffectKeeper.hpp"
 #include "Library/Execute/ActorExecuteInfo.hpp"
 #include "Library/Execute/ActorSystemFunction.hpp"
@@ -18,11 +21,15 @@
 #include "Library/LiveActor/LiveActorFlag.hpp"
 #include "Library/LiveActor/LiveActorUtil.hpp"
 #include "Library/LiveActor/LiveActorFunction.hpp"
+#include "Library/Math/MtxUtil.hpp"
+#include "Library/Model/alModelCafe.hpp"
 #include "Library/Model/ModelKeeper.hpp"
 #include "Library/Model/ModelUtil.hpp"
+#include "Library/Nerve/NerveKeeper.hpp"
 #include "Library/Placement/PlacementHolder.hpp"
 #include "Library/Screen/ScreenPointKeeper.hpp"
-#include "Library/Shadow/ShadowKeeper.hpp"
+#include "Library/Shadow/ShadowKeeper.hpp" 
+#include "Library/Shadow/ShadowUtil.hpp"
 
 namespace al {
     LiveActor::LiveActor(const char *pName) : mActorName(pName) {
@@ -253,11 +260,133 @@ namespace al {
     
     // al::LiveActor::movementPaused
 
+    inline void LiveActor::updateLOD() {
+        bool isActiveDemo;
+
+        if (mActorSceneInfo->mDemoDirector != nullptr) {
+            isActiveDemo = mActorSceneInfo->mDemoDirector->isActiveDemo();
+            if (al::isSingleMode(this)) {
+                return;
+            }
+        }
+        else {
+            isActiveDemo = false;
+            if (al::isSingleMode(this)) {
+                return;
+            }
+        }
+
+        mModelKeeper->updateLod(mActorPoseKeeper->mTranslation, isActiveDemo);
+    }
+
+    inline void LiveActor::setMaterial() {
+        const char* name;
+
+        if (al::isCollidedGround(this)) {
+            name = al::getCollidedFloorMaterialCodeName(this);
+        }
+        else if (al::isCollidedWall(this)) {
+            name = al::getCollidedWallMaterialCodeName(this);
+        }
+        else if (al::isCollidedCeiling(this)) {
+            name = al::getCollidedCeilingMaterialCodeName(this);
+        }
+        else {
+            return;
+        }
+
+        al::setMaterialCode(this, name);
+    }
+
     ActorSceneInfo* LiveActor::getSceneInfo() const {
         return mActorSceneInfo;
     }
 
-    // al::LiveActor::movement
+    /*
+    void LiveActor::movement() {
+        if (mActorFlags->mIsDead || (mActorFlags->mIsClipped && !mActorFlags->mIsDrawClipping)) {
+            return;
+        }
+
+        mGlobalAlphaLastFrame = mGlobalAlpha;
+
+        if (!_140) {
+            if (mActionKeeper != nullptr) {
+                mActionKeeper->updatePrev();
+            }
+
+            if (mModelKeeper != nullptr) {
+                updateLOD();
+                mModelKeeper->update();
+            }
+
+            if (mActorFlags->mIsValidCeilWallFloorMatCode) {
+                setMaterial();
+            }
+
+            if (mActorFlags->mIsValidMatCode) {
+                if (al::isCollidedGround(this)) {
+                    al::setMaterialCode(this, al::getCollidedFloorMaterialCodeName(this));
+                }
+            }
+
+            HitSensorKeeper* keeper = mHitSensorKeeper;
+
+            if (keeper != nullptr) {
+                keeper->attackSensor();
+            }
+
+            if (!mActorFlags->mIsDead) {
+                NerveKeeper* nerveKeeper = mNerveKeeper;
+                if (nerveKeeper != nullptr, nerveKeeper->update(), !mActorFlags->mIsDead) {
+                    control();
+
+                    if (!mActorFlags->mIsDead) {
+                        updateCollider();
+
+                        if (al::isUpdateMovementEffectAudioCollision(this)) {
+                            if (mEffectKeeper != nullptr) {
+                                mEffectKeeper->update();
+                            }
+
+                            if (mAudioKeeper != nullptr) {
+                                mAudioKeeper->update();
+                            }
+
+                            if (mCollisionParts != nullptr) {
+                                if (mModelKeeper == nullptr || !mModelKeeper->_18) {
+                                    sead::Matrix34f poseMtx;
+                                    mActorPoseKeeper->updatePoseMtx(&poseMtx);
+                                    al::preScaleMtx(&poseMtx, mActorPoseKeeper->getScale());
+                                    al::syncCollisionMtx(this, &poseMtx);
+                                }
+                            }
+                        }
+
+                        if (mActionKeeper != nullptr) {
+                            mActionKeeper->updatePost();
+                        }
+
+                        if (mHitSensorKeeper != nullptr) {
+                            mHitSensorKeeper->update();
+                        }
+
+                        if (mScreenPointKeeper != nullptr) {
+                            mScreenPointKeeper->update();
+                        }
+
+                        if (mModelKeeper != nullptr) {
+                            mModelKeeper->mModelCafe->updateLast();
+                            return;
+                        }
+                        
+                        return;
+                    }
+                }
+            }
+        }
+    }
+    */
 
     void LiveActor::calcAnim() {
         if (!mActorFlags->mIsDead && (!mActorFlags->mIsClipped || mActorFlags->mIsDrawClipping) && !_140) {
@@ -310,7 +439,70 @@ namespace al {
         return;
     }
 
-    // al::LiveActor::startClipped
+    void LiveActor::startClipped() {
+        mActorFlags->mIsClipped = true;
+
+        if (!mActorFlags->mIsClippedByLOD) {
+            if (mModelKeeper != nullptr) {
+                mModelKeeper->hide();
+            }
+
+            if (!mActorFlags->mIsDrawClipping) {
+                if (mHitSensorKeeper != nullptr) {
+                    mHitSensorKeeper->invalidateBySystem();
+                }
+
+                if (getEffectKeeper() != nullptr) {
+                    getEffectKeeper()->offCalcAndDraw();
+                }
+
+                if (getAudioKeeper()) {
+                    getAudioKeeper()->startClipped();
+                }
+            }
+
+            if (mShadowKeeper != nullptr) {
+                al::hideShadow(this);
+            }
+
+            if (mScreenPointKeeper != nullptr) {
+                mScreenPointKeeper->invalidateBySystem();
+            }
+
+            if (mLightKeeper != nullptr) {
+                mLightKeeper->hideModel();
+            }
+
+            if (mActorExecuteInfo != nullptr) {
+                if (!mActorFlags->mIsDrawClipping) {
+                    alActorSystemFunction::removeFromExecutorMovement(this);
+                }
+
+                if (mActorExecuteInfo->mNumDrawerBases >= 1) {
+                    alActorSystemFunction::removeFromExecutorDraw(this);
+                }
+
+                if (mActorFlags->mIsDrawClipping) {
+                    if (mModelKeeper != nullptr) {
+                        if (mModelKeeper->_19) {
+                            al::setNeedSetBaseMtxAndCalcAnimFlag(this, false);
+                        }
+                    }
+                }
+            }
+
+            if (mSubActorKeeper != nullptr) {
+                alSubActorFunction::trySyncClippingStart(mSubActorKeeper);
+            }
+        }
+
+        if (mFarLodActor != nullptr) {
+            if (!al::isClipped(mFarLodActor)) {
+                mFarLodActor->startClipped();
+            }
+        }
+    }
+
     // al::LiveActor::endClipped
     //al::LiveActor::startClippedByLod
     // al::LiveActor::endClippedByLod 
@@ -342,13 +534,88 @@ namespace al {
         mFarLodActor = pFarLodActor;
     }
 
-    // al::LiveActor::startFarLod
-    // al::LiveActor::endFarLod
+    void LiveActor::startFarLod() {
+        if (!_140) {
+            _140 = true;
+            
+            if (mFarLodActor != nullptr && al::isClipped(mFarLodActor) && !al::isClipped(this)) {
+                mFarLodActor->endClipped();
+                alActorSystemFunction::addToExecutorDrawImmediate(mFarLodActor);
+            }
+
+            if (_142) {
+                if (mFarLodActor != nullptr && mActorPoseKeeper != nullptr) {
+                    alLiveActorFunction::calcAnimDirect(mFarLodActor);
+                }
+
+                if (mActorExecuteInfo != nullptr) {
+                    if (mActorExecuteInfo->mNumDrawerBases >= 1) {
+                        al::hideModelIfShow(this);
+                    }
+                }
+            }
+            else {
+                startClippedByLod();
+            }
+        }
+    }
+
+    void LiveActor::endFarLod() {
+        if (_140) {
+            _140 = false;
+
+            if (mFarLodActor != nullptr && !al::isClipped(mFarLodActor)) {
+                mFarLodActor->startClipped();
+            }
+
+            if (_142) {
+                if (mActorPoseKeeper != nullptr) {
+                    alLiveActorFunction::calcAnimDirect(this);
+                }
+
+                if (mActorExecuteInfo != nullptr) {
+                    if (mActorExecuteInfo->mNumDrawerBases >= 1) {
+                        al::showModelIfHide(this);
+
+                        if (!al::isDead(this) && !al::isClipped(this)) {
+                            alActorSystemFunction::addToExecutorDrawImmediate(this);
+                        }
+                    }
+                }
+            }
+            else {
+                endClippedByLod();
+            }
+        }
+    }
+
     // al::LiveActor::getBaseMtx
 
     void al::LiveActor::setIsFarLodModel(bool flag) {
         mIsFarLodModel = flag;
     }
 
-    // al::LiveActor::getSceneObjHolder
+    SceneObjHolder* LiveActor::getSceneObjHolder() const {
+        return mActorSceneInfo->mSceneObjHolder;
+    }
+
+    CollisionDirector* LiveActor::getCollisionDirector() const {
+        return mActorSceneInfo->mCollisionDirector;
+    }
+
+    AreaObjDirector* LiveActor::getAreaObjDirector() const {
+        return mActorSceneInfo->mAreaObjDirector;
+    }
+
+    SceneCameraInfo* LiveActor::getSceneCameraInfo() const {
+        return mActorSceneInfo->mSceneCameraInfo;
+    }
+
+    CameraDirector_RS* LiveActor::getCameraDirector_RS() const {
+        return mActorSceneInfo->mCameraDirector;
+    }
+
+    // al::LiveActor::initPoseKeeper
+
+
 }; 

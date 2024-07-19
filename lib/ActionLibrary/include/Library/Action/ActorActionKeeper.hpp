@@ -15,6 +15,9 @@ namespace al {
     class ActorActionKeeper {
     public:
 
+        void updatePrev();
+        void updatePost();
+
         LiveActor* mHostActor;                  // 0x00
         const char* mActionName;                // 0x08
         void* _10;

@@ -20,6 +20,8 @@ public:
     void hide();
     void update();
 
+    void updateLast();
+
     void* _0;
     void* _10;
     al::SimpleModelG3D* mModelG3D;          // 0x18

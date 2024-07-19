@@ -6,6 +6,8 @@ namespace al {
     class LiveActor;
 
     bool isCollidedGround(const LiveActor *);
+    bool isCollidedWall(const LiveActor *);
+    bool isCollidedCeiling(const LiveActor *);
 
     void validateCollisionPartsBySystem(LiveActor *);
     void invalidateCollisionPartsBySystem(LiveActor *);

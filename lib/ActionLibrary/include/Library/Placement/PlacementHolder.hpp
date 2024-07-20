@@ -3,9 +3,13 @@
 #include <types.hpp>
 
 namespace al {
+    class PlacementInfo;
+
     class PlacementHolder {
     public:
         PlacementHolder();
+
+        void init(const PlacementInfo &);
 
         const char* _0;
         const char* _8;

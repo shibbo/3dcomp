@@ -172,7 +172,29 @@ namespace al {
 
 
         ActorSceneInfo* getSceneInfo() const;
+
+        void initPoseKeeper(ActorPoseKeeperBase *);
+        void initExecuteInfo(ActorExecuteInfo *);
+        void initModelKeeper(ModelKeeper *);
+        void initActionKeeper(const char *, const char *);
         void initNerveKeeper(NerveKeeper *);
+        void initHitSensor(s32);
+        void initScreenPointKeeper(s32);
+        void initEffectKeeper(EffectKeeper *);
+        void initAudioKeeper(AudioKeeper *);
+        void initOceanWaveKeeper(OceanWaveKeeper *);
+        void initRailKeeper(const ActorInitInfo &);
+        void initCollider(f32, f32, u32);
+        void initShadowKeeper(ShadowKeeper *);
+        void initItemKeeper(s32);
+        void initScoreKeeper();
+        void initACtorPrePassLightKeeper(ActorPrePassLightKeeper *);
+        void initSubActorKeeper(SubActorKeeper *);
+        void initSceneInfo(ActorSceneInfo *);
+        void initActorAlphaCtrl(ActorAlphaCtrl *, const ActorInitInfo &);
+        void setCollision(bool);
+        void setPlacementHolder(const ActorInitInfo &);
+        void setGlobalAlphaPtr(f32 *);
 
         void setGlobalYOffsetRef(f32 *);
         f32 getGlobalYOffset() const;

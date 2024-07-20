@@ -1,6 +1,7 @@
 #include "Library/Action/ActionSeCtrl.hpp"
 #include "Library/Action/ActorActionKeeper.hpp"
 #include "Library/Actor/ActorAlphaCtrl.hpp"
+#include "Library/Actor/ActorInitInfo.hpp"
 #include "Library/Actor/ActorPoseFunction.hpp"
 #include "Library/Actor/ActorPoseKeeperBase.hpp"
 #include "Library/Actor/ActorPrePassLightKeeper.hpp"
@@ -21,6 +22,7 @@
 #include "Library/LiveActor/LiveActorFlag.hpp"
 #include "Library/LiveActor/LiveActorUtil.hpp"
 #include "Library/LiveActor/LiveActorFunction.hpp"
+#include "Library/LiveActor/SubActorUtil.hpp"
 #include "Library/Math/MtxUtil.hpp"
 #include "Library/Model/alModelCafe.hpp"
 #include "Library/Model/ModelKeeper.hpp"
@@ -616,6 +618,62 @@ namespace al {
     }
 
     // al::LiveActor::initPoseKeeper
+    // al::LiveActor::initRailKeeper
+    // al::LiveActor::initCollider
 
+    void LiveActor::initShadowKeeper(ShadowKeeper* pShadowKeeper) {
+        mShadowKeeper = pShadowKeeper;
+    }
 
+    // al::LiveActor::initItemKeeper
+    // al::LiveActor::initScoreKeepe
+    // al::LiveActor::initActorPrePassLightKeeper    
+
+    void LiveActor::initSubActorKeeper(SubActorKeeper *pSubActorKeeper) {
+        mSubActorKeeper = pSubActorKeeper;
+        al::setSubActorAlphaPtr(this, &mGlobalAlphaLastFrame);
+    }
+
+    void LiveActor::initSceneInfo(ActorSceneInfo *pSceneInfo) {
+        mActorSceneInfo = pSceneInfo;
+    }
+
+    // al::LiveActor::initActorAlphaCtrl
+
+    void LiveActor::setCollision(bool isValidate) {
+        if (isValidate) {
+            if (mCollisionParts != nullptr) {
+                al::validateCollisionPartsBySystem(this);
+            }
+        }
+        else {
+            if (mCollider != nullptr) {
+                mCollider->onInvalidate();
+            }
+
+            if (mCollisionParts != nullptr) {
+                al::invalidateCollisionPartsBySystem(this);
+            }
+        }
+    }
+
+    void LiveActor::control() {
+        return;
+    }
+
+    // al::LiveActor::updateCollider
+
+    void LiveActor::setPlacementHolder(const ActorInitInfo &rInfo) {
+        mPlacementHolder->init(*rInfo.mPlacementInfo);
+    }
+
+    void LiveActor::setGlobalAlphaPtr(f32 *pAlphaPtr) {
+        if (mModelKeeper != nullptr) {
+            mModelKeeper->setGlobalAlpha(pAlphaPtr);
+        }
+
+        if (mSubActorKeeper != nullptr) {
+            al::setSubActorAlphaPtr(this, pAlphaPtr);
+        }
+    }
 }; 

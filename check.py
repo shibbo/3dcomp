@@ -68,6 +68,12 @@ def getModule(map, sym):
                         return object_path
     return ""
 
+def getFunctionData(functionAddr, functionSize):
+    with open("fury.nso", "rb") as f:
+        nso_file = nso.NSO(f.read())
+
+    return nso_file.getFunction(functionAddr, functionSize)
+
 if len(sys.argv) < 2:
     print("python check.py [-prog] [-no-diff] <mangled symbol>")
     sys.exit(1)
@@ -116,10 +122,7 @@ with open("data/main.map", "r") as f:
             functionAddr = addr
             break
 
-with open("fury.nso", "rb") as f:
-    nso_file = nso.NSO(f.read())
-
-funcData = nso_file.getFunction(functionAddr, functionSize)
+funcData = getFunctionData(functionAddr, functionSize)
 capstone_inst = Cs(CS_ARCH_ARM64, CS_MODE_ARM + CS_MODE_LITTLE_ENDIAN)
 capstone_inst.detail = True
 capstone_inst.imm_unsigned = False
@@ -147,6 +150,28 @@ with open(path, "rb") as f:
     custom_offset = compiled_symbol["st_value"]
     custom_size = compiled_symbol['st_size']
     text = elf_file.get_section_by_name(f".text.{sym}")
+
+    constructor_swap = False
+
+    if text is None:
+        # it is very possible that we are dealing with a C1 / C2 swap...
+        # for some reason, llvm-objdump dumps our symbols incorrectly
+        # so the changes of the symbol being present in the object and being a ctor makes it possible we are seeing one of these swaps
+        print("Possible constructor swap?")
+        if "C1E" in sym:
+            sym = sym.replace("C1E", "C2E")
+            constructor_swap = True
+        elif "C2E" in sym:
+            sym = sym.replace("C2E", "C1E")
+            constructor_swap = True
+        
+        # now let's try again
+        text = elf_file.get_section_by_name(f".text.{sym}")
+
+        if text is None:
+            print("Could not find function in text data.")
+            sys.exit(1)
+
     custom_data = text.data()[custom_offset:custom_offset + custom_size]
     custom_instructions = list(capstone_inst.disasm(custom_data, 0))
 
@@ -155,6 +180,13 @@ cust_length = len(list(custom_instructions))
 
 instr_equal = True
 regs_equal = True
+
+# did we have to correct our llvm-objdump? if so, we swap our symbol we are marking here
+if constructor_swap:
+    if "C1E" in sym:
+        sym = sym.replace("C1E", "C2E")
+    elif "C2E" in sym:
+        sym = sym.replace("C2E", "C1E")
 
 for i in range(orig_length):
     curOrigInstr = original_instrs[i]
@@ -189,7 +221,6 @@ for i in range(orig_length):
 isAlreadyMarked = False
 
 if instr_equal == True and regs_equal == True:
-
     with open("data/main.map", "r") as f:
         csvData = f.readlines()
 

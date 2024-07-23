@@ -132,7 +132,7 @@ namespace al {
             return mActorName;
         }
 
-        virtual sead::Matrix34f& getBaseMtx() const;
+        virtual const sead::Matrix34f* getBaseMtx() const;
 
         virtual EffectKeeper* getEffectKeeper() const {
             return mEffectKeeper;

@@ -28,9 +28,9 @@ namespace al {
         void invalidateBySystem();
 
         const char* mName;                          // 0x00
-        void* _8;
-        void* _10;
-        u32 _18;
+        sead::Vector3f _8;
+        f32 _14;
+        f32 _18;
         u16 mMaxNumSensors;                         // 0x1C
         u16 mNumSensors;                            // 0x1E
         HitSensor** mSensors;                       // 0x20
@@ -41,8 +41,8 @@ namespace al {
         LiveActor* mHostActor;                      // 0x40
         const sead::Vector3f* mFollowPosVec;        // 0x48
         const sead::Matrix34f* mFollowPosMtx;       // 0x50
-        void* _58;
-        void* _60;
+        sead::Vector3f _58;
+        u32 _64;
         nn::os::Tick mTime;                         // 0x68
     };
 };

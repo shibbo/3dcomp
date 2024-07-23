@@ -10,11 +10,29 @@ def truncate(number, digits) -> float:
     stepper = 10.0 ** digits
     return math.trunc(stepper * number) / stepper
 
+def genJSON(value, filename, tag_name, color):
+    # generate our JSON for the tags on the github page
+    json = []
+    json.append("{\n")
+    json.append("\t\"schemaVersion\": 1,\n")
+    json.append(f"\t\"label\": \"{tag_name}\",\n")
+    json.append(f"\t\"message\": \"{truncate(value, 4)}%\",\n")
+    json.append(f"\t\"color\": \"{color}\"\n")
+    json.append("}")
+
+    with open(f"data/{filename}.json", "w") as w:
+        w.writelines(json)
+
 def genProgress():
     done_size = 0
     TOTAL_GAME_SIZE = 0xA0F5A0
     total_funcs = 0
     done_funcs = 0
+
+    nm_minor_funcs = 0
+    nm_minor_funcs_size = 0
+    nm_major_funcs = 0
+    nm_major_funcs_size = 0
 
     with open("data/main.map", "r") as f:
         csvData = f.readlines()
@@ -28,27 +46,33 @@ def genProgress():
             funcSize = int(spl[2], 16)
             done_size = done_size + funcSize
             done_funcs += 1
+        elif isDone == "minor":
+            funcSize = int(spl[2], 16)
+            nm_minor_funcs_size = nm_minor_funcs_size + funcSize
+            nm_minor_funcs += 1
+        elif isDone == "major":
+            funcSize = int(spl[2], 16)
+            nm_major_funcs_size = nm_major_funcs_size + funcSize
+            nm_major_funcs += 1
 
     prog = (done_size / TOTAL_GAME_SIZE) * 100.0
+    prog_minor = (nm_minor_funcs_size / TOTAL_GAME_SIZE) * 100.0
+    prog_major = (nm_major_funcs_size / TOTAL_GAME_SIZE) * 100.0
+    prog_total = prog + prog_minor + prog_major
+    total_size = done_size + nm_minor_funcs_size + nm_major_funcs_size
     func_prog = (done_funcs / total_funcs)
-    print("Progress:")
-    print(f"{truncate(prog, 4)}% [{done_size} / {TOTAL_GAME_SIZE}]")
-    print("Functions:")
-    print(f"{truncate(func_prog, 4)}% [{done_funcs} / {total_funcs}]")
+    print(f"Functions: {truncate(func_prog, 4)}% [{done_funcs} / {total_funcs}]")
+    print(f"{Fore.BLUE}decompiled:{Style.RESET_ALL} {truncate(prog_total, 4)}% [{total_size} / {TOTAL_GAME_SIZE}]")
+    print(f"{Fore.GREEN}matching:{Style.RESET_ALL} {truncate(prog, 4)}% [{done_size} / {TOTAL_GAME_SIZE}]")
+    print(f"{Fore.YELLOW}non-matching (minor):{Style.RESET_ALL} {truncate(prog_minor, 4)}% [{nm_minor_funcs_size} / {TOTAL_GAME_SIZE}]")
+    print(f"{Fore.RED}non-matching (major):{Style.RESET_ALL} {truncate(prog_major, 4)}% [{nm_major_funcs_size} / {TOTAL_GAME_SIZE}]")
+    
 
     print("Generating JSON...")
-
-    # generate our JSON for the tags on the github page
-    json = []
-    json.append("{\n")
-    json.append("\t\"schemaVersion\": 1,\n")
-    json.append("\t\"label\": \"decompiled\",\n")
-    json.append(f"\t\"message\": \"{truncate(prog, 4)}%\",\n")
-    json.append("\t\"color\": \"blue\"\n")
-    json.append("}")
-
-    with open("data/percent.json", "w") as w:
-        w.writelines(json)
+    genJSON(prog_total, "decompiled", "decompiled", "blue")
+    genJSON(prog, "matching", "matching", "green")
+    genJSON(prog_minor, "nm_minor", "non-matching (minor)", "yellow")
+    genJSON(prog_major, "nm_major", "non-matching (major)", "red")
 
 def getModule(map, sym):
     for root, dirs, files in os.walk(map):

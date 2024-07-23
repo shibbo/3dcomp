@@ -1,13 +1,13 @@
 #include "Library/HitSensor/HitSensor.hpp"
 #include "Library/HitSensor/SensorHitGroup.hpp"
 #include "Library/LiveActor/LiveActor.hpp"
-//#include <algorithm>
+#include <algorithm>
 #include <os/os_TickApi.h>
 
 namespace al {
     void HitSensor::trySensorSort() {
         if (mCmpFunc && mNumSensors > 1) {
-            //std::sort(mSensors, &mSensors[mNumSensors], *mCmpFunc);
+            std::sort(mSensors, &mSensors[mNumSensors], *mCmpFunc);
         }
     }
 

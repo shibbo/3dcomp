@@ -3,6 +3,7 @@ from colorama import Fore, Style
 from capstone import *
 from capstone.arm64 import *
 from elftools.elf.elffile import ELFFile
+import time
 
 LIBRARIES = ["ActionLibrary", "agl", "eui", "nn", "sead"]
 
@@ -105,6 +106,8 @@ if len(sys.argv) < 2:
 if "-prog" in sys.argv:
     genProgress()
     sys.exit(1)
+
+start = time.time()
 
 printDiff = True
 
@@ -275,3 +278,8 @@ elif instr_equal == False and regs_equal == True:
     print("Function has matching operands, but instructions are not equal.")
 elif instr_equal == False and regs_equal == False:
     print("Function does not match in either instructions or operands.")
+
+end = time.time()
+length = end - start
+
+#print(f"length: {length}")

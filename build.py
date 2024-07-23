@@ -9,10 +9,14 @@ import shutil
 from ninja_syntax import Writer
 
 nonmatching_str = ""
+clean = False
 
 if "-non-matching" in sys.argv:
     nonmatching_str = "-DNON_MATCHING"
     print("Non-functions matches will be compiled")
+
+if "-clean" in sys.argv:
+    subprocess.call("ninja -t clean", shell=True)
 
 INCLUDE_DIRS = ["include", "lib\\ActionLibrary\\include", "lib\\agl\\include", "lib\\eui\\incldue", "lib\\nn\\include", "lib\\sead\\include", "compiler\\nx\\aarch64\\include", "compiler\\nx\\aarch64\\include\\c++" ]
 LIBRARIES = [ "Game", "ActionLibrary", "agl", "eui", "nn", "sead"]

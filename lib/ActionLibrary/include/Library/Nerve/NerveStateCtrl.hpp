@@ -8,7 +8,8 @@ namespace al {
 
     class NerveStateCtrl {
     public:
-        struct State {
+        class State {
+        public:
             NerveStateBase* mState;         // 0x00
             const Nerve* mNerve;            // 0x08
             const char* mName;              // 0x10
@@ -17,15 +18,15 @@ namespace al {
         NerveStateCtrl(s32);
 
         void addState(NerveStateBase *, const Nerve *, const char *);
-        void updateCurrentState();
+        bool updateCurrentState();
         void startState(const Nerve *);
         State* findStateInfo(const Nerve *);
         bool isCurrentStateEnd() const;
         void tryEndCurrentState();
 
-        u32 mMaxStates;             // 0x00
-        u32 mNumStates;             // 0x04
-        State* mStates;             // 0x08
-        State* mCurrentState;       // 0x10
+        s32 mMaxStates = 0;                     // 0x00
+        s32 mNumStates = 0;                     // 0x04
+        State* mStates = nullptr;               // 0x08
+        State* mCurrentState = nullptr;          // 0x10
     };
 };

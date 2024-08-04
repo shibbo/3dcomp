@@ -31,4 +31,4 @@ namespace al {
         s32 mMaxControllers;                        // 0x08
         s32 mNumControllers;                        // 0x0C
     };
-};
+}; 

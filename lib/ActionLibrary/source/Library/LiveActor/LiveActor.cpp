@@ -506,7 +506,7 @@ namespace al {
     }
 
     // al::LiveActor::endClipped
-    //al::LiveActor::startClippedByLod
+    // al::LiveActor::startClippedByLod
     // al::LiveActor::endClippedByLod 
 
     void LiveActor::setGlobalYOffsetRef(f32 *pOffs) {

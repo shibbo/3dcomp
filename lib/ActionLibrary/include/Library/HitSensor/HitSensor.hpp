@@ -30,7 +30,7 @@ namespace al {
         const char* mName;                          // 0x00
         sead::Vector3f _8;
         f32 _14;
-        f32 _18;
+        f32 mRadius;                                // 0x18
         u16 mMaxNumSensors;                         // 0x1C
         u16 mNumSensors;                            // 0x1E
         HitSensor** mSensors;                       // 0x20

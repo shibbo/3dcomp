@@ -71,9 +71,6 @@ def genProgress():
 
     print("Generating JSON...")
     genJSON(prog_total, "decompiled", "decompiled", "blue")
-    genJSON(prog, "matching", "matching", "green")
-    genJSON(prog_minor, "nm_minor", "non-matching (minor)", "yellow")
-    genJSON(prog_major, "nm_major", "non-matching (major)", "red")
 
 def getModule(map, sym):
     for root, dirs, files in os.walk(map):

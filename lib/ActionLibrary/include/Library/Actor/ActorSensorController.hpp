@@ -16,16 +16,18 @@ namespace al {
         void setSensorFollowPosOffset(const sead::Vector3f &);
         void resetActorSensorController();
 
-        HitSensor* mSensor;             // 0x00
-        f32 _8;
-        f32 _C;
-        f32 _10;
-        f32 _14;
+        HitSensor* mSensor = nullptr;             // 0x00
+        f32 mSensorRadius = 0;                    // 0x08
+        sead::Vector3f _C;
     };
 
     class ActorSensorControllerList {
     public:
         ActorSensorControllerList(int);
+
+        void addSensor(LiveActor *, const char *);
+        void setAllSensorScale(f32);
+        void resetAllActorSensorController();
 
         ActorSensorController** mControllers;       // 0x00
         s32 mMaxControllers;                        // 0x08

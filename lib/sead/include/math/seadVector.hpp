@@ -6,11 +6,34 @@ namespace sead {
     template <typename T>
     class Vector3 {
     public:
+        Vector3() { }
+
+        Vector3(T _x, T _y, T _z) {
+            set(_x, _y, _z);
+        }
+
+        friend Vector3 operator*(const Vector3& rBase, T scalar) {
+            Vector3 out;
+            multScalar(out, rBase, scalar);
+            return out;
+        }
+
+        inline void set(T _x, T _y, T _z) {
+            x = _x;
+            y = _y;
+            z = _z;
+        }
 
         inline void set(const Vector3<T> &rOther) {
             x = rOther.x;
             y = rOther.y;
             z = rOther.z;
+        }
+
+        static inline void multScalar(Vector3<T> &rOut, const Vector3<T> &rLhs, T scalar) {
+            rOut.x = rLhs.x * scalar;
+            rOut.y = rLhs.y * scalar;
+            rOut.z = rLhs.z * scalar;
         }
 
         static inline void add(Vector3<T> &rOut, const Vector3<T> &rLhs, const Vector3<T> &rRhs) {

@@ -7,4 +7,6 @@ namespace al {
     bool isSensorSimple(const HitSensor *);
     void updateHitSensorsAll(LiveActor *);
     bool isMySensor(const HitSensor *, LiveActor *);
+
+    HitSensor* getHitSensor(const LiveActor *, const char *);
 };

@@ -18,7 +18,7 @@ namespace al {
 
         HitSensor* mSensor = nullptr;             // 0x00
         f32 mSensorRadius = 0;                    // 0x08
-        sead::Vector3f _C;
+        sead::Vector3f mFollowPosOffs;            // 0x0C
     };
 
     class ActorSensorControllerList {

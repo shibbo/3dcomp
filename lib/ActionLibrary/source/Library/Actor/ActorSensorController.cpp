@@ -6,18 +6,18 @@ namespace al {
         HitSensor* sensor = al::getHitSensor(pHost, pName);
         mSensor = sensor;
         mSensorRadius = sensor->mRadius;
-        _C.x = sensor->_58.x;
-        _C.y = sensor->_58.y;
-        _C.z = sensor->_58.z;
+        mFollowPosOffs.x = sensor->mFollowPosOffset.x;
+        mFollowPosOffs.y = sensor->mFollowPosOffset.y;
+        mFollowPosOffs.z = sensor->mFollowPosOffset.z;
     }
 
     void ActorSensorController::setSensorScale(f32 scalar) {
         setSensorRadius(mSensorRadius * scalar);
         HitSensor* sensor = mSensor;
-        f32 x = _C.x * scalar;
-        f32 y = _C.y * scalar;
-        f32 z = _C.z * scalar;
-        sensor->_58.set(x, y, z);
+        f32 x = mFollowPosOffs.x * scalar;
+        f32 y = mFollowPosOffs.y * scalar;
+        f32 z = mFollowPosOffs.z * scalar;
+        sensor->mFollowPosOffset.set(x, y, z);
     }
 
     void ActorSensorController::setSensorRadius(f32 radius) {
@@ -25,13 +25,13 @@ namespace al {
     }
 
     void ActorSensorController::setSensorFollowPosOffset(const sead::Vector3f &rVector) {
-        mSensor->_58 = rVector;
+        mSensor->mFollowPosOffset = rVector;
     }
     
     /* tiny regswap on the sensor load */
     void ActorSensorController::resetActorSensorController() {
         setSensorRadius(mSensorRadius);
-        setSensorFollowPosOffset(_C);
+        setSensorFollowPosOffset(mFollowPosOffs);
     }
 
     ActorSensorControllerList::ActorSensorControllerList(int maxNum) {

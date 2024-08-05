@@ -41,7 +41,7 @@ namespace al {
         LiveActor* mHostActor;                      // 0x40
         const sead::Vector3f* mFollowPosVec;        // 0x48
         const sead::Matrix34f* mFollowPosMtx;       // 0x50
-        sead::Vector3f _58;
+        sead::Vector3f mFollowPosOffset;            // 0x58
         u32 _64;
         nn::os::Tick mTime;                         // 0x68
     };

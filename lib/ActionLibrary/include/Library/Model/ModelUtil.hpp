@@ -1,5 +1,7 @@
 #pragma once
 
+#include <math/seadMatrix.hpp>
+
 namespace al {
     class LiveActor;
 
@@ -13,4 +15,6 @@ namespace al {
     void hideModelIfShow(LiveActor *);
 
     void setNeedSetBaseMtxAndCalcAnimFlag(LiveActor *, bool);
+
+    sead::Matrix34f* getJointMtxPtr(const LiveActor *, const char *);
 };

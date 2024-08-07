@@ -24,6 +24,12 @@ namespace sead {
             z = _z;
         }
 
+        inline void scale(T scalar) {
+            x *= scalar;
+            y *= scalar;
+            z *= scalar;
+        }
+
         inline void set(const Vector3<T> &rOther) {
             x = rOther.x;
             y = rOther.y;

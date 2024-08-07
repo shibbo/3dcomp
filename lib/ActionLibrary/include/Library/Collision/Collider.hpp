@@ -2,6 +2,7 @@
 
 #include "Library/Collision/IUseCollision.hpp"
 #include <math/seadVector.hpp>
+#include <types.hpp>
 
 namespace al {
     class TriangleFilterBase;
@@ -26,7 +27,11 @@ namespace al {
         void* _40;
         u32 _48;
         u32 mStoredPlaneNum;                            // 0x4C
-        u8 _50[0x278 - 0x50];
+        u8 _50[0x274 - 0x50];
+        bool _274;
+        bool _275;
+        bool _276;
+        bool _277;
         sead::Vector3f _278;
         u32 _284;
     };

@@ -12,49 +12,39 @@ namespace al {
 
     class Collider : public IUseCollision {
     public:
+        Collider(CollisionDirector*, const sead::Matrix34f*, const sead::Vector3f*, const sead::Vector3f*, f32, f32, u32);
 
         virtual CollisionDirector* getCollisionDirector() const;
 
         void onInvalidate();
 
-        CollisionDirector* mCollisionDirector;          // 0x08
-        TriangleFilterBase* mTriFilterBase;             // 0x10
-        CollisionPartsFilterBase* mColFilterBase;       // 0x18
-        void* _20;
-        void* _28;
-        void* _30;
-        f32 mRadius;                                    // 0x38
-        f32 mOffsetY;                                   // 0x3C
-        void* _40;
-        u32 _48;
-        u32 mStoredPlaneNum;                            // 0x4C
-        u8 _50[0x70 - 0x50];
-        Triangle mFloor;                                // 0x70
-        u32 _E0;
-        sead::Vector3f mGroundPos;                      // 0xE4
-        u8 _F0[0x110 - 0xF0];
-        f32 _110;
-        f32 _114;
-        Triangle mWall;                                 // 0x118
-        u32 _188;
-        sead::Vector3f mWallPos;                        // 0x18C
-        u8 _198[0x1B8 - 0x198];
-        f32 _1B8;
-        f32 _1BC;
-        Triangle mCeiling;                              // 0x1C0
-        u32 _230;
-        sead::Vector3f mCeilingPos;                     // 0x234
-        u8 _240[0x260 - 0x240];
-        f32 _260;
-        u32 _264;
-        u32 _268;
-        u32 _26C;
-        u32 _270;
-        bool _274;
+        CollisionDirector* mCollisionDirector = nullptr;        // 0x08
+        TriangleFilterBase* mTriFilterBase = nullptr;           // 0x10
+        CollisionPartsFilterBase* mColFilterBase = nullptr;     // 0x18
+        const sead::Matrix34f* mBaseMtx = nullptr;              // 0x20
+        const sead::Vector3f* mTrans = nullptr;                 // 0x28
+        const sead::Vector3f* mGravity = nullptr;               // 0x30
+        f32 mRadius = 0.0f;                                     // 0x38
+        f32 mOffsetY = 0.0f;                                    // 0x3C
+        void* _40 = nullptr;
+        u32 _48 = 0;
+        u32 mStoredPlaneNum = 0;                                // 0x4C
+        HitInfo *_50 = nullptr;
+        sead::Vector3f _58;
+        sead::Vector3f _64;
+        HitInfo mFloor;                                         // 0x70
+        f32 _110 = 0.0f;
+        HitInfo mWall;                                          // 0x118
+        f32 _1B8 = 0.0f;
+        HitInfo mCeiling;                                       // 0x1c0
+        f32 _260 = 0.0f;
+        u32 _264 = 0;
+        sead::Vector3f _268;
+        u8 _274;
         bool _275;
         bool _276;
         bool _277;
         sead::Vector3f _278;
-        u32 _284;
+        f32 _284;
     };
 };

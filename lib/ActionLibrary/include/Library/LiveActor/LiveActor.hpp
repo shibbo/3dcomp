@@ -188,7 +188,7 @@ namespace al {
         void initShadowKeeper(ShadowKeeper *);
         void initItemKeeper(s32);
         void initScoreKeeper();
-        void initACtorPrePassLightKeeper(ActorPrePassLightKeeper *);
+        void initActorPrePassLightKeeper(ActorPrePassLightKeeper *);
         void initSubActorKeeper(SubActorKeeper *);
         void initSceneInfo(ActorSceneInfo *);
         void initActorAlphaCtrl(ActorAlphaCtrl *, const ActorInitInfo &);

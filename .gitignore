@@ -2,6 +2,7 @@ compiler/*
 *.o
 .vscode/*
 .ninja_log
+.ninja_deps
 *.nso
 __pycache__/*
 build.ninja

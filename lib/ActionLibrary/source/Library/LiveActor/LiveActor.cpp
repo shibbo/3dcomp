@@ -4,6 +4,7 @@
 #include "Library/Actor/ActorInitInfo.hpp"
 #include "Library/Actor/ActorPoseFunction.hpp"
 #include "Library/Actor/ActorPoseKeeperBase.hpp"
+#include "Library/Actor/ActorPoseUtil.hpp"
 #include "Library/Actor/ActorPrePassLightKeeper.hpp"
 #include "Library/Actor/ActorSceneInfo.hpp"
 #include "Library/Audio/AudioKeeper.hpp"
@@ -18,6 +19,7 @@
 #include "Library/Execute/ActorSystemFunction.hpp"
 #include "Library/HitSensor/HitSensorKeeper.hpp"
 #include "Library/LiveActor/LiveActor.hpp"
+#include "Library/Item/ActorScoreKeeper.hpp"
 #include "Library/LiveActor/ActorPoseUtil.hpp"
 #include "Library/LiveActor/LiveActorFlag.hpp"
 #include "Library/LiveActor/LiveActorUtil.hpp"
@@ -617,17 +619,30 @@ namespace al {
         return mActorSceneInfo->mCameraDirector;
     }
 
-    // al::LiveActor::initPoseKeeper
+    void LiveActor::initPoseKeeper(ActorPoseKeeperBase *pPoseKeeper) {
+        mActorPoseKeeper = pPoseKeeper;
+    }
+
     // al::LiveActor::initRailKeeper
-    // al::LiveActor::initCollider
+
+    void LiveActor::initCollider(f32 radius, f32 offsetY, u32 numHitInfos) {
+        mCollider = new Collider(getCollisionDirector(), getBaseMtx(), &al::getTrans(this), &al::getGravity(this), radius, offsetY, numHitInfos);
+        mActorFlags->mIsNoCollide = false;
+    }
 
     void LiveActor::initShadowKeeper(ShadowKeeper* pShadowKeeper) {
         mShadowKeeper = pShadowKeeper;
     }
 
     // al::LiveActor::initItemKeeper
-    // al::LiveActor::initScoreKeepe
-    // al::LiveActor::initActorPrePassLightKeeper    
+
+    void LiveActor::initScoreKeeper() {
+        mScoreKeeper = new ActorScoreKeeper();
+    }
+
+    void LiveActor::initActorPrePassLightKeeper(ActorPrePassLightKeeper *pLightKeeper) {
+        mLightKeeper = pLightKeeper;
+    }
 
     void LiveActor::initSubActorKeeper(SubActorKeeper *pSubActorKeeper) {
         mSubActorKeeper = pSubActorKeeper;

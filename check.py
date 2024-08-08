@@ -4,6 +4,7 @@ from capstone import *
 from capstone.arm64 import *
 from elftools.elf.elffile import ELFFile
 import time
+import hashlib
 
 LIBRARIES = ["ActionLibrary", "agl", "eui", "nn", "sead"]
 
@@ -92,7 +93,14 @@ def getModule(map, sym):
 
 def getFunctionData(functionAddr, functionSize):
     with open("fury.nso", "rb") as f:
-        nso_file = nso.NSO(f.read())
+        data = f.read()
+
+        digest = hashlib.sha256(data).hexdigest().upper()
+        if digest != "80E48BC7BDF7AAA635E7B48C24F49C6A4D8AC19949FB1B9F66EADF2CFBA3BF85":
+            print("fury.nso is not valid")
+            sys.exit(1)
+
+        nso_file = nso.NSO(data)
 
     return nso_file.getFunction(functionAddr, functionSize)
 
@@ -119,7 +127,7 @@ path = getModule("map", sym)
 
 if path == "":
     for lib in LIBRARIES:
-        path = getModule(f"lib\\{lib}\\map", sym)
+        path = getModule(f"lib/{lib}/map", sym)
 
         if path != "":
             break

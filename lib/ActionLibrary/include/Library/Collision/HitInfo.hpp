@@ -1,6 +1,7 @@
 #pragma once
 
 #include <math/seadVector.hpp>
+#include <types.hpp>
 
 namespace al {
     class CollisionParts;
@@ -39,6 +40,16 @@ namespace al {
         KCPrismHeader* mPrismHeader;            // 0x10
         sead::Vector3f mNormals[4];             // 0x18
         sead::Vector3f mPos[3];                 // 0x48
+    };
+
+    class HitInfo {
+    public:
+        HitInfo();
+
+        Triangle mTriangle;                     // 0x00
+        u32 _6C;
+        sead::Vector3f mPos;                    // 0x70
+        u8 _7C[0x9C - 0x7C];
     };
 };
 

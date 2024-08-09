@@ -18,6 +18,19 @@ namespace sead {
             return out;
         }
 
+        friend Vector3 operator+(const Vector3& a, const Vector3& b) {
+            Vector3 o;
+            add(o, a, b);
+            return o;
+        }
+
+        Vector3<T>& operator+=(const Vector3& other) {
+            x += other.x;
+            y += other.y;
+            z += other.z;
+            return *this;
+        }
+
         inline void set(T _x, T _y, T _z) {
             x = _x;
             y = _y;
@@ -56,6 +69,9 @@ namespace sead {
         }
 
         T x, y, z;
+
+        static Vector3<T> zero;
+        static const Vector3<T> ez;
     };
 
     typedef sead::Vector3<float> Vector3f;

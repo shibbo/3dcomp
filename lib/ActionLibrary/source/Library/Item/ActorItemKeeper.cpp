@@ -5,6 +5,9 @@
 
 namespace al {
     ActorItemKeeper::ActorItemKeeper(const LiveActor *pActor, int maxItems) : mHostActor(pActor), mMaxItemInfos(maxItems) {
+        mItemOffset.x = 0;
+        mItemOffset.y = 0;
+        mItemOffset.z = 0;
         mItemInfos = new ActorItemInfo*[mMaxItemInfos];
     }
 
@@ -21,13 +24,13 @@ namespace al {
     }
 
     void ActorItemKeeper::setFactor(const char *a1, const HitSensor *a2) {
-        _18 = a1;
-        _20 = a2;
+        mFactor = a1;
+        mAttackerSensor = a2;
     }
-
+ 
     ActorItemInfo* ActorItemKeeper::getAppearItemInfo(const char *pName) const {
         for (int i = 0; i < mCurNumItemInfos; i++) {
-            if (mItemInfos[i]->isEqualTiming(pName) && mItemInfos[i]->isEqualFactor(_18)) {
+            if (mItemInfos[i]->isEqualTiming(pName) && mItemInfos[i]->isEqualFactor(mFactor)) {
                 return mItemInfos[i];
             }
         }

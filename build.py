@@ -1,6 +1,8 @@
 # build.py
 # the main build script for building each library
 
+import glob
+import hashlib
 import subprocess
 import sys
 import os
@@ -34,6 +36,27 @@ incdirs = " ".join([f'-I {dir}' for dir in INCLUDE_DIRS])
 COMPILER_CMD = f"-x c++ -O3 -fno-omit-frame-pointer -mno-implicit-float -fno-cxx-exceptions -fno-strict-aliasing -std=gnu++14 -fno-common -fno-short-enums -ffunction-sections -fdata-sections -fPIC -mcpu=cortex-a57+fp+simd+crypto+crc -g -Wall {nonmatching_str} {incdirs} -c"
 COMPILER_PATH = pathlib.Path("compiler/nx/aarch64/bin/clang++.exe")
 OBJDUMP_PATH = pathlib.Path("compiler/nx/aarch64/bin/llvm-objdump.exe")
+
+# if we don't have this file, create it
+HASHES_BASE_PATH = pathlib.Path("data\\hashes.txt")
+CHANGED_PATH = pathlib.Path("data\\changed.txt")
+
+if not os.path.exists(CHANGED_PATH):
+    open(CHANGED_PATH, 'a').close()
+
+# our hashes that we are starting out with
+start_hashes = {}
+
+if os.path.exists(HASHES_BASE_PATH):
+    with open(HASHES_BASE_PATH, "r") as f:
+        lines = f.readlines()
+
+        for line in lines:
+            line = line.strip("\n")
+            spl = line.split("=")
+            obj = spl[0]
+            hash = spl[1]
+            start_hashes[obj] = hash
 
 isNotWindows = os.name != 'nt'
 
@@ -107,3 +130,39 @@ def generateMaps():
             w.writelines(newOutput)
 
 compileLibraries(LIBRARIES)
+
+obj_hashes = {}
+changed_objs = []
+
+for lib in LIBRARIES:
+    objs = []
+
+    if lib == "Game":
+        objs = glob.glob(os.path.join("build", "**", "*.o"), recursive=True)
+    else:
+        objs = glob.glob(os.path.join("lib", lib, "build", "**", "*.o"), recursive=True)
+    
+    # generate our hashes
+    for obj in objs:
+        obj_hashes[obj] = hashlib.md5(open(obj,'rb').read()).hexdigest()  
+
+# now we determine what objects were changed based on comparing the two MD5 hashes
+for obj in obj_hashes:
+    if obj in start_hashes:
+        if start_hashes[obj] != obj_hashes[obj]:
+            changed_objs.append(obj)
+
+# do we have changed objs?
+# if we do, then we write those changed objects to our text file
+# if not, we clear the file
+if len(changed_objs) > 0:
+    with open(CHANGED_PATH, "w") as w:
+        for obj in changed_objs:
+            w.write(f"{obj}\n")
+else:
+    open(CHANGED_PATH, 'w').close()
+
+# write our new hashes
+with open(HASHES_BASE_PATH, "w") as w:
+    for obj in obj_hashes:
+        w.write(f"{obj}={obj_hashes[obj]}\n")

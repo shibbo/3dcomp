@@ -104,9 +104,32 @@ def getFunctionData(functionAddr, functionSize):
 
     return nso_file.getFunction(functionAddr, functionSize)
 
-if len(sys.argv) < 2:
-    print("python check.py [-prog] [-no-diff] <mangled symbol>")
+objs_to_check = []
+funcs_to_check = []
+
+with open("data\\changed.txt", "r") as f:
+    lines = f.readlines()
+
+    for line in lines:
+        objs_to_check.append(line.strip("\n"))
+
+if len(objs_to_check) == 0:
+    print("There are no functions to check.")
     sys.exit(1)
+
+for obj in objs_to_check:
+    with open(obj, "rb") as input:
+        elf_file = ELFFile(input)
+        symtab = elf_file.get_section_by_name('.symtab')
+
+        for symbol in symtab.iter_symbols():
+            section = symbol['st_shndx']
+            if isinstance(section, int) and symbol.name != '':
+                section_name = elf_file.get_section(section).name
+
+                if section_name.startswith('.text'):
+                    if not symbol.name.startswith("$"):
+                        funcs_to_check.append(symbol.name)
 
 if "-prog" in sys.argv:
     genProgress()
@@ -115,174 +138,191 @@ if "-prog" in sys.argv:
 start = time.time()
 
 printDiff = True
+isChanged = False
 
 if "-no-diff" in sys.argv:
-    sym = sys.argv[2]
     printDiff = False
-else:
-    sym = sys.argv[1]
 
-# first let's see if our symbol even exists somewhere
-path = getModule("map", sym)
+for sym in funcs_to_check:
+    print(f"{Fore.BLUE}{sym}{Style.RESET_ALL} =================================================")
+    # first let's see if our symbol even exists somewhere
+    path = getModule("map", sym)
 
-if path == "":
-    for lib in LIBRARIES:
-        path = getModule(f"lib/{lib}/map", sym)
+    if path == "":
+        for lib in LIBRARIES:
+            path = getModule(f"lib/{lib}/map", sym)
 
-        if path != "":
-            break
+            if path != "":
+                break
 
-if path == "":
-    print("Unable to find symbol.")
-    sys.exit(1)
-
-functionSize = 0
-functionAddr = 0
-
-with open("data/main.map", "r") as f:
-    lines = f.readlines()
-
-    for line in lines:
-        spl = line.split("=")
-        name = spl[0]
-        addr = spl[1]
-        addr = int(addr[10:], 16)
-        size = int(spl[2], 16)
-
-        if sym == name:
-            functionSize = size
-            functionAddr = addr
-            break
-
-funcData = getFunctionData(functionAddr, functionSize)
-capstone_inst = Cs(CS_ARCH_ARM64, CS_MODE_ARM + CS_MODE_LITTLE_ENDIAN)
-capstone_inst.detail = True
-capstone_inst.imm_unsigned = False
-
-if funcData == b'':
-    print("Failed to fetch function data.")
-    sys.exit(1)
-
-error_count = 0
-warning_count = 0
-
-original_instrs = list(capstone_inst.disasm(funcData, 0))
-
-with open(path, "rb") as f:
-    elf = f
-
-    elf_file = ELFFile(elf)
-    symtab = elf_file.get_section_by_name('.symtab')
-
-    if symtab.get_symbol_by_name(sym) is None:
-        print("Could not find symbol in object file. This may be caused by the code not being compiled, the function being in the wrong C++ source file or the function signature being wrong.")
+    if path == "":
+        print("Unable to find symbol.")
         sys.exit(1)
 
-    compiled_symbol = symtab.get_symbol_by_name(sym)[0]
-    custom_offset = compiled_symbol["st_value"]
-    custom_size = compiled_symbol['st_size']
-    text = elf_file.get_section_by_name(f".text.{sym}")
+    functionSize = 0
+    functionAddr = 0
 
-    constructor_swap = False
+    with open("data/main.map", "r") as f:
+        lines = f.readlines()
 
-    if text is None:
-        # it is very possible that we are dealing with a C1 / C2 swap...
-        # for some reason, llvm-objdump dumps our symbols incorrectly
-        # so the changes of the symbol being present in the object and being a ctor makes it possible we are seeing one of these swaps
-        print("Possible constructor swap?")
-        if "C1E" in sym:
-            sym = sym.replace("C1E", "C2E")
-            constructor_swap = True
-        elif "C2E" in sym:
-            sym = sym.replace("C2E", "C1E")
-            constructor_swap = True
-        
-        # now let's try again
-        text = elf_file.get_section_by_name(f".text.{sym}")
+        for line in lines:
+            spl = line.split("=")
+            name = spl[0]
+            addr = spl[1]
+            addr = int(addr[10:], 16)
+            size = int(spl[2], 16)
 
-        if text is None:
-            print("Could not find function in text data.")
+            if sym == name:
+                functionSize = size
+                functionAddr = addr
+                break
+
+    funcData = getFunctionData(functionAddr, functionSize)
+    capstone_inst = Cs(CS_ARCH_ARM64, CS_MODE_ARM + CS_MODE_LITTLE_ENDIAN)
+    capstone_inst.detail = True
+    capstone_inst.imm_unsigned = False
+
+    if funcData == b'':
+        print("Failed to fetch function data.")
+        continue
+
+    error_count = 0
+    warning_count = 0
+
+    original_instrs = list(capstone_inst.disasm(funcData, 0))
+
+    with open(path, "rb") as f:
+        elf = f
+
+        elf_file = ELFFile(elf)
+        symtab = elf_file.get_section_by_name('.symtab')
+
+        if symtab.get_symbol_by_name(sym) is None:
+            print("Could not find symbol in object file. This may be caused by the code not being compiled, the function being in the wrong C++ source file or the function signature being wrong.")
             sys.exit(1)
 
-    custom_data = text.data()[custom_offset:custom_offset + custom_size]
-    custom_instructions = list(capstone_inst.disasm(custom_data, 0))
+        compiled_symbol = symtab.get_symbol_by_name(sym)[0]
+        custom_offset = compiled_symbol["st_value"]
+        custom_size = compiled_symbol['st_size']
+        text = elf_file.get_section_by_name(f".text.{sym}")
 
-orig_length = len(list(original_instrs))
-cust_length = len(list(custom_instructions))
+        constructor_swap = False
 
-instr_equal = True
-regs_equal = True
+        if text is None:
+            # it is very possible that we are dealing with a C1 / C2 swap...
+            # for some reason, llvm-objdump dumps our symbols incorrectly
+            # so the changes of the symbol being present in the object and being a ctor makes it possible we are seeing one of these swaps
+            print("Possible constructor swap?")
+            if "C1E" in sym:
+                sym = sym.replace("C1E", "C2E")
+                constructor_swap = True
+            elif "C2E" in sym:
+                sym = sym.replace("C2E", "C1E")
+                constructor_swap = True
+            
+            # now let's try again
+            text = elf_file.get_section_by_name(f".text.{sym}")
 
-# did we have to correct our llvm-objdump? if so, we swap our symbol we are marking here
-if constructor_swap:
-    if "C1E" in sym:
-        sym = sym.replace("C1E", "C2E")
-    elif "C2E" in sym:
-        sym = sym.replace("C2E", "C1E")
+            if text is None:
+                print("Could not find function in text data.")
+                sys.exit(1)
 
-for i in range(orig_length):
-    curOrigInstr = original_instrs[i]
-    curCustInstr = custom_instructions[i]
+        custom_data = text.data()[custom_offset:custom_offset + custom_size]
+        custom_instructions = list(capstone_inst.disasm(custom_data, 0))
 
-    orig_operands = curOrigInstr.operands
-    cust_operands = curCustInstr.operands
+    orig_length = len(list(original_instrs))
+    cust_length = len(list(custom_instructions))
 
-    if str(curOrigInstr) == str(curCustInstr):
-        if printDiff == True:
-            print(f"{Fore.GREEN}{str(curOrigInstr):<80}{curCustInstr}{Style.RESET_ALL}")
-        continue
+    instr_equal = True
+    regs_equal = True
 
-    if curOrigInstr.id != curCustInstr.id:
-        print(f"{Fore.RED}{str(curOrigInstr):<80}{curCustInstr}{Style.RESET_ALL}")
-        instr_equal = False
-        continue
+    # did we have to correct our llvm-objdump? if so, we swap our symbol we are marking here
+    if constructor_swap:
+        if "C1E" in sym:
+            sym = sym.replace("C1E", "C2E")
+        elif "C2E" in sym:
+            sym = sym.replace("C2E", "C1E")
 
-    for j in range(len(orig_operands)):
-        if orig_operands[j].reg != cust_operands[j]:
-            # ADRP and ADD can give of wrong operands because of us not linking, same with LDR
-            if curOrigInstr.id == ARM64_INS_ADRP or curOrigInstr.id == ARM64_INS_ADD or curOrigInstr.id == ARM64_INS_LDR:
-                print(f"{Fore.YELLOW}{str(curOrigInstr):<80}{curCustInstr}{Style.RESET_ALL}")
-            # B and BL instructions
-            elif curOrigInstr.id == ARM64_INS_B or curOrigInstr.id == ARM64_INS_BL:
-                print(f"{Fore.YELLOW}{str(curOrigInstr):<80}{curCustInstr}{Style.RESET_ALL}")
-            else:
-                print(f"{Fore.RED}{str(curOrigInstr):<80}{curCustInstr}{Style.RESET_ALL}")
-                regs_equal = False
-            break
+    for i in range(orig_length):
+        curOrigInstr = original_instrs[i]
+        curCustInstr = custom_instructions[i]
 
-isAlreadyMarked = False
+        orig_operands = curOrigInstr.operands
+        cust_operands = curCustInstr.operands
 
-if instr_equal == True and regs_equal == True:
+        if str(curOrigInstr) == str(curCustInstr):
+            if printDiff == True:
+                print(f"{Fore.GREEN}{str(curOrigInstr):<80}{curCustInstr}{Style.RESET_ALL}")
+            continue
+
+        if curOrigInstr.id != curCustInstr.id:
+            print(f"{Fore.RED}{str(curOrigInstr):<80}{curCustInstr}{Style.RESET_ALL}")
+            instr_equal = False
+            continue
+
+        for j in range(len(orig_operands)):
+            if orig_operands[j].reg != cust_operands[j]:
+                # ADRP and ADD can give of wrong operands because of us not linking, same with LDR
+                if curOrigInstr.id == ARM64_INS_ADRP or curOrigInstr.id == ARM64_INS_ADD or curOrigInstr.id == ARM64_INS_LDR:
+                    print(f"{Fore.YELLOW}{str(curOrigInstr):<80}{curCustInstr}{Style.RESET_ALL}")
+                # B and BL instructions
+                elif curOrigInstr.id == ARM64_INS_B or curOrigInstr.id == ARM64_INS_BL:
+                    print(f"{Fore.YELLOW}{str(curOrigInstr):<80}{curCustInstr}{Style.RESET_ALL}")
+                else:
+                    print(f"{Fore.RED}{str(curOrigInstr):<80}{curCustInstr}{Style.RESET_ALL}")
+                    regs_equal = False
+                break
+
+    isAlreadyMarked = False
+
     with open("data/main.map", "r") as f:
         csvData = f.readlines()
 
     outCsv = []
 
-    for c in csvData:
-        spl = c.split("=")
-        if spl[0] == sym and spl[3] == "false\n":
-            outCsv.append(f"{spl[0]}={spl[1]}={spl[2]}=true\n")
-        elif spl[0] == sym and spl[3] == "true\n":
-            isAlreadyMarked = True
-            outCsv.append(c)
+    # we have a matching function
+    if instr_equal == True and regs_equal == True:
+        for c in csvData:
+            spl = c.split("=")
+            if spl[0] == sym and spl[3] == "false\n":
+                outCsv.append(f"{spl[0]}={spl[1]}={spl[2]}=true\n")
+            elif spl[0] == sym and spl[3] == "true\n":
+                isAlreadyMarked = True
+                outCsv.append(c)
+            else:
+                outCsv.append(c)
+
+        if isAlreadyMarked == True:
+            print("Function is already marked as decompiled.")
         else:
-            outCsv.append(c)
+            print("Function is matching! Marking as decompiled...")
+            isChanged = True
+    # we have a nonmatching function
+    else:
+        for c in csvData:
+            spl = c.split("=")
+            if spl[0] == sym and spl[3] == "true\n":
+                outCsv.append(f"{spl[0]}={spl[1]}={spl[2]}=false\n")
+            elif spl[0] == sym and spl[3] == "false\n":
+                outCsv.append(c)
+            else:
+                outCsv.append(c)
+
+        if isAlreadyMarked == True:
+            print("Function was marked as decompiled, but does not match. Marking as undecompiled...")
+        
+        if instr_equal == True and regs_equal == False:
+            print("Function has matching instructions, but operands are not equal.")
+        elif instr_equal == False and regs_equal == True:
+            print("Function has matching operands, but instructions are not equal.")
+        elif instr_equal == False and regs_equal == False:
+            print("Function does not match in either instructions or operands.")
 
     with open("data/main.map", "w") as w:
         w.writelines(outCsv)
 
-    if isAlreadyMarked == True:
-        print("Function is already marked as decompiled.")
-    else:
-        print("Function is matching! Marking as decompiled...")
-        genProgress()
-
-elif instr_equal == True and regs_equal == False:
-    print("Function has matching instructions, but operands are not equal.")
-elif instr_equal == False and regs_equal == True:
-    print("Function has matching operands, but instructions are not equal.")
-elif instr_equal == False and regs_equal == False:
-    print("Function does not match in either instructions or operands.")
+if isChanged:
+    genProgress()
 
 end = time.time()
 length = end - start

@@ -13,6 +13,13 @@ if not os.path.exists("fury.nso"):
     sys.exit(1)
 else:
     print("Found fury.nso...")
+    with open("fury.nso", "rb") as f:
+        data = f.read()
+        digest = hashlib.sha256(data).hexdigest().upper()
+        if digest != "80E48BC7BDF7AAA635E7B48C24F49C6A4D8AC19949FB1B9F66EADF2CFBA3BF85":
+            print("fury.nso is not valid")
+            sys.exit(1)
+    print("fury.nso is valid...")
 
 try:
     import capstone

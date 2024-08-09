@@ -90,42 +90,45 @@ def compileLibraries(libraries):
 
     genNinja(compile_tasks)
     subprocess.run(['ninja', '-f', 'build.ninja'], check=True)
-    generateMaps()
+    generateMaps(path)
 
-def generateMaps():
-    objdump_tasks = []
+def generateMaps(path):
+    objdump_tasks = list()
 
-     # now for our map files which we don't need ninja for
-    for root, dirs, files in os.walk("build"):
+    # now for our map files which we don't need ninja for
+    for root, dirs, files in os.walk(path):
         for file in files:
-            if file.endswith(".o"):
-                build_path = os.path.join(root, file)
+            if file.endswith(".cpp"):
+                source_path = os.path.join(root, file)
+                build_path = source_path.replace("source", "build", 1).replace(".cpp", ".o")
                 map_path = build_path.replace("build", "map", 1).replace(".o", ".map")
-                objdump_tasks.append((build_path, map_path))
+                os.makedirs(os.path.dirname(map_path), exist_ok=True)
+                objdump_tasks.append((source_path, build_path, map_path))
 
-    for build_path, map_path in objdump_tasks:
-        cmd = [OBJDUMP_PATH, build_path, "-t"]
-        if isNotWindows:
-            cmd = ["wine"] + cmd
+    for task in objdump_tasks:
+        source_path, build_path, map_path = task 
 
-        mapFileOutput = subprocess.check_output(cmd).decode("utf-8").replace("\r", "")
+        mapFileOutput = subprocess.check_output([OBJDUMP_PATH, build_path, "-t"]).decode("utf-8").replace("\r", "")
         lines = mapFileOutput.split("\n")
-
+    
         newOutput = []
 
         for line in lines:
-            if line == '' or line.startswith("build") or line.startswith("SYMBOL TABLE"):
+            if line == '':
+                continue
+
+            if line.startswith("build") or line.startswith("SYMBOL TABLE"):
                 continue
 
             more_split = line.split(" ")
-
+            
             # if global, it is most likely a symbol
             # gw includes weak globals
-            if more_split[1] in ["g", "gw"]:
-                sym = more_split[-1]
+            if more_split[1] == "g" or more_split[1] == "gw":
+                # symbol is always the last entry
+                sym = more_split[(len(more_split) - 1)]
                 newOutput.append(f"{sym}\n")
 
-        os.makedirs(os.path.dirname(map_path), exist_ok=True)
         with open(map_path, "w") as w:
             w.writelines(newOutput)
 

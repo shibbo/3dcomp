@@ -18,7 +18,7 @@ if "-non-matching" in sys.argv:
 if "-clean" in sys.argv:
     subprocess.call("ninja -t clean", shell=True)
 
-INCLUDE_DIRS = ["include", "lib\\ActionLibrary\\include", "lib\\agl\\include", "lib\\eui\\incldue", "lib\\nn\\include", "lib\\sead\\include", "compiler\\nx\\aarch64\\include", "compiler\\nx\\aarch64\\include\\c++" ]
+INCLUDE_DIRS = ["include", "lib/ActionLibrary/include", "lib/agl/include", "lib/eui/incldue", "lib/nn/include", "lib/sead/include", "compiler/nx/aarch64/include", "compiler/nx/aarch64/include/c++" ]
 LIBRARIES = [ "Game", "ActionLibrary", "agl", "eui", "nn", "sead"]
 
 incdirs = ""
@@ -26,13 +26,19 @@ for dir in INCLUDE_DIRS:
     incdirs += f'-I {dir} '
 
 COMPILER_CMD = f"-x c++ -O3 -fno-omit-frame-pointer -mno-implicit-float -fno-cxx-exceptions -fno-strict-aliasing -std=gnu++14 -fno-common -fno-short-enums -ffunction-sections -fdata-sections -fPIC -mcpu=cortex-a57+fp+simd+crypto+crc -g -Wall {nonmatching_str} {incdirs} -c "
-COMPILER_PATH = pathlib.Path("compiler\\nx\\aarch64\\bin\\clang++")
-OBJDUMP_PATH = pathlib.Path("compiler\\nx\\aarch64\\bin\\llvm-objdump")
+COMPILER_PATH = pathlib.Path("compiler/nx/aarch64/bin/clang++.exe")
+OBJDUMP_PATH = pathlib.Path("compiler/nx/aarch64/bin/llvm-objdump.exe")
+
+isNotWindows = os.name != 'nt'
 
 def genNinja(tasks):
     with open('build.ninja', 'w') as ninja_file:
         ninja_writer = Writer(ninja_file)
-        ninja_writer.rule("compile", command=f'{COMPILER_PATH} {COMPILER_CMD} $in -o $out',description=f'Compiling $in')
+
+        cmd = f'{COMPILER_PATH} {COMPILER_CMD} $in -o $out'
+        if isNotWindows:
+            cmd = f'wine {cmd}'
+        ninja_writer.rule("compile", command=cmd, description=f'Compiling $in')
 
         for task in tasks:
             source_path, build_path = task
@@ -72,9 +78,13 @@ def generateMaps(path):
                 objdump_tasks.append((source_path, build_path, map_path))
 
     for task in objdump_tasks:
-        source_path, build_path, map_path = task 
+        source_path, build_path, map_path = task
 
-        mapFileOutput = subprocess.check_output([OBJDUMP_PATH, build_path, "-t"]).decode("utf-8").replace("\r", "")
+        cmd = [OBJDUMP_PATH, build_path, "-t"]
+        if isNotWindows:
+            cmd = ["wine"] + cmd
+
+        mapFileOutput = subprocess.check_output(cmd).decode("utf-8").replace("\r", "")
         lines = mapFileOutput.split("\n")
     
         newOutput = []
@@ -99,4 +109,4 @@ def generateMaps(path):
             w.writelines(newOutput)
 
 for lib in LIBRARIES:
-    compileLibrary(lib, f"lib\\{lib}\\source")
+    compileLibrary(lib, f"lib/{lib}/source")

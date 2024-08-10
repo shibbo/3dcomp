@@ -2,7 +2,7 @@
 #include "Library/HitSensor/SensorHitGroup.hpp"
 #include "Library/LiveActor/LiveActor.hpp"
 #include <algorithm>
-#include <os/os_TickApi.h>
+#include <os/os_TickApi.hpp>
 
 namespace al {
     void HitSensor::trySensorSort() {

@@ -3,7 +3,7 @@
 #include <math/seadMatrix.hpp>
 #include <math/seadVector.hpp>
 #include <types.hpp>
-#include <os/os_TickTypes.h>
+#include <os/os_TickTypes.hpp>
 
 namespace al {
     class LiveActor;

@@ -1,5 +1,5 @@
 #include "Library/Item/ActorItemInfo.hpp"
-#include "Library/Base/StringUtil.hpp"
+#include "Project/Base/StringUtil.hpp"
 
 namespace al {
     ActorItemInfo::ActorItemInfo(const char *pItemKind, const char *pTiming, const char *pFactor) {

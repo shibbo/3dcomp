@@ -1,5 +1,5 @@
 #include "Library/Item/ActorScoreKeeper.hpp"
-#include "Library/Base/StringUtil.hpp"
+#include "Project/Base/StringUtil.hpp"
 #include <cstring>
 
 namespace al {

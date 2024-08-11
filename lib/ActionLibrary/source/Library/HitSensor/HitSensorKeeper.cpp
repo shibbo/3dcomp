@@ -2,7 +2,7 @@
 #include "Library/HitSensor/HitSensor.hpp"
 #include "Library/LiveActor/LiveActor.hpp"
 #include "Library/LiveActor/LiveActorUtil.hpp"
-#include "Library/Base/StringUtil.hpp"
+#include "Project/Base/StringUtil.hpp"
 
 namespace al {
     HitSensorKeeper::HitSensorKeeper(int maxSensors) {

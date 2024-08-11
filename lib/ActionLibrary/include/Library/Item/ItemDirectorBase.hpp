@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Library/Area/IUseAreaObj.hpp"
+#include "Project/AreaObj/IUseAreaObj.hpp"
 #include <math/seadVector.hpp>
 
 namespace al {

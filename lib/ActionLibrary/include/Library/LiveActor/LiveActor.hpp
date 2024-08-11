@@ -1,15 +1,15 @@
 #pragma once
 
-#include "Library/Area/IUseAreaObj.hpp"
-#include "Library/Audio/IUseAudioKeeper.hpp"
-#include "Library/Camera/IUseCameraDirector.hpp"
-#include "Library/Collision/IUseCollision.hpp"
-#include "Library/Effect/IUseEffectKeeper.hpp"
 #include "Library/HostIO/IUseHioNode.hpp"
-#include "Library/Map/IUseOceanWave.hpp"
 #include "Library/Nerve/IUseNerve.hpp"
 #include "Library/Scene/IUseSceneObjHolder.hpp"
 #include "Library/Stage/IUseStageSwitch.hpp"
+#include "Project/AreaObj/IUseAreaObj.hpp"
+#include "Project/Audio/IUseAudioKeeper.hpp"
+#include "Project/Camera/IUseCameraDirector.hpp"
+#include "Project/Collision/IUseCollision.hpp"
+#include "Project/Effect/IUseEffectKeeper.hpp"
+#include "Project/OceanWave/IUseOceanWave.hpp"
 #include <types.hpp>
 #include <math/seadMatrix.hpp>
 #include <math/seadVector.hpp>

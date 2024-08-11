@@ -90,7 +90,10 @@ def compileLibraries(libraries):
 
     genNinja(compile_tasks)
     subprocess.run(['ninja', '-f', 'build.ninja'], check=True)
-    generateMaps(path)
+
+    for name in libraries:
+        path = "source" if name == "Game" else f"lib/{name}/source"
+        generateMaps(path)
 
 def generateMaps(path):
     objdump_tasks = list()
@@ -147,13 +150,16 @@ for lib in LIBRARIES:
     
     # generate our hashes
     for obj in objs:
-        obj_hashes[obj] = hashlib.md5(open(obj,'rb').read()).hexdigest()  
+        obj_hashes[obj] = hashlib.md5(open(obj,'rb').read()).hexdigest()
 
 # now we determine what objects were changed based on comparing the two MD5 hashes
 for obj in obj_hashes:
     if obj in start_hashes:
         if start_hashes[obj] != obj_hashes[obj]:
             changed_objs.append(obj)
+    # this means that the object isn't in the starting hashes
+    else:
+        changed_objs.append(obj)
 
 # do we have changed objs?
 # if we do, then we write those changed objects to our text file

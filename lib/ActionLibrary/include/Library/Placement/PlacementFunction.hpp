@@ -20,6 +20,10 @@ namespace al {
     bool tryGetScale(sead::Vector3f*, const PlacementInfo&);
 
     bool tryGetMatrixTR(sead::Matrix34f*, const PlacementInfo&);
+
+    s32 calcLinkChildNum(const ActorInitInfo&, const char*);
+
+    void getLinksInfoByIndex(PlacementInfo*, const ActorInitInfo&, const char*, s32);
 };  // namespace al
 
 namespace alPlacementFunction {

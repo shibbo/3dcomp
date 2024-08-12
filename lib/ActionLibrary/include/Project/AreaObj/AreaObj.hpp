@@ -35,7 +35,7 @@ namespace al {
         virtual void initStageSwitchKeeper();
         virtual void init(const AreaInitInfo&);
         virtual void init(const AreaInitInfo&, SceneObjHolder*);
-        virtual bool isInVolume(const sead::Vector3f&) const;
+        virtual bool isInVolume(const sead::Vector3f&);
         virtual bool isInVolumeCheck(const sead::Vector3f&) const;
 
         void invalidate();

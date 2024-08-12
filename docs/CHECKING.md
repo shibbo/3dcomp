@@ -1,0 +1,6 @@
+# Checker Script
+The [checker script](https://github.com/shibbo/3dcomp/blob/main/check.py) is the script that is responsible for checking your functions to determine if they match or not. If the function matches, then it will automatically mark a function as "matching". If it does not match, it will not mark it matching. If it was previously marked as matching, it will unmark it. To check your function, be sure to build the project using `python build.py` after setting the project up and then running `check.py`. Whenever there are changes to an object file in the project, `check.py` will automatically check those object file and their functions for matching status. If there are no changes between compilations, then the object files did not change.
+
+* If the function functionally matches and there are tiny differences (such as regswaps or different instruction scheduling), then the function can be marked as "minor" in the `main.map` file.
+* If the function does not functionally match, and there are multiple flaws in the logic, then the function can be marked as "major" in the `main.map` file.
+* If you are unable to figure out a function, try running `decompme.py <symbol>` on the root to create a scratch, and post it in the server for others to try!

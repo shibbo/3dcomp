@@ -29,6 +29,7 @@ INCLUDE_DIRS = [
     "compiler/nx/aarch64/include",
     "compiler/nx/aarch64/include/c++",
 ]
+
 LIBRARIES = ["Game", "ActionLibrary", "agl", "eui", "nn", "sead"]
 
 incdirs = " ".join([f'-I {dir}' for dir in INCLUDE_DIRS])

@@ -10,7 +10,7 @@ It is recommended that you have knowledge of the following:
 
 * C / C++ (however, C++ is STRONGLY recommended)
 * Aarch64 Assembly
-* Reverse engineering instructions from PowerPC to C / C++
+* Reverse engineering instructions from Aarch64 to C / C++
 
 Decompilers such as Hex-Rays (included in IDA Pro) are useful as they can make the decompilation easier to write.
 

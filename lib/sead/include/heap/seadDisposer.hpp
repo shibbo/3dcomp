@@ -15,12 +15,12 @@ namespace sead {
         };
 
         IDisposer();
-        IDisposer(Heap *, HeapNullOption);
+        IDisposer(Heap*, HeapNullOption);
 
         virtual ~IDisposer();
 
-        Heap* mContainerHeap;           // 0x8
+        Heap* mContainerHeap;  // 0x8
         u64 _10;
         u64 _18;
     };
-};
+};  // namespace sead

@@ -8,11 +8,10 @@ namespace al {
     class AnimPlayerSkl;
     class AnimPlayerMat;
     class AnimPlayerVis;
-};
+};  // namespace al
 
 class alModelCafe {
 public:
-
     ~alModelCafe();
 
     void show();
@@ -24,7 +23,7 @@ public:
 
     void* _0;
     void* _10;
-    al::SimpleModelG3D* mModelG3D;          // 0x18
+    al::SimpleModelG3D* mModelG3D;  // 0x18
     void* _20;
     void* _28;
     void* _30;

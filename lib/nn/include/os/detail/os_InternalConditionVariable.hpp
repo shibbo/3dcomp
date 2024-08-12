@@ -11,7 +11,8 @@ namespace nn {
                 InternalConditionVariableImpl m_Impl;
             };
 
-            typedef util::TypedStorage<InternalConditionVariable, 4, 4> InternalConditionVariableStorage;
-        };
-    };
-};
+            typedef util::TypedStorage<InternalConditionVariable, 4, 4>
+                InternalConditionVariableStorage;
+        };  // namespace detail
+    };  // namespace os
+};  // namespace nn

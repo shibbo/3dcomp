@@ -7,10 +7,10 @@ namespace al {
 };
 
 namespace alActorSystemFunction {
-    void addToExecutorMovement(al::LiveActor *);
-    void addToExecutorDraw(al::LiveActor *);
-    void removeFromExecutorMovement(al::LiveActor *);
-    void removeFromExecutorDraw(al::LiveActor *);
+    void addToExecutorMovement(al::LiveActor*);
+    void addToExecutorDraw(al::LiveActor*);
+    void removeFromExecutorMovement(al::LiveActor*);
+    void removeFromExecutorDraw(al::LiveActor*);
 
-    void addToExecutorDrawImmediate(al::LiveActor *);    
-};
+    void addToExecutorDrawImmediate(al::LiveActor*);
+};  // namespace alActorSystemFunction

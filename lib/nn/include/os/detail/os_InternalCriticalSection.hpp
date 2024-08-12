@@ -11,7 +11,8 @@ namespace nn {
                 InternalCriticalSectionImpl m_Impl;
             };
 
-            typedef nn::util::TypedStorage<InternalCriticalSection, 4, 4> InternalCriticalSectionStorage;
-        };
-    };
-};
+            typedef nn::util::TypedStorage<InternalCriticalSection, 4, 4>
+                InternalCriticalSectionStorage;
+        };  // namespace detail
+    };  // namespace os
+};  // namespace nn

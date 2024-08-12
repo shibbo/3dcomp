@@ -6,13 +6,13 @@ namespace sead {
         TreeNode();
 
         void clearLinks();
-        void pushBackChild(TreeNode *);
+        void pushBackChild(TreeNode*);
         void detatchSubTree();
-        void pushBackSibling(TreeNode *);
+        void pushBackSibling(TreeNode*);
 
         TreeNode* mParent;
         TreeNode* mChild;
         TreeNode* mNext;
         TreeNode* mPrev;
     };
-};
+};  // namespace sead

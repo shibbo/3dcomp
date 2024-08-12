@@ -1,6 +1,6 @@
 #include "Project/Collision/HitInfo.hpp"
-#include "Project/Collision/CollisionParts.hpp"
 #include <types.hpp>
+#include "Project/Collision/CollisionParts.hpp"
 
 namespace al {
     bool Triangle::isValid() const {
@@ -23,7 +23,7 @@ namespace al {
         return &mPos[pos];
     }
 
-    void Triangle::calcCenterPos(sead::Vector3f *pOut) const {
+    void Triangle::calcCenterPos(sead::Vector3f* pOut) const {
         f32 x = ((mPos[0].x + mPos[1].x) + mPos[2].x);
         f32 y = ((mPos[0].y + mPos[1].y) + mPos[2].y);
         f32 z = ((mPos[0].z + mPos[1].z) + mPos[2].z);
@@ -48,12 +48,12 @@ namespace al {
     sead::Matrix34f* Triangle::getPrevBaseMtx() const {
         return &mCollisionParts->mPrevBaseMtx;
     }
-};
+};  // namespace al
 
-bool operator==(const al::Triangle &lhs, const al::Triangle &rhs) {
+bool operator==(const al::Triangle& lhs, const al::Triangle& rhs) {
     return lhs.mCollisionParts == rhs.mCollisionParts && lhs.mPrismData == rhs.mPrismData;
 }
 
-bool operator!=(const al::Triangle &lhs, const al::Triangle &rhs) {
+bool operator!=(const al::Triangle& lhs, const al::Triangle& rhs) {
     return lhs.mCollisionParts != rhs.mCollisionParts || lhs.mPrismData != rhs.mPrismData;
 }

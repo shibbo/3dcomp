@@ -1,9 +1,9 @@
 #pragma once
 
+#include <cstdint>
 #include "os/detail/os_InternalConditionVariable.hpp"
 #include "os/detail/os_InternalCriticalSection.hpp"
 #include "util/util_TypedStorage.hpp"
-#include <cstdint>
 
 namespace nn {
     namespace os {
@@ -12,10 +12,7 @@ namespace nn {
         };
 
         struct MessageQueueType {
-            enum State {
-                NotInitialized  = 0,
-                Initialized     = 1
-            };
+            enum State { NotInitialized = 0, Initialized = 1 };
 
             util::TypedStorage<detail::MultiWaitObjectList, 16, 8> _multiWaitObjectListNotFull;
             util::TypedStorage<detail::MultiWaitObjectList, 16, 8> _multiWaitObjectListNotEmpty;
@@ -28,5 +25,5 @@ namespace nn {
             detail::InternalConditionVariableStorage _cvNotFull;
             detail::InternalConditionVariableStorage _cvNotEmpty;
         };
-    };
-};
+    };  // namespace os
+};  // namespace nn

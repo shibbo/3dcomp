@@ -3,7 +3,7 @@
 #include <types.hpp>
 
 namespace sead {
-    template<typename T>
+    template <typename T>
     class Quat {
     public:
         T x;
@@ -13,4 +13,4 @@ namespace sead {
     };
 
     typedef Quat<f32> Quatf;
-};
+};  // namespace sead

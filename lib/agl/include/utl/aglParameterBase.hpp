@@ -8,7 +8,6 @@ namespace agl {
         class ParameterBase {
         public:
             virtual ~ParameterBase();
-
         };
-    };
-};
+    };  // namespace utl
+};  // namespace agl

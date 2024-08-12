@@ -13,6 +13,6 @@ namespace nn {
             };
 
             typedef InternalCriticalSectionImplByHorizon InternalCriticalSectionImpl;
-        };
-    };
-};
+        };  // namespace detail
+    };  // namespace os
+};  // namespace nn

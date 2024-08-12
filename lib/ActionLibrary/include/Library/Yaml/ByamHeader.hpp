@@ -18,8 +18,8 @@ namespace al {
             u16 mTag, mVersion;
         };
 
-        s32 mHashKeyOffset;             // 0x04
-        s32 mStringTableOffset;         // 0x08
-        s32 mDataOffset;                // 0x0C
+        s32 mHashKeyOffset;      // 0x04
+        s32 mStringTableOffset;  // 0x08
+        s32 mDataOffset;         // 0x0C
     };
-};
+};  // namespace al

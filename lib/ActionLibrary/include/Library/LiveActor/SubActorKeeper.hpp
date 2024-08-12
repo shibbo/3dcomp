@@ -5,6 +5,5 @@
 namespace al {
     class SubActorKeeper {
     public:
-        
     };
-};
+};  // namespace al

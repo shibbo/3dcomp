@@ -15,6 +15,6 @@ namespace nn {
             };
 
             typedef InternalConditionVariableImplByHorizon InternalConditionVariableImpl;
-        };
-    };
-};
+        };  // namespace detail
+    };  // namespace os
+};  // namespace nn

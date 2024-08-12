@@ -1,9 +1,9 @@
 #pragma once
 
-#include <types.hpp>
-#include <math/seadMatrix.hpp>
+#include <math/seadMatrix.h>
 #include <math/seadQuat.hpp>
-#include <math/seadVector.hpp>
+#include <math/seadVector.h>
+#include <types.hpp>
 
 namespace al {
     class ActorPoseKeeperBase {
@@ -24,12 +24,12 @@ namespace al {
         virtual sead::Quatf* getQuatPtr();
         virtual sead::Vector3f* getGravityPtr();
         virtual sead::Matrix34f* getMtxPtr();
-        virtual void updatePoseRotate(const sead::Vector3f &) = 0;
-        virtual void updatePoseQuat(const sead::Quatf &) = 0;
-        virtual void updatePoseMtx(const sead::Matrix34f *) = 0;
-        virtual void copyPose(const ActorPoseKeeperBase *);
-        virtual void calcBaseMtx(sead::Matrix34f *) const = 0;
+        virtual void updatePoseRotate(const sead::Vector3f&) = 0;
+        virtual void updatePoseQuat(const sead::Quatf&) = 0;
+        virtual void updatePoseMtx(const sead::Matrix34f*) = 0;
+        virtual void copyPose(const ActorPoseKeeperBase*);
+        virtual void calcBaseMtx(sead::Matrix34f*) const = 0;
 
-        sead::Vector3f mTranslation;            // 0x08
+        sead::Vector3f mTranslation;  // 0x08
     };
-};
+};  // namespace al

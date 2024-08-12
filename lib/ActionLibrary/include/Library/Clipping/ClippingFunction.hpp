@@ -5,6 +5,6 @@ namespace al {
 };
 
 namespace alClippingFunction {
-    void addToClippingTarget(al::LiveActor *);
-    void removeFromClippingTarget(al::LiveActor *);
-};
+    void addToClippingTarget(al::LiveActor*);
+    void removeFromClippingTarget(al::LiveActor*);
+};  // namespace alClippingFunction

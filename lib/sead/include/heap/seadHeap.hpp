@@ -5,7 +5,7 @@ namespace sead {
 
     class Heap {
     public:
-        void appendDisposer_(IDisposer *);
-        void removeDisposer_(IDisposer *);
+        void appendDisposer_(IDisposer*);
+        void removeDisposer_(IDisposer*);
     };
-};
+};  // namespace sead

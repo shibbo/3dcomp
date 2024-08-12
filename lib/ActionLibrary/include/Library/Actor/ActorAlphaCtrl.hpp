@@ -7,6 +7,6 @@ namespace al {
 
     class ActorAlphaCtrl {
     public:
-        f32 update(const ClippingJudge *);
+        f32 update(const ClippingJudge*);
     };
-};
+};  // namespace al

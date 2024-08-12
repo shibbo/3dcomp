@@ -87,7 +87,7 @@ namespace al {
             if (baseMtx != nullptr) {
                 sead::Vector3f::mult(_58, *baseMtx, *mFollowPosVec);
                 _8.set(*mFollowPosVec);
-                v8 = ((_58.x * baseMtx->mMtx[2][0]) + (_58.y * baseMtx->mMtx[2][1])) + (_58.z * baseMtx->mMtx[2][2]);
+                v8 = ((_58.x * baseMtx->m[2][0]) + (_58.y * baseMtx->m[2][1])) + (_58.z * baseMtx->m[2][2]);
                 v10 = mFollowPosVec->z;
             }
             else {
@@ -101,7 +101,7 @@ namespace al {
         else {
             if (mFollowPosMtx != nullptr) {
                 sead::Vector3f::mult(_8, *mFollowPosMtx, _58);
-                v15 = mFollowPosMtx->mMtx[2][3] + (((_58.x * mFollowPosMtx->mMtx[2][0]) + (_58.y * mFollowPosMtx->mMtx[2][1])) + (_58.z * mFollowPosMtx->mMtx[2][2]));
+                v15 = mFollowPosMtx->m[2][3] + (((_58.x * mFollowPosMtx->m[2][0]) + (_58.y * mFollowPosMtx->m[2][1])) + (_58.z * mFollowPosMtx->m[2][2]));
             }
             else {
                 return;

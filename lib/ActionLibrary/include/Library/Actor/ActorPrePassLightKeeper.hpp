@@ -13,10 +13,10 @@ namespace al {
         class UserColor {
         public:
             void setPtr();
-            void readIter(const ByamlIter &);
+            void readIter(const ByamlIter&);
 
-            const char* mName;          // 0x00
-            sead::Color4f* mColor;      // 0x04
+            const char* mName;      // 0x00
+            sead::Color4f* mColor;  // 0x04
         };
 
         ActorPrePassLightKeeper();
@@ -28,10 +28,10 @@ namespace al {
         void hideModel();
         void updateHideModel(bool);
 
-        sead::PtrArray<PrePassLightBase*> mLightBaseArray;      // 0x00
-        sead::PtrArray<UserColor*> mColorArray;                 // 0x10
-        LiveActor* mParentActor;                                // 0x20
-        bool mIsIgnorePrePassYaml;                              // 0x28
-        bool mIsIgnoreHideModel;                                // 0x29
+        sead::PtrArray<PrePassLightBase*> mLightBaseArray;  // 0x00
+        sead::PtrArray<UserColor*> mColorArray;             // 0x10
+        LiveActor* mParentActor;                            // 0x20
+        bool mIsIgnorePrePassYaml;                          // 0x28
+        bool mIsIgnoreHideModel;                            // 0x29
     };
-};
+};  // namespace al

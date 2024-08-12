@@ -10,10 +10,10 @@ namespace sead {
         };
 
         static void initialize();
-        static u32 calcHash(const void *, u32);
-        static u32 calcHashWithContext(Context *, const void *, u32);
-        static u32 calcStringHash(const char *);
-        static u32 calcStringHashWithContext(Context *, const char *);
+        static u32 calcHash(const void*, u32);
+        static u32 calcHashWithContext(Context*, const void*, u32);
+        static u32 calcStringHash(const char*);
+        static u32 calcStringHashWithContext(Context*, const char*);
 
         static u16 sTable[256];
         static bool sInitialized;
@@ -26,12 +26,12 @@ namespace sead {
         };
 
         static void initialize();
-        static u32 calcHash(const void *, u32);
-        static u32 calcHashWithContext(Context *, const void *, u32);
-        static u32 calcStringHash(const char *);
-        static u32 calcStringHashWithContext(Context *, const char *);
+        static u32 calcHash(const void*, u32);
+        static u32 calcHashWithContext(Context*, const void*, u32);
+        static u32 calcStringHash(const char*);
+        static u32 calcStringHashWithContext(Context*, const char*);
 
         static u32 sTable[256];
         static bool sInitialized;
     };
-};
+};  // namespace sead

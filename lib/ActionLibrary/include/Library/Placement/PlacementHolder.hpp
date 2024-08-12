@@ -9,7 +9,7 @@ namespace al {
     public:
         PlacementHolder();
 
-        void init(const PlacementInfo &);
+        void init(const PlacementInfo&);
 
         const char* _0;
         const char* _8;
@@ -18,4 +18,4 @@ namespace al {
         s32 _20;
         s32 _24;
     };
-};
+};  // namespace al

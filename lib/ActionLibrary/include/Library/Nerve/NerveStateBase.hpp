@@ -7,37 +7,29 @@ namespace al {
 
     class NerveStateBase : public NerveExecutor {
     public:
-        NerveStateBase(const char *);
+        NerveStateBase(const char*);
 
         virtual ~NerveStateBase();
 
-        virtual void init() {
+        virtual void init() {}
 
-        }
+        virtual void appear() { mIsDead = false; }
 
-        virtual void appear() {
-            mIsDead = false;
-        }
-
-        virtual void kill() {
-            mIsDead = true;
-        }
+        virtual void kill() { mIsDead = true; }
 
         virtual bool update();
 
-        virtual void control() {
+        virtual void control() {}
 
-        }
-
-        bool mIsDead = true;           // 0x10
+        bool mIsDead = true;  // 0x10
     };
 
     class ActorStateBase : public NerveStateBase {
     public:
-        ActorStateBase(const char *, LiveActor *);
+        ActorStateBase(const char*, LiveActor*);
 
         virtual ~ActorStateBase();
 
-        LiveActor* mHostActor;          // 0x18
+        LiveActor* mHostActor;  // 0x18
     };
-};
+};  // namespace al

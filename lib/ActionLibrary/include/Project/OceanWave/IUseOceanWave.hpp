@@ -5,6 +5,6 @@ namespace al {
 
     class IUseOceanWave {
     public:
-        OceanWaveKeeper* mOceanWaveKeeper = nullptr;          // 0x00
+        OceanWaveKeeper* mOceanWaveKeeper = nullptr;  // 0x00
     };
-};
+};  // namespace al

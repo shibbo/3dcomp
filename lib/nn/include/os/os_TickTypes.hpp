@@ -6,7 +6,7 @@ namespace nn {
     namespace os {
         class Tick {
         public:
-            int64_t mTick;      // 0x00
+            int64_t mTick;  // 0x00
         };
-    };
-};
+    };  // namespace os
+};  // namespace nn

@@ -1,6 +1,7 @@
 #pragma once
 
-#include <math/seadVector.hpp>
+#include <math/seadMatrix.h>
+#include <math/seadVector.h>
 #include <types.hpp>
 
 namespace al {
@@ -12,10 +13,10 @@ namespace al {
     class Triangle {
     public:
         Triangle();
-        Triangle(const CollisionParts &, KCPrismData *, KCPrismHeader *);
+        Triangle(const CollisionParts&, KCPrismData*, KCPrismHeader*);
 
-        void fillData(const CollisionParts &, KCPrismData *, KCPrismHeader *);
-        void fill(const sead::Vector3f &, const sead::Vector3f &, const sead::Vector3f &);
+        void fillData(const CollisionParts&, KCPrismData*, KCPrismHeader*);
+        void fill(const sead::Vector3f&, const sead::Vector3f&, const sead::Vector3f&);
         bool isHostMoved() const;
         bool isValid() const;
         const sead::Vector3f* getNormal(int) const;
@@ -26,32 +27,32 @@ namespace al {
         sead::Vector3f* calcAndGetFaceNormal();
         sead::Vector3f* calcAndGetEdgeNormal(int);
         sead::Vector3f* calcAndGetPos(int);
-        void calcCenterPos(sead::Vector3f *) const;
-        void getLocalPos(sead::Vector3f *, int) const;
-        void calcForceMovePower(sead::Vector3f *, const sead::Vector3f &) const;
+        void calcCenterPos(sead::Vector3f*) const;
+        void getLocalPos(sead::Vector3f*, int) const;
+        void calcForceMovePower(sead::Vector3f*, const sead::Vector3f&) const;
 
         HitSensor* getSensor() const;
         sead::Matrix34f* getBaseMtx() const;
         sead::Matrix34f* getBaseInvMtx() const;
         sead::Matrix34f* getPrevBaseMtx() const;
 
-        CollisionParts* mCollisionParts;        // 0x00
-        KCPrismData* mPrismData;                // 0x08
-        KCPrismHeader* mPrismHeader;            // 0x10
-        sead::Vector3f mNormals[4];             // 0x18
-        sead::Vector3f mPos[3];                 // 0x48
+        CollisionParts* mCollisionParts;  // 0x00
+        KCPrismData* mPrismData;          // 0x08
+        KCPrismHeader* mPrismHeader;      // 0x10
+        sead::Vector3f mNormals[4];       // 0x18
+        sead::Vector3f mPos[3];           // 0x48
     };
 
     class HitInfo {
     public:
         HitInfo();
 
-        Triangle mTriangle;                     // 0x00
+        Triangle mTriangle;  // 0x00
         u32 _6C;
-        sead::Vector3f mPos;                    // 0x70
+        sead::Vector3f mPos;  // 0x70
         u8 _7C[0x9C - 0x7C];
     };
-};
+};  // namespace al
 
-bool operator==(const al::Triangle &, const al::Triangle &);
-bool operator!=(const al::Triangle &, const al::Triangle &);
+bool operator==(const al::Triangle&, const al::Triangle&);
+bool operator!=(const al::Triangle&, const al::Triangle&);

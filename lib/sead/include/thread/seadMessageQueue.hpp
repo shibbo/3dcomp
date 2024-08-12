@@ -4,11 +4,10 @@ namespace sead {
     class MessageQueue {
     public:
         enum BlockType {
-            Blocking        = 0,
-            NonBlocking     = 1,
+            Blocking = 0,
+            NonBlocking = 1,
         };
 
         MessageQueue();
-
     };
-};
+};  // namespace sead

@@ -7,18 +7,18 @@ namespace al {
 
     class SensorHitGroup {
     public:
-        SensorHitGroup(int, const char *);
+        SensorHitGroup(int, const char*);
 
-        void add(HitSensor *);
-        void remove(HitSensor *);
+        void add(HitSensor*);
+        void remove(HitSensor*);
         HitSensor* getSensor(int) const;
         void clear() const;
-        void executeHitCheckGroup(SensorHitGroup *);
-        void executeHitCheck(HitSensor *, HitSensor *);
+        void executeHitCheckGroup(SensorHitGroup*);
+        void executeHitCheck(HitSensor*, HitSensor*);
         void executeHitCheckInSameGroup();
 
-        s32 mMaxSize;           // 0x00
-        s32 mCurSize;           // 0x04
-        HitSensor** mSensors;   // 0x08
+        s32 mMaxSize;          // 0x00
+        s32 mCurSize;          // 0x04
+        HitSensor** mSensors;  // 0x08
     };
-};
+};  // namespace al

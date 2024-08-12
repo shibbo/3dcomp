@@ -1,10 +1,10 @@
 #pragma once
 
+#include <math/seadVector.h>
 #include <types.hpp>
-#include <math/seadVector.hpp>
 
 namespace al {
     class LiveActor;
 
-    void resetPosition(LiveActor *, bool);
-};
+    void resetPosition(LiveActor*, bool);
+};  // namespace al

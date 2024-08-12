@@ -6,22 +6,17 @@ namespace sead {
     template <typename T>
     class SafeStringBase {
     public:
-        SafeStringBase() : mString(&cNullChar) {
+        SafeStringBase() : mString(&cNullChar) {}
 
-        }
-
-        SafeStringBase(const T* pStr) : mString(pStr) {
-
-        }
+        SafeStringBase(const T* pStr) : mString(pStr) {}
 
         virtual ~SafeStringBase() = default;
-        virtual void assureTerminationImpl_() const {
 
-        }
-        
-        virtual SafeStringBase<T>& operator=(const SafeStringBase<T> &);
-        
-        const T* mString;       // 0x0
+        virtual void assureTerminationImpl_() const {}
+
+        virtual SafeStringBase<T>& operator=(const SafeStringBase<T>&);
+
+        const T* mString;  // 0x0
 
         static const T cNullChar;
     };
@@ -35,48 +30,39 @@ namespace sead {
             if (size <= 0) {
                 mString = nullptr;
                 mBufferSize = 0;
-            }
-            else {
+            } else {
                 this->assureTerminationImpl_();
             }
         }
 
-        T* getString() {
-            return const_cast<T*>(mString);
-        }
+        T* getString() { return const_cast<T*>(mString); }
 
-        void clear() {
-            getString()[0] = cNullChar;
-        }
+        void clear() { getString()[0] = cNullChar; }
 
         ~BufferedSafeStringBase() override = default;
         void assureTerminationImpl_() const override;
-        BufferedSafeStringBase<T>& operator=(const SafeStringBase<T> &);
+        BufferedSafeStringBase<T>& operator=(const SafeStringBase<T>&);
 
-        s32 mBufferSize;            // 0x10
+        s32 mBufferSize;  // 0x10
     };
 
-    template<typename T, s32 Len>
+    template <typename T, s32 Len>
     class FixedSafeStringBase : public BufferedSafeStringBase<T> {
     public:
-        FixedSafeStringBase() : BufferedSafeStringBase<T>(mBuffer, Len) {
-            clear();
-        }
+        FixedSafeStringBase() : BufferedSafeStringBase<T>(mBuffer, Len) { clear(); }
 
-        virtual FixedSafeStringBase& operator=(const SafeStringBase<T> &);
+        virtual FixedSafeStringBase& operator=(const SafeStringBase<T>&);
 
-        T mBuffer[Len]; 
+        T mBuffer[Len];
     };
 
-    template<s32 Length>
+    template <s32 Length>
     class FixedSafeString : public FixedSafeStringBase<char, Length> {
     public:
-        FixedSafeString() : FixedSafeStringBase<char, Length>() {
-            
-        }
+        FixedSafeString() : FixedSafeStringBase<char, Length>() {}
     };
 
     /* commonly used types for easy use */
     typedef SafeStringBase<char> SafeString;
     typedef BufferedSafeStringBase<char> BufferedSafeString;
-}
+}  // namespace sead

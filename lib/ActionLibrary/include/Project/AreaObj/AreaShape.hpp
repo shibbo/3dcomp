@@ -14,8 +14,8 @@ namespace al {
         virtual bool calcNearestEdgePoint(sead::Vector3f*, const sead::Vector3f&) const = 0;
         virtual bool checkArrowCollision(sead::Vector3f*, sead::Vector3f*, const sead::Vector3f&,
                                          const sead::Vector3f&) const = 0;
-        virtual void calcLocalBoundingBox(sead::BoundBox3f*) const = 0;
-        virtual void calcWorldBoundingBox(sead::BoundBox3f*) const = 0;
+        virtual bool calcLocalBoundingBox(sead::BoundBox3f*) const = 0;
+        virtual bool calcWorldBoundingBox(sead::BoundBox3f*) const = 0;
 
         void setBaseMtxPtr(const sead::Matrix34f*);
         void setScale(const sead::Vector3f&);

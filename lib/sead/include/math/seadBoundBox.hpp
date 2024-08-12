@@ -14,6 +14,14 @@ namespace sead {
     template <typename T>
     class BoundBox3 {
     public:
+        inline void setMin(T val) { mMin.set(val, val, val); }
+
+        inline void setMin(T x, T y, T z) { mMin.set(x, y, z); }
+
+        inline void setMax(T val) { mMax.set(val, val, val); }
+
+        inline void setMax(T x, T y, T z) { mMax.set(x, y, z); }
+
         Vector3<T> mMin;
         Vector3<T> mMax;
     };

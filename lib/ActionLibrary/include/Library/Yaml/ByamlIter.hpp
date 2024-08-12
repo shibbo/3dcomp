@@ -9,6 +9,7 @@ namespace al {
     public:
         ByamlIter();
         ByamlIter(const u8*, const u8*);
+        ByamlIter(const ByamlIter&);
 
         bool isValid() const;
         bool isTypeHash() const;

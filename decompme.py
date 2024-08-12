@@ -13,37 +13,7 @@ import urllib.request
 import urllib.parse
 from typing import Dict
 import json
-
-def getModule(map, sym):
-    for root, dirs, files in os.walk(map):
-        for file in files:
-            if file.endswith(".map"):
-                map_path = os.path.join(root, file)
-                with open(map_path, "r") as f:
-                    lines = f.readlines()
-
-                for line in lines:
-                    fmt = line.replace("\n", "")
-                    if fmt == sym:
-                        # we found where our symbol lives!
-                        # we just grab the source module
-                        object_path = map_path.replace("map", "build", 1)
-                        object_path = object_path.replace(".map", ".o")
-                        return object_path
-    return ""
-
-def getFunctionData(functionAddr, functionSize):
-    with open("fury.nso", "rb") as f:
-        data = f.read()
-
-        digest = hashlib.sha256(data).hexdigest().upper()
-        if digest != "80E48BC7BDF7AAA635E7B48C24F49C6A4D8AC19949FB1B9F66EADF2CFBA3BF85":
-            print("fury.nso is not valid")
-            sys.exit(1)
-
-        nso_file = nso.NSO(data)
-
-    return nso_file.getFunction(functionAddr, functionSize)
+import helpers
 
 INCLUDE_DIRS = [
     "include",
@@ -57,7 +27,6 @@ INCLUDE_DIRS = [
 LIBRARIES = ["ActionLibrary", "agl", "eui", "nn", "sead"]
 
 incdirs = " ".join([f'-I {dir}' for dir in INCLUDE_DIRS])
-COMPILER_PATH = pathlib.Path("compiler/nx/aarch64/bin/clang++.exe")
 PREPROC_CMD = f"-C -E {incdirs}"
 COMPILER_CMD = f"-x c++ -O3 -fno-omit-frame-pointer -mno-implicit-float -fno-cxx-exceptions -fno-strict-aliasing -std=gnu++14 -fno-common -fno-short-enums -ffunction-sections -fdata-sections -fPIC -mcpu=cortex-a57+fp+simd+crypto+crc -g -Wall -c"
 
@@ -72,11 +41,11 @@ isTest = False
 if "-test" in sys.argv:
     isTest = True
 
-path = getModule("map", sym)
+path = helpers.getModule("map", sym)
 
 if path == "":
     for lib in LIBRARIES:
-        path = getModule(f"lib/{lib}/map", sym)
+        path = helpers.getModule(f"lib/{lib}/map", sym)
 
         if path != "":
             break
@@ -87,7 +56,7 @@ if path == "":
 
 source_path = path.replace("build", "source")
 source_path = source_path.replace(".o", ".cpp")
-preproc_cmd = [COMPILER_PATH, "-E"] + incdirs.split() + [source_path]
+preproc_cmd = [helpers.COMPILER_PATH, "-E"] + incdirs.split() + [source_path]
 procOut = subprocess.check_output(preproc_cmd).decode("utf-8").replace("\r", "")
 
 procOut_Clean = ""
@@ -98,25 +67,8 @@ for line in procOut.split("\n"):
 
     procOut_Clean += f"{line}\n"
 
-functionSize = 0
-functionAddr = 0
-
-with open("data/main.map", "r") as f:
-    lines = f.readlines()
-
-    for line in lines:
-        spl = line.split("=")
-        name = spl[0]
-        addr = spl[1]
-        addr = int(addr[10:], 16)
-        size = int(spl[2], 16)
-
-        if sym == name:
-            functionSize = size
-            functionAddr = addr
-            break
-
-funcData = getFunctionData(functionAddr, functionSize)
+functionSize, functionAddr = helpers.getFunctionSizeAndAddr(sym)
+funcData = helpers.getFunctionData(functionAddr, functionSize)
 capstone_inst = Cs(CS_ARCH_ARM64, CS_MODE_ARM + CS_MODE_LITTLE_ENDIAN)
 capstone_inst.detail = True
 capstone_inst.imm_unsigned = False

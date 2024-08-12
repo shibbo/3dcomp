@@ -8,6 +8,7 @@ import sys
 import os
 import pathlib
 from ninja_syntax import Writer
+import helpers
 
 nonmatching_str = ""
 clean = False
@@ -35,7 +36,6 @@ LIBRARIES = ["Game", "ActionLibrary", "agl", "eui", "nn", "sead"]
 incdirs = " ".join([f'-I {dir}' for dir in INCLUDE_DIRS])
 
 COMPILER_CMD = f"-x c++ -O3 -fno-omit-frame-pointer -mno-implicit-float -fno-cxx-exceptions -fno-strict-aliasing -std=gnu++14 -fno-common -fno-short-enums -ffunction-sections -fdata-sections -fPIC -mcpu=cortex-a57+fp+simd+crypto+crc -g -Wall {nonmatching_str} {incdirs} -c"
-COMPILER_PATH = pathlib.Path("compiler/nx/aarch64/bin/clang++.exe")
 OBJDUMP_PATH = pathlib.Path("compiler/nx/aarch64/bin/llvm-objdump.exe")
 
 # if we don't have this file, create it
@@ -65,7 +65,7 @@ def genNinja(compile_tasks):
     with open('build.ninja', 'w') as ninja_file:
         ninja_writer = Writer(ninja_file)
 
-        cmd = f'{COMPILER_PATH} {COMPILER_CMD} $in -o $out'
+        cmd = f'{helpers.COMPILER_PATH} {COMPILER_CMD} $in -o $out'
         if isNotWindows:
             cmd = f'wine {cmd}'
         ninja_writer.rule("compile", command=cmd, description='Compiling $in')

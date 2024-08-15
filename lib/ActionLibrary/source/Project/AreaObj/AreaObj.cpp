@@ -110,7 +110,7 @@ namespace al {
         mSwitchKeeper = new StageSwitchKeeper();
     }
 
-    bool AreaObj::isInVolume(const sead::Vector3f& rVec) const {
+    bool AreaObj::isInVolume(const sead::Vector3f& rVec) {
         if (mIsValid && !mIsDisabled && _66)
             return mShape->isInVolume(rVec);
 

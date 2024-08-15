@@ -1,7 +1,7 @@
 #pragma once
 
 #include <math/seadMatrix.h>
-#include <math/seadQuat.hpp>
+#include <math/seadQuat.h>
 #include <math/seadVector.h>
 #include <types.hpp>
 

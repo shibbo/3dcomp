@@ -23,7 +23,13 @@ namespace al {
 
     s32 calcLinkChildNum(const ActorInitInfo&, const char*);
 
+    s32 calcLinkChildNum(const PlacementInfo&, const char*);
+
+    void getLinksInfo(PlacementInfo*, const PlacementInfo&, const char*);
+
     void getLinksInfoByIndex(PlacementInfo*, const ActorInitInfo&, const char*, s32);
+
+    bool isEqualPlacementID(const PlacementInfo&, const PlacementInfo&);
 };  // namespace al
 
 namespace alPlacementFunction {

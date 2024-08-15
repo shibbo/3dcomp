@@ -20,4 +20,12 @@ namespace sead {
     struct BaseMtx34 {
         T m[3][4];
     };
+
+    template <typename T>
+    struct BaseQuat {
+        T x;
+        T y;
+        T z;
+        T w;
+    };
 };  // namespace sead

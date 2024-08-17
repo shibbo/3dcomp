@@ -25,17 +25,17 @@ namespace al {
         return isEqualString(str1, str2);
     }
 
-    bool isEqualSubString(const char* pString1, const char* pString2) {
-        return strstr(pString1, pString2) != 0;
+    bool isEqualStringCase(const char* pString1, const char* pString2) {
+        return strcasecmp(pString1, pString2) == 0;
     }
 
-    bool isEqualSubString(const sead::SafeString& rString1, const sead::SafeString& rString2) {
+    bool isEqualStringCase(const sead::SafeString& rString1, const sead::SafeString& rString2) {
         rString1.assureTerminationImpl_();
         const char* str1 = rString1.mString;
         rString2.assureTerminationImpl_();
         const char* str2 = rString2.mString;
 
-        return isEqualSubString(str1, str2);
+        return isEqualStringCase(str1, str2);
     }
 
 };  // namespace al

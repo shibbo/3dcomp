@@ -14,6 +14,8 @@ namespace sead {
     public:
         Vector3() {}
 
+        Vector3(T val) { set(val, val, val); }
+
         Vector3(T _x, T _y, T _z) { set(_x, _y, _z); }
 
         friend Vector3 operator*(const Vector3& rBase, T scalar) {

@@ -28,16 +28,16 @@ namespace sead {
             mBufferSize = size;
 
             if (size <= 0) {
-                mString = nullptr;
+                this->mString = nullptr;
                 mBufferSize = 0;
             } else {
                 this->assureTerminationImpl_();
             }
         }
 
-        T* getString() { return const_cast<T*>(mString); }
+        T* getString() { return const_cast<T*>(this->mString); }
 
-        void clear() { getString()[0] = cNullChar; }
+        void clear() { getString()[0] = SafeStringBase<T>::cNullChar; }
 
         ~BufferedSafeStringBase() override = default;
         void assureTerminationImpl_() const override;
@@ -49,7 +49,7 @@ namespace sead {
     template <typename T, s32 Len>
     class FixedSafeStringBase : public BufferedSafeStringBase<T> {
     public:
-        FixedSafeStringBase() : BufferedSafeStringBase<T>(mBuffer, Len) { clear(); }
+        FixedSafeStringBase() : BufferedSafeStringBase<T>(mBuffer, Len) { this->clear(); }
 
         virtual FixedSafeStringBase& operator=(const SafeStringBase<T>&);
 

@@ -212,10 +212,28 @@ for sym in funcs_to_check:
             instr_equal = False
             continue
 
+        # loop through our operands to figure out what *exactly* doesn't match
         for j in range(len(orig_operands)):
-            if orig_operands[j].reg != cust_operands[j]:
-                # ADRP and ADD can give of wrong operands because of us not linking, same with LDR
-                if curOrigInstr.id == ARM64_INS_ADRP or curOrigInstr.id == ARM64_INS_ADD or curOrigInstr.id == ARM64_INS_LDR:
+            if orig_operands[j] != cust_operands[j]:
+                if curOrigInstr.id == ARM64_INS_ADD:
+                    # for the ADD instruction, let's see if our immediate value matches
+                    # if it doesn't, then it is very possible it is a part of a address resolved by the linker
+                    if orig_operands[2].imm != cust_operands[2].imm:
+                        print(f"{Fore.YELLOW}{str(curOrigInstr):<80}{curCustInstr}{Style.RESET_ALL}")
+                    else:
+                        print(f"{Fore.RED}{str(curOrigInstr):<80}{curCustInstr}{Style.RESET_ALL}")
+                        regs_equal = False
+                    break
+
+                if curOrigInstr.id == ARM64_INS_LDR:
+                    if len(orig_operands) == 2 and len(cust_operands) == 2:
+                        if orig_operands[1].type == CS_OP_MEM and cust_operands[1].type == CS_OP_MEM:
+                            if orig_operands[1].mem.base != cust_operands[1].mem.base:
+                                print(f"{Fore.RED}{str(curOrigInstr):<80}{curCustInstr}{Style.RESET_ALL}")
+                            else:
+                                print(f"{Fore.GREEN}{str(curOrigInstr):<80}{curCustInstr}{Style.RESET_ALL}")
+                    break
+                if curOrigInstr.id == ARM64_INS_ADRP:
                     print(f"{Fore.YELLOW}{str(curOrigInstr):<80}{curCustInstr}{Style.RESET_ALL}")
                 # B and BL instructions
                 elif curOrigInstr.id == ARM64_INS_B or curOrigInstr.id == ARM64_INS_BL:

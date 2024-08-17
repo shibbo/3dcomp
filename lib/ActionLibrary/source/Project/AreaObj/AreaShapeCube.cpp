@@ -2,7 +2,7 @@
 #include <limits>
 
 namespace al {
-    const f32 vals[2] = {500.0f, 1000.0f};
+    // const f32 vals[2] = {500.0f, 1000.0f};
 
     AreaShapeCube::AreaShapeCube(OriginType originType) : AreaShape() {
         mOriginType = originType;

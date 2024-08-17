@@ -1,6 +1,6 @@
 #pragma once
 
-#include <math/seadBoundBox.hpp>
+#include <math/seadBoundBox.h>
 #include <math/seadMatrix.h>
 #include <math/seadVector.h>
 

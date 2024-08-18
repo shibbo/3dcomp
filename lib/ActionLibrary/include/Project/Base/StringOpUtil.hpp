@@ -6,7 +6,7 @@
 namespace al {
     const char* getBaseName(const char*);
     const char* createStringIfInStack(const char*);
-    const char* createConcatString(const char*, const char*);
+    char* createConcatString(const char*, const char*);
     void createFileNameBySuffix(sead::BufferedSafeString*, const char*, const char*);
     void outputValueWithComma(char*, u32, u64, bool, bool);
     void extractString(char*, const char*, u32, u32);

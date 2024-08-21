@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdarg>
 #include <types.hpp>
 
 namespace sead {
@@ -38,6 +39,8 @@ namespace sead {
         T* getString() { return const_cast<T*>(this->mString); }
 
         void clear() { getString()[0] = SafeStringBase<T>::cNullChar; }
+
+        s32 formatV(const T*, std::va_list);
 
         ~BufferedSafeStringBase() override = default;
         void assureTerminationImpl_() const override;

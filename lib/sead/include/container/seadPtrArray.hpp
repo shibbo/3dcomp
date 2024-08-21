@@ -39,6 +39,8 @@ namespace sead {
 
         PtrArray(s32 maxNumptrs, T** pBuffer) : PtrArrayImpl(maxNumptrs, pBuffer) {}
 
-        T* operator[](s32 idx) const { return getAt(idx); }
+        T* getPtrAt(s32 idx) { return reinterpret_cast<T*>(this->getAt(idx)); }
+
+        T* operator[](s32 idx) const { return getPtrAt(idx); }
     };
 };  // namespace sead

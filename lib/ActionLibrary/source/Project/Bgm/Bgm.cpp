@@ -45,4 +45,18 @@ namespace al {
     }
     */
 
+    void Bgm::stopBgm(s32 frame) {
+        _40 = 0;
+
+        if (_3C >= 1) {
+            _3C = 0;
+        }
+
+        if (frame == -1) {
+            frame = 20;
+        }
+
+        mSoundHandle->stop(frame);
+        _68 = 0;
+    }
 };  // namespace al

@@ -32,6 +32,11 @@ namespace nn {
                 void SetPitch(f32);
                 void SetPan(f32);
 
+                void StartPrepared();
+
+                bool IsPause() const;
+                bool IsMute() const;
+
                 PlayerHeap* mPlayerHeap;               // 0x08
                 SoundHandle* mGeneralHandle;           // 0x10
                 SoundHandle* mTempGeneralHandle;       // 0x18

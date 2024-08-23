@@ -82,9 +82,12 @@ def compileLibraries(libraries):
         # let's do our source files first which we use ninja for
         for root, dirs, files in os.walk(path):
             for file in files:
-                if file.endswith(".cpp"):
+                if file.endswith(".cpp") or file.endswith(".c"):
                     source_path = os.path.join(root, file)
-                    build_path = source_path.replace("source", "build", 1).replace(".cpp", ".o")
+                    if file.endswith(".cpp"):
+                        build_path = source_path.replace("source", "build", 1).replace(".cpp", ".o")
+                    elif file.endswith(".c"):
+                        build_path = source_path.replace("source", "build", 1).replace(".c", ".o")
 
                     os.makedirs(os.path.dirname(build_path), exist_ok=True)
                     compile_tasks.append((source_path, build_path))
@@ -102,9 +105,13 @@ def generateMaps(path):
     # now for our map files which we don't need ninja for
     for root, dirs, files in os.walk(path):
         for file in files:
-            if file.endswith(".cpp"):
+            if file.endswith(".cpp") or file.endswith(".c"):
                 source_path = os.path.join(root, file)
-                build_path = source_path.replace("source", "build", 1).replace(".cpp", ".o")
+                if file.endswith(".cpp"):
+                    build_path = source_path.replace("source", "build", 1).replace(".cpp", ".o")
+                elif file.endswith(".c"):
+                    build_path = source_path.replace("source", "build", 1).replace(".c", ".o")
+
                 map_path = build_path.replace("build", "map", 1).replace(".o", ".map")
                 os.makedirs(os.path.dirname(map_path), exist_ok=True)
                 objdump_tasks.append((source_path, build_path, map_path))

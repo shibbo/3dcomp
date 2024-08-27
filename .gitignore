@@ -1,4 +1,4 @@
-compiler/*
+compilers/*
 *.o
 .vscode/*
 .ninja_log

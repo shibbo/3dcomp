@@ -36,7 +36,7 @@ LIBRARIES = ["Game", "ActionLibrary", "agl", "eui", "nn", "sead"]
 incdirs = " ".join([f'-I {dir}' for dir in INCLUDE_DIRS])
 
 COMPILER_CMD = f"-x c++ -O3 -fno-omit-frame-pointer -mno-implicit-float -fno-cxx-exceptions -fno-strict-aliasing -std=gnu++14 -fno-common -fno-short-enums -ffunction-sections -fdata-sections -fPIC -mcpu=cortex-a57+fp+simd+crypto+crc -g -Wall {nonmatching_str} {incdirs} -c"
-OBJDUMP_PATH = pathlib.Path("compiler/nx/aarch64/bin/llvm-objdump.exe")
+OBJDUMP_PATH = pathlib.Path("compilers/800/nx/aarch64/bin/llvm-objdump.exe")
 
 # if we don't have this file, create it
 HASHES_BASE_PATH = pathlib.Path("data\\hashes.txt")
@@ -65,13 +65,15 @@ def genNinja(compile_tasks):
     with open('build.ninja', 'w') as ninja_file:
         ninja_writer = Writer(ninja_file)
 
-        cmd = f'{helpers.COMPILER_PATH} {COMPILER_CMD} $in -o $out'
-        if isNotWindows:
-            cmd = f'wine {cmd}'
-        ninja_writer.rule("compile", command=cmd, description='Compiling $in')
+        # Define a single compile rule with a placeholder for the compiler path
+        ninja_writer.rule("compile", command='$compiler_path ' + COMPILER_CMD + ' $in -o $out', description='Compiling $in')
 
         for source_path, build_path in compile_tasks:
-            ninja_writer.build(outputs=[build_path], rule="compile", inputs=[source_path])
+            # Get the appropriate compiler path for the current file
+            compiler_path = helpers.getCompilerPath(os.path.basename(source_path))
+            
+            # Build the file with the correct compiler path
+            ninja_writer.build(outputs=[build_path], rule="compile", inputs=[source_path], variables={'compiler_path': compiler_path})
 
 def compileLibraries(libraries):
     compile_tasks = []

@@ -4,7 +4,19 @@ import hashlib
 import sys
 import pathlib
 
-COMPILER_PATH = pathlib.Path("compiler/nx/aarch64/bin/clang++.exe")
+COMPILER_391_PATH = pathlib.Path("compilers/391/nx/aarch64/bin/clang++.exe")
+COMPILER_800_PATH = pathlib.Path("compilers/800/nx/aarch64/bin/clang++.exe")
+
+# it looks like some files use different compilers...so looks like we have to support these exceptions
+EXCEPTION_FILES = {
+    "NerveAction.cpp": COMPILER_391_PATH
+}
+
+def getCompilerPath(filename):
+    if filename not in EXCEPTION_FILES:
+        return COMPILER_800_PATH
+
+    return EXCEPTION_FILES[filename]
 
 # gets the "module" (object file) that a symbol is contained in from map files
 def getModule(map, sym):

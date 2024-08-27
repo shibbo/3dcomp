@@ -174,4 +174,13 @@ namespace al {
         return !isEitherInvalid && al::isEqualString(tagGroupName, "TextAlign") &&
                al::isEqualString(tagName, "AlignCenter");
     }
+
+    // ...
+
+    const char* getSystemMessageString(const IUseMessageSystem* pMsg, const char* a2,
+                                       const char* a3) {
+        auto messageHolder = pMsg->getMessageSystem()->getSystemMessageHolder(a2, a3);
+        return (messageHolder != nullptr) ? messageHolder->getText(a3) : "NULL";
+    }
+
 };  // namespace al

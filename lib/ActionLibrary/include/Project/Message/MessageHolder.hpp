@@ -42,6 +42,7 @@ namespace al {
     class MessageSystem {
     public:
         MessageProjectEx* getMessageProject() const;
+        MessageHolder* getSystemMessageHolder(const char*, const char*) const;
 
         MessageProjectEx* mProject;  // 0x00
         u64 _8;

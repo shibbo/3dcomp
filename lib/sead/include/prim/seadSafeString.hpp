@@ -25,7 +25,7 @@ namespace sead {
     template <typename T>
     class BufferedSafeStringBase : public SafeStringBase<T> {
     public:
-        BufferedSafeStringBase(T* pBuf, s32 size) {
+        BufferedSafeStringBase(T* pBuf, s32 size) : SafeStringBase<T>(pBuf) {
             mBufferSize = size;
 
             if (size <= 0) {
@@ -38,13 +38,13 @@ namespace sead {
 
         T* getString() { return const_cast<T*>(this->mString); }
 
-        void clear() { getString()[0] = SafeStringBase<T>::cNullChar; }
+        inline void clear() { getString()[0] = this->cNullChar; }
 
         s32 formatV(const T*, std::va_list);
 
         ~BufferedSafeStringBase() override = default;
         void assureTerminationImpl_() const override;
-        BufferedSafeStringBase<T>& operator=(const SafeStringBase<T>&);
+        BufferedSafeStringBase<T>& operator=(const SafeStringBase<T>&) override;
 
         s32 mBufferSize;  // 0x10
     };

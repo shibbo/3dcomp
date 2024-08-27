@@ -185,6 +185,10 @@ for sym in funcs_to_check:
     orig_length = len(list(original_instrs))
     cust_length = len(list(custom_instructions))
 
+    if orig_length != cust_length:
+        print("Functions are different sizes.")
+        continue
+
     instr_equal = True
     regs_equal = True
 

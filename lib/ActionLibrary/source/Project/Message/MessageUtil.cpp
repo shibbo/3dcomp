@@ -58,4 +58,120 @@ namespace al {
         auto msgProj = msgSystem->getMessageProject();
         return msgProj->getTagNameByIndex(groupId, tagId);
     }
+
+    // ....
+
+    bool isMessageTagPictFont(const IUseMessageSystem* pMsg, s32 groupId) {
+        auto msgProj = pMsg->getMessageSystem()->getMessageProject();
+        auto tagGroupName = msgProj->getTagGroupNameByIndex(groupId);
+
+        if (tagGroupName != nullptr) {
+            return al::isEqualString(tagGroupName, "PictFont");
+        }
+
+        return false;
+    }
+
+    bool isMessageTagDeviceFont(const IUseMessageSystem* pMsg, s32 groupId) {
+        auto msgProj = pMsg->getMessageSystem()->getMessageProject();
+        auto tagGroupName = msgProj->getTagGroupNameByIndex(groupId);
+
+        if (tagGroupName != nullptr) {
+            return al::isEqualString(tagGroupName, "DeviceFont");
+        }
+
+        return false;
+    }
+
+    // ...
+
+    bool isMessageTagPadStyle(const IUseMessageSystem* pMsg, s32 groupId, s32 tagId) {
+        auto tagName =
+            pMsg->getMessageSystem()->getMessageProject()->getTagNameByIndex(groupId, tagId);
+        auto tagGroupName =
+            pMsg->getMessageSystem()->getMessageProject()->getTagGroupNameByIndex(groupId);
+
+        bool isEitherInvalid;
+
+        if (tagName != nullptr) {
+            isEitherInvalid = tagGroupName == nullptr;
+        } else {
+            isEitherInvalid = true;
+        }
+
+        return !isEitherInvalid && al::isEqualString(tagGroupName, "ProjectTag") &&
+               al::isEqualString(tagName, "PadStyle");
+    }
+
+    bool isMessageTagPadPair(const IUseMessageSystem* pMsg, s32 groupId, s32 tagId) {
+        auto tagName =
+            pMsg->getMessageSystem()->getMessageProject()->getTagNameByIndex(groupId, tagId);
+        auto tagGroupName =
+            pMsg->getMessageSystem()->getMessageProject()->getTagGroupNameByIndex(groupId);
+
+        bool isEitherInvalid;
+
+        if (tagName != nullptr) {
+            isEitherInvalid = tagGroupName == nullptr;
+        } else {
+            isEitherInvalid = true;
+        }
+
+        return !isEitherInvalid && al::isEqualString(tagGroupName, "ProjectTag") &&
+               al::isEqualString(tagName, "PadPair");
+    }
+
+    bool isMessageTagPadStyle2P(const IUseMessageSystem* pMsg, s32 groupId, s32 tagId) {
+        auto tagName =
+            pMsg->getMessageSystem()->getMessageProject()->getTagNameByIndex(groupId, tagId);
+        auto tagGroupName =
+            pMsg->getMessageSystem()->getMessageProject()->getTagGroupNameByIndex(groupId);
+
+        bool isEitherInvalid;
+
+        if (tagName != nullptr) {
+            isEitherInvalid = tagGroupName == nullptr;
+        } else {
+            isEitherInvalid = true;
+        }
+
+        return !isEitherInvalid && al::isEqualString(tagGroupName, "ProjectTag") &&
+               al::isEqualString(tagName, "PadStyle2P");
+    }
+
+    bool isMessageTagAlignLeft(const IUseMessageSystem* pMsg, s32 groupId, s32 tagId) {
+        auto tagName =
+            pMsg->getMessageSystem()->getMessageProject()->getTagNameByIndex(groupId, tagId);
+        auto tagGroupName =
+            pMsg->getMessageSystem()->getMessageProject()->getTagGroupNameByIndex(groupId);
+
+        bool isEitherInvalid;
+
+        if (tagName != nullptr) {
+            isEitherInvalid = tagGroupName == nullptr;
+        } else {
+            isEitherInvalid = true;
+        }
+
+        return !isEitherInvalid && al::isEqualString(tagGroupName, "TextAlign") &&
+               al::isEqualString(tagName, "AlignLeft");
+    }
+
+    bool isMessageTagAlignCenter(const IUseMessageSystem* pMsg, s32 groupId, s32 tagId) {
+        auto tagName =
+            pMsg->getMessageSystem()->getMessageProject()->getTagNameByIndex(groupId, tagId);
+        auto tagGroupName =
+            pMsg->getMessageSystem()->getMessageProject()->getTagGroupNameByIndex(groupId);
+
+        bool isEitherInvalid;
+
+        if (tagName != nullptr) {
+            isEitherInvalid = tagGroupName == nullptr;
+        } else {
+            isEitherInvalid = true;
+        }
+
+        return !isEitherInvalid && al::isEqualString(tagGroupName, "TextAlign") &&
+               al::isEqualString(tagName, "AlignCenter");
+    }
 };  // namespace al

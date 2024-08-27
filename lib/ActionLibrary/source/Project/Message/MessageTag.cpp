@@ -17,27 +17,29 @@ namespace al {
 
     MessageTag::MessageTag(const char16_t* pTag) {
         mTag = nullptr;
-        char16_t tag = *pTag;
 
-        if (tag == 15 || tag == 14) {
+        switch (*pTag) {
+        case 14:
             mTag = pTag;
-        } else {
+            break;
+        case 15:
+            mTag = pTag;
+            break;
+        default:
             mTag = nullptr;
         }
     }
 
-    /*
-    s8 MessageTag::getParam8(s32 idx) const {
+    /*s8 MessageTag::getParam8(s32 idx) const {
         return *(mTag + idx + 4);
-    }
+    }*/
 
     s16 MessageTag::getParam16(s32 idx) const {
         return *(mTag + idx + 4);
     }
 
-    s32 MessageTag::getParam32(s32 idx) const {
+    /*s32 MessageTag::getParam32(s32 idx) const {
         return (mTag + idx)[4];
-    }
-    */
+    }*/
 
 };  // namespace al

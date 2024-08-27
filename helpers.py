@@ -9,7 +9,8 @@ COMPILER_800_PATH = pathlib.Path("compilers/800/nx/aarch64/bin/clang++.exe")
 
 # it looks like some files use different compilers...so looks like we have to support these exceptions
 EXCEPTION_FILES = {
-    "NerveAction.cpp": COMPILER_391_PATH
+    "NerveAction.cpp": COMPILER_391_PATH,
+    "MessageTag.cpp": COMPILER_391_PATH
 }
 
 def getCompilerPath(filename):

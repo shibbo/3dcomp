@@ -3,6 +3,10 @@
 #include <libms/MessageSetBase.hpp>
 #include "Library/Resource/Resource.hpp"
 
+namespace sead {
+    class FrameHeap;
+};
+
 namespace al {
     class MessageHolder {
     public:
@@ -25,5 +29,21 @@ namespace al {
         u32 trySearchStyleIndexByLabel(const char*) const;
 
         sead::MessageSet<char16_t>* mMsgBase;  // 0x8
+    };
+
+    class MessageSystem;
+    class MessageProjectEx;
+
+    class IUseMessageSystem {
+    public:
+        virtual MessageSystem* getMessageSystem() const = 0;
+    };
+
+    class MessageSystem {
+    public:
+        MessageProjectEx* mProject;  // 0x00
+        u64 _8;
+        u64 _10;
+        sead::FrameHeap* mHeap;  // 0x18
     };
 };  // namespace al

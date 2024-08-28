@@ -1,7 +1,8 @@
+#include "Library/LiveActor/LiveActor.hpp"
 #include "Library/Actor/ActorAlphaCtrl.hpp"
 #include "Library/Actor/ActorInitInfo.hpp"
 #include "Library/Actor/ActorPoseFunction.hpp"
-#include "Library/Actor/ActorPoseKeeperBase.hpp"
+#include "Library/Actor/ActorPoseKeeper.hpp"
 #include "Library/Actor/ActorPoseUtil.hpp"
 #include "Library/Actor/ActorPrePassLightKeeper.hpp"
 #include "Library/Actor/ActorSceneInfo.hpp"
@@ -11,20 +12,19 @@
 #include "Library/Execute/ActorExecuteInfo.hpp"
 #include "Library/Execute/ActorSystemFunction.hpp"
 #include "Library/HitSensor/HitSensorKeeper.hpp"
-#include "Library/LiveActor/LiveActor.hpp"
 #include "Library/Item/ActorScoreKeeper.hpp"
 #include "Library/LiveActor/ActorPoseUtil.hpp"
 #include "Library/LiveActor/LiveActorFlag.hpp"
-#include "Library/LiveActor/LiveActorUtil.hpp"
 #include "Library/LiveActor/LiveActorFunction.hpp"
+#include "Library/LiveActor/LiveActorUtil.hpp"
 #include "Library/LiveActor/SubActorUtil.hpp"
-#include "Library/Model/alModelCafe.hpp"
 #include "Library/Model/ModelKeeper.hpp"
 #include "Library/Model/ModelUtil.hpp"
+#include "Library/Model/alModelCafe.hpp"
 #include "Library/Nerve/NerveKeeper.hpp"
 #include "Library/Placement/PlacementHolder.hpp"
 #include "Library/Screen/ScreenPointKeeper.hpp"
-#include "Library/Shadow/ShadowKeeper.hpp" 
+#include "Library/Shadow/ShadowKeeper.hpp"
 #include "Library/Shadow/ShadowUtil.hpp"
 #include "Project/Action/ActionSeCtrl.hpp"
 #include "Project/Action/ActorActionKeeper.hpp"
@@ -36,20 +36,20 @@
 #include "Project/Matrix/MatrixUtil.hpp"
 
 namespace al {
-    LiveActor::LiveActor(const char *pName) : mActorName(pName) {
+    LiveActor::LiveActor(const char* pName) : mActorName(pName) {
         mFarLodActor = nullptr;
         mActorFlags = new LiveActorFlag();
         mPlacementHolder = new PlacementHolder();
     }
 
-    LiveActor::~LiveActor() { 
+    LiveActor::~LiveActor() {
         if (mShadowKeeper != nullptr) {
             delete mShadowKeeper;
             mShadowKeeper = nullptr;
         }
-        
+
         if (mLightKeeper != nullptr) {
-            delete mLightKeeper; 
+            delete mLightKeeper;
             mLightKeeper = nullptr;
         }
     }
@@ -72,9 +72,7 @@ namespace al {
         }
     }
 
-    void LiveActor::reappear() {
-
-    }
+    void LiveActor::reappear() {}
 
     void LiveActor::makeActorAppeared() {
         if (mHitSensorKeeper != nullptr) {
@@ -106,7 +104,7 @@ namespace al {
         if (mHitSensorKeeper != nullptr) {
             mHitSensorKeeper->update();
         }
- 
+
         alClippingFunction::addToClippingTarget(this);
 
         if (mActorExecuteInfo != nullptr) {
@@ -136,7 +134,7 @@ namespace al {
     void LiveActor::kill() {
         makeActorDead();
     }
-    
+
     void LiveActor::killComplete(bool) {
         kill();
     }
@@ -208,8 +206,7 @@ namespace al {
             if (al::isDead(this)) {
                 return true;
             }
-        }
-        else {
+        } else {
             al::validateClipping(this);
             if (al::isDead(this)) {
                 return true;
@@ -237,7 +234,7 @@ namespace al {
             if (!al::isClipped(this)) {
                 startClipped();
             }
-            
+
             if (mCollisionParts != nullptr) {
                 mCollisionParts->invalidateBySystem();
             }
@@ -258,10 +255,10 @@ namespace al {
         return;
     }
 
-    void LiveActor::updateLinkedTrans(const sead::Vector3f &rVector) {
+    void LiveActor::updateLinkedTrans(const sead::Vector3f& rVector) {
         al::setTrans(this, rVector);
     }
-    
+
     // al::LiveActor::movementPaused
 
     inline void LiveActor::updateLOD() {
@@ -272,8 +269,7 @@ namespace al {
             if (al::isSingleMode(this)) {
                 return;
             }
-        }
-        else {
+        } else {
             isActiveDemo = false;
             if (al::isSingleMode(this)) {
                 return;
@@ -288,14 +284,11 @@ namespace al {
 
         if (al::isCollidedGround(this)) {
             name = al::getCollidedFloorMaterialCodeName(this);
-        }
-        else if (al::isCollidedWall(this)) {
+        } else if (al::isCollidedWall(this)) {
             name = al::getCollidedWallMaterialCodeName(this);
-        }
-        else if (al::isCollidedCeiling(this)) {
+        } else if (al::isCollidedCeiling(this)) {
             name = al::getCollidedCeilingMaterialCodeName(this);
-        }
-        else {
+        } else {
             return;
         }
 
@@ -383,7 +376,7 @@ namespace al {
                             mModelKeeper->mModelCafe->updateLast();
                             return;
                         }
-                        
+
                         return;
                     }
                 }
@@ -393,7 +386,8 @@ namespace al {
     */
 
     void LiveActor::calcAnim() {
-        if (!mActorFlags->mIsDead && (!mActorFlags->mIsClipped || mActorFlags->mIsDrawClipping) && !_140) {
+        if (!mActorFlags->mIsDead && (!mActorFlags->mIsClipped || mActorFlags->mIsDrawClipping) &&
+            !_140) {
             if (mActorPoseKeeper != nullptr) {
                 alLiveActorFunction::calcAnimDirect(this);
             }
@@ -509,12 +503,12 @@ namespace al {
 
     // al::LiveActor::endClipped
     // al::LiveActor::startClippedByLod
-    // al::LiveActor::endClippedByLod 
+    // al::LiveActor::endClippedByLod
 
-    void LiveActor::setGlobalYOffsetRef(f32 *pOffs) {
+    void LiveActor::setGlobalYOffsetRef(f32* pOffs) {
         LiveActor* curActor = this;
- 
-       do {
+
+        do {
             curActor->mGlobalYOffset = *pOffs;
 
             if (curActor->mModelKeeper != nullptr) {
@@ -526,7 +520,7 @@ namespace al {
             }
 
             curActor = curActor->mFarLodActor;
-       } while(curActor != nullptr);
+        } while (curActor != nullptr);
     }
 
     f32 LiveActor::getGlobalYOffset() const {
@@ -534,14 +528,14 @@ namespace al {
         return *ptr;
     }
 
-    void LiveActor::setFarLodActor(LiveActor *pFarLodActor) {
+    void LiveActor::setFarLodActor(LiveActor* pFarLodActor) {
         mFarLodActor = pFarLodActor;
     }
 
     void LiveActor::startFarLod() {
         if (!_140) {
             _140 = true;
-            
+
             if (mFarLodActor != nullptr && al::isClipped(mFarLodActor) && !al::isClipped(this)) {
                 mFarLodActor->endClipped();
                 alActorSystemFunction::addToExecutorDrawImmediate(mFarLodActor);
@@ -557,8 +551,7 @@ namespace al {
                         al::hideModelIfShow(this);
                     }
                 }
-            }
-            else {
+            } else {
                 startClippedByLod();
             }
         }
@@ -586,8 +579,7 @@ namespace al {
                         }
                     }
                 }
-            }
-            else {
+            } else {
                 endClippedByLod();
             }
         }
@@ -619,14 +611,15 @@ namespace al {
         return mActorSceneInfo->mCameraDirector;
     }
 
-    void LiveActor::initPoseKeeper(ActorPoseKeeperBase *pPoseKeeper) {
+    void LiveActor::initPoseKeeper(ActorPoseKeeperBase* pPoseKeeper) {
         mActorPoseKeeper = pPoseKeeper;
     }
 
     // al::LiveActor::initRailKeeper
 
     void LiveActor::initCollider(f32 radius, f32 offsetY, u32 numHitInfos) {
-        mCollider = new Collider(getCollisionDirector(), getBaseMtx(), &al::getTrans(this), &al::getGravity(this), radius, offsetY, numHitInfos);
+        mCollider = new Collider(getCollisionDirector(), getBaseMtx(), &al::getTrans(this),
+                                 &al::getGravity(this), radius, offsetY, numHitInfos);
         mActorFlags->mIsNoCollide = false;
     }
 
@@ -640,16 +633,16 @@ namespace al {
         mScoreKeeper = new ActorScoreKeeper();
     }
 
-    void LiveActor::initActorPrePassLightKeeper(ActorPrePassLightKeeper *pLightKeeper) {
+    void LiveActor::initActorPrePassLightKeeper(ActorPrePassLightKeeper* pLightKeeper) {
         mLightKeeper = pLightKeeper;
     }
 
-    void LiveActor::initSubActorKeeper(SubActorKeeper *pSubActorKeeper) {
+    void LiveActor::initSubActorKeeper(SubActorKeeper* pSubActorKeeper) {
         mSubActorKeeper = pSubActorKeeper;
         al::setSubActorAlphaPtr(this, &mGlobalAlphaLastFrame);
     }
 
-    void LiveActor::initSceneInfo(ActorSceneInfo *pSceneInfo) {
+    void LiveActor::initSceneInfo(ActorSceneInfo* pSceneInfo) {
         mActorSceneInfo = pSceneInfo;
     }
 
@@ -660,8 +653,7 @@ namespace al {
             if (mCollisionParts != nullptr) {
                 al::validateCollisionPartsBySystem(this);
             }
-        }
-        else {
+        } else {
             if (mCollider != nullptr) {
                 mCollider->onInvalidate();
             }
@@ -678,11 +670,11 @@ namespace al {
 
     // al::LiveActor::updateCollider
 
-    void LiveActor::setPlacementHolder(const ActorInitInfo &rInfo) {
+    void LiveActor::setPlacementHolder(const ActorInitInfo& rInfo) {
         mPlacementHolder->init(*rInfo.mPlacementInfo);
     }
 
-    void LiveActor::setGlobalAlphaPtr(f32 *pAlphaPtr) {
+    void LiveActor::setGlobalAlphaPtr(f32* pAlphaPtr) {
         if (mModelKeeper != nullptr) {
             mModelKeeper->setGlobalAlpha(pAlphaPtr);
         }
@@ -691,4 +683,4 @@ namespace al {
             al::setSubActorAlphaPtr(this, pAlphaPtr);
         }
     }
-}; 
+};  // namespace al

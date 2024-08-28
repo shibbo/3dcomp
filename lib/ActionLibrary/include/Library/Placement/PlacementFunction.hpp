@@ -30,6 +30,8 @@ namespace al {
     void getLinksInfoByIndex(PlacementInfo*, const ActorInitInfo&, const char*, s32);
 
     bool isEqualPlacementID(const PlacementInfo&, const PlacementInfo&);
+
+    bool isSingleMode(const ActorInitInfo&);
 };  // namespace al
 
 namespace alPlacementFunction {

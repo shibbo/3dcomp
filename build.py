@@ -35,7 +35,7 @@ LIBRARIES = ["Game", "ActionLibrary", "agl", "eui", "nn", "sead"]
 
 incdirs = " ".join([f'-I {dir}' for dir in INCLUDE_DIRS])
 
-COMPILER_CMD = f"-x c++ -O3 -fno-omit-frame-pointer -mno-implicit-float -fno-cxx-exceptions -fno-strict-aliasing -std=gnu++14 -fno-common -fno-short-enums -ffunction-sections -fdata-sections -fPIC -mcpu=cortex-a57+fp+simd+crypto+crc -g -Wall {nonmatching_str} {incdirs} -c"
+COMPILER_CMD = f"-x c++ -O3 -fno-omit-frame-pointer -mno-implicit-float -fno-cxx-exceptions -fno-strict-aliasing -std=gnu++14 -fno-common -fno-short-enums -ffunction-sections -fdata-sections -fPIC -mcpu=cortex-a57+fp+simd+crypto+crc -g -Wall -Wno-invalid-offsetof {nonmatching_str} {incdirs} -c"
 OBJDUMP_PATH = pathlib.Path("compilers/800/nx/aarch64/bin/llvm-objdump.exe")
 
 # if we don't have this file, create it

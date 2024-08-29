@@ -1,12 +1,19 @@
 #pragma once
 
-#include "math/seadMathBase.h"
+#include "math/seadMathBase.hpp"
 
 namespace sead {
     template <typename T>
     class Vector2 : public BaseVec2<T> {
     public:
         Vector2();
+
+        inline void scale(T scalar) {
+            this->x *= scalar;
+            this->y *= scalar;
+        }
+
+        inline T dot() const { return (this->x * this->x) + (this->y * this->y); }
     };
 
     template <typename T>
@@ -74,6 +81,10 @@ namespace sead {
             this->z /= rOther.z;
         }
 
+        inline T dot() const {
+            return (this->x * this->x) + (this->y * this->y) + (this->z * this->z);
+        }
+
         static inline void multScalar(Vector3<T>& rOut, const Vector3<T>& rLhs, T scalar) {
             rOut.x = rLhs.x * scalar;
             rOut.y = rLhs.y * scalar;
@@ -109,5 +120,6 @@ namespace sead {
         static const Vector3<T> ez;
     };
 
+    typedef sead::Vector2<float> Vector2f;
     typedef sead::Vector3<float> Vector3f;
 };  // namespace sead

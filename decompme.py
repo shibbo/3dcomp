@@ -56,7 +56,7 @@ if path == "":
 
 source_path = path.replace("build", "source")
 source_path = source_path.replace(".o", ".cpp")
-preproc_cmd = [helpers.COMPILER_PATH, "-E"] + incdirs.split() + [source_path]
+preproc_cmd = [helpers.COMPILER_800_PATH, "-E"] + incdirs.split() + [source_path]
 procOut = subprocess.check_output(preproc_cmd).decode("utf-8").replace("\r", "")
 
 procOut_Clean = ""

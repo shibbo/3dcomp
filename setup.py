@@ -49,26 +49,32 @@ except ModuleNotFoundError:
     print("Module 'colorama' not found. Installing...")
     install("colorama")
 
-if not os.path.exists("compiler"):
+if not os.path.exists("compilers") or not os.path.exists("tools"):
     print("Compilers folder not found, downloading...")
 
-    with urllib.request.urlopen("https://shibbo.net/3dw/3decomp-compilers.zip") as response, open("3decomp-compilers.zip", 'wb') as out:
+    with urllib.request.urlopen("https://shibbo.net/3dw/3decomp-tools.zip") as response, open("3decomp-tools.zip", 'wb') as out:
         data = response.read()
-        if hashlib.sha256(data).hexdigest().upper() != "DE253BC9846FD8097875A51CF7BA6DD2FD20EA482A988BD6EE6EA11D5A3E674E":
+        if hashlib.sha256(data).hexdigest().upper() != "3309D88F2D5499BC80BEFFF0D642C472754DB6BF439A8F48996FB98DA24E99EF":
             print("3decomp-compilers.zip corrupt")
             sys.exit(1)
         out.write(data)
 
-    if os.path.exists("3decomp-compilers.zip"):
+    if os.path.exists("3decomp-tools.zip"):
         print("Extracting file...")
-        with zipfile.ZipFile("3decomp-compilers.zip", "r") as zip:
+        with zipfile.ZipFile("3decomp-tools.zip", "r") as zip:
             zip.extractall()
 
-        os.remove("3decomp-compilers.zip")
+        os.remove("3decomp-tools.zip")
     else:
-        print("3decomp-compilers.zip failed to download.")
+        print("3decomp-tools.zip failed to download.")
         sys.exit(1)
 else:
     print("Found compiler folder...")
+
+if not os.path.exists("fury.elf"):
+    print("Converting NSO to ELF...")
+    subprocess.run(["tools/nx2elf.exe", "fury.nso"])
+else:
+    print("Found fury.elf...")
 
 print("Done.")

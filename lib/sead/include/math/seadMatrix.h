@@ -1,8 +1,13 @@
 #pragma once
 
-#include "math/seadMathBase.h"
+#include "math/seadMathBase.hpp"
 
 namespace sead {
+    template <typename T>
+    class Matrix33 : public BaseMtx33<T> {
+    public:
+    };
+
     template <typename T>
     class Matrix34 : public BaseMtx34<T> {
     public:
@@ -37,5 +42,6 @@ namespace sead {
         static Matrix34<T> ident;
     };
 
+    typedef Matrix33<float> Matrix33f;
     typedef Matrix34<float> Matrix34f;
 };  // namespace sead

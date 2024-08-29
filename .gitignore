@@ -8,6 +8,7 @@ __pycache__/*
 build.ninja
 lib/**/*.map
 map/*.map
+tools/*
 *.id0
 *.id1
 *.id2
@@ -16,3 +17,5 @@ map/*.map
 *.idb
 *.zip
 *.txt
+*.elf
+*.exe

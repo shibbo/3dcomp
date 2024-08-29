@@ -1,7 +1,7 @@
 #pragma once
 
 #include <types.hpp>
-#include "math/seadMathBase.h"
+#include "math/seadMathBase.hpp"
 
 namespace sead {
     template <typename T>

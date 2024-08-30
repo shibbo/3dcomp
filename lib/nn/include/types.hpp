@@ -12,3 +12,10 @@ typedef unsigned long u64;
 typedef signed long s64;
 typedef float f32;
 typedef double f64;
+
+// this is to get vscode to shut up about certain definitions
+#ifdef __INTELLISENSE__
+#define NN_ALIGNAS(alignment)
+#else
+#define NN_ALIGNAS(alignment) __attribute__((aligned(alignment)))
+#endif

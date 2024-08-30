@@ -27,6 +27,7 @@ INCLUDE_DIRS = [
     "lib/eui/include",
     "lib/nn/include",
     "lib/sead/include",
+    "lib/nvn/include",
     "compiler/nx/aarch64/include",
     "compiler/nx/aarch64/include/c++",
 ]

@@ -30,6 +30,7 @@ INCLUDE_DIRS = [
     "lib/nvn/include",
     "compiler/nx/aarch64/include",
     "compiler/nx/aarch64/include/c++",
+    "compiler/nx/aarch64/lib/clang/1.8.14/include"
 ]
 
 LIBRARIES = ["Game", "ActionLibrary", "agl", "eui", "nn", "sead"]

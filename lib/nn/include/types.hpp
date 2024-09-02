@@ -19,3 +19,9 @@ typedef double f64;
 #else
 #define NN_ALIGNAS(alignment) __attribute__((aligned(alignment)))
 #endif
+
+#ifdef __INTELLISENSE__
+#define NN_FORCEINLINE
+#else
+#define NN_FORCEINLINE __attribute__((always_inline)) inline
+#endif

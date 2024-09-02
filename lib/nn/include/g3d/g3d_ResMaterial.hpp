@@ -3,9 +3,17 @@
 #include <cstdio>
 #include "util/util_AccessorBase.hpp"
 #include "util/util_BinTypes.hpp"
+#include "util/util_MathTypes.hpp"
 
 namespace nn {
     namespace g3d {
+
+        struct Srt3d {
+            nn::util::Float3 scale;
+            nn::util::Float3 rotate;
+            nn::util::Float3 translate;
+        };
+
         struct ResShaderParamData {
             nn::util::BinPtr pCallback;
             nn::util::BinPtrToString pId;
@@ -56,12 +64,12 @@ namespace nn {
             };
 
             template <bool>
-            void Convert(void*, const void*);
+            void Convert(void*, const void*) const;
 
             static size_t GetSize(Type);
             static size_t GetSrcSize(Type);
             bool SetDependPointer(void*, const void*) const;
-            bool GetDependPointer(void**, const void*);
+            bool GetDependPointer(void**, const void*) const;
             static size_t ConvertSrt2dCallback(void*, const void*, const ResShaderParam*,
                                                const void*);
             static size_t ConvertSrt3dCallback(void*, const void*, const ResShaderParam*,

@@ -8,6 +8,8 @@ typedef struct NVNdevice NVNdevice;
 typedef struct NVNsamplerBuilder NVNsamplerBuilder;
 typedef struct NVNsampler NVNsampler;
 
+typedef struct NVNtextureBuilder NVNtextureBuilder;
+
 #define NVN_PRE_ALIGN(ALIGN)
 
 #ifdef __INTELLISENSE__
@@ -50,6 +52,10 @@ NVN_PRE_ALIGN(8) struct NVNsamplerBuilder {
 
 NVN_PRE_ALIGN(8) struct NVNsampler {
     char reserved[96];
+} NVN_POST_ALIGN(8);
+
+NVN_PRE_ALIGN(8) struct NVNtextureBuilder {
+    char reserved[128];
 } NVN_POST_ALIGN(8);
 
 typedef NVNboolean(NVNAPIENTRYP PFNNVNDEVICEINITIALIZEPROC)(NVNdevice* device,

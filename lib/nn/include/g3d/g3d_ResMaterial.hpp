@@ -1,9 +1,12 @@
 #pragma once
 
 #include <cstdio>
+#include "gfx/gfx_DescriptorSlot.hpp"
+#include "nn_BitTypes.hpp"
 #include "util/util_AccessorBase.hpp"
 #include "util/util_BinTypes.hpp"
 #include "util/util_MathTypes.hpp"
+#include "util/util_ResDic.hpp"
 
 namespace nn {
     namespace g3d {
@@ -12,6 +15,25 @@ namespace nn {
             nn::util::Float3 scale;
             nn::util::Float3 rotate;
             nn::util::Float3 translate;
+        };
+
+        struct ResRenderInfoData {
+            nn::util::BinPtrToString pName;
+
+            union {
+                nn::util::BinTPtr<int32_t> intValueArray;
+                nn::util::BinTPtr<float> floatValueArray;
+                nn::util::BinTPtr<nn::util::BinPtrToString> stringArray;
+            };
+
+            uint16_t arrayLength;
+            uint8_t type;
+            uint8_t res[5];
+        };
+
+        class ResRenderInfo : public nn::util::AccessorBase<ResRenderInfoData> {
+        public:
+            enum Type { Type_Int, Type_Float, Type_String };
         };
 
         struct ResShaderParamData {
@@ -78,8 +100,51 @@ namespace nn {
                                                  const void*);
         };
 
-        static size_t ConvertTexSrtCallback(void*, const void*, const ResShaderParam*, const void*);
-        static size_t ConvertTexSrtExCallback(void*, const void*, const ResShaderParam*,
-                                              const void*);
+        struct ResShaderAssignData {
+            nn::util::BinPtrToString pShaderArchiveName;
+            nn::util::BinPtrToString pShadingModelName;
+            nn::util::BinTPtr<nn::util::BinPtrToString> pAttrAssignArray;
+            nn::util::BinTPtr<nn::util::ResDic> pAttrAssignDic;
+            nn::util::BinTPtr<nn::util::BinPtrToString> pSamplerAssignArray;
+            nn::util::BinTPtr<nn::util::ResDic> pSamplerAssignDic;
+            nn::util::BinTPtr<nn::util::BinPtrToString> pShaderOptionArray;
+            nn::util::BinTPtr<nn::util::ResDic> pShaderOptionDic;
+            uint32_t revision;
+            uint8_t attrAssignCount;
+            uint8_t samplerAssignCount;
+            uint16_t shaderOptionCount;
+        };
+
+        // static size_t ConvertTexSrtCallback(void*, const void*, const ResShaderParam*, const
+        // void*); static size_t ConvertTexSrtExCallback(void*, const void*, const ResShaderParam*,
+        //                                      const void*);
+
+        struct ResShaderAssignData {
+            nn::util::BinPtrToString pShaderArchiveName;
+            nn::util::BinPtrToString pShadingModelName;
+            nn::util::BinTPtr<nn::util::BinPtrToString> pAttrAssignArray;
+            nn::util::BinTPtr<nn::util::ResDic> pAttrAssignDic;
+            nn::util::BinTPtr<nn::util::BinPtrToString> pSamplerAssignArray;
+            nn::util::BinTPtr<nn::util::ResDic> pSamplerAssignDic;
+            nn::util::BinTPtr<nn::util::BinPtrToString> pShaderOptionArray;
+            nn::util::BinTPtr<nn::util::ResDic> pShaderOptionDic;
+            uint32_t revision;
+            uint8_t attrAssignCount;
+            uint8_t samplerAssignCount;
+            uint16_t shaderOptionCount;
+        };
+
+        class ResShaderAssign : public nn::util::AccessorBase<ResShaderAssignData> {
+        public:
+        };
+
+        struct ResMaterialData {
+            nn::util::BinBlockSignature signature;
+            Bit32 flag;
+            nn::util::BinPtrToString pName;
+            nn::util::BinTPtr<ResRenderInfo> pRenderInfoArray;
+            nn::util::BinTPtr<nn::util::ResDic> pRenderInfoDic;
+            nn::util::BinTPtr<ResShaderAssign> pShaderAssign;
+        };
     };  // namespace g3d
 };  // namespace nn

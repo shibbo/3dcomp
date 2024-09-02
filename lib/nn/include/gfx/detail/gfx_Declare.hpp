@@ -8,12 +8,18 @@ namespace nn {
         template <typename TTarget>
         struct DeviceImplData;
 
+        template <typename TTarget>
+        struct TextureInfoImplData;
+
         namespace detail {
             template <typename TTarget>
             class MemoryPoolImpl;
 
             template <typename TTarget>
             class DeviceImpl;
+
+            template <typename TTarget>
+            class TextureInfoImpl;
         };  // namespace detail
 
     };  // namespace gfx

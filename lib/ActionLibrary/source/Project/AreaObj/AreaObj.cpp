@@ -1,7 +1,7 @@
 #include "Project/AreaObj/AreaObj.hpp"
 #include "Library/Placement/PlacementFunction.hpp"
+#include "Library/Stage/StageSwitchFunction.hpp"
 #include "Library/Stage/StageSwitchKeeper.hpp"
-#include "Library/Stage/SwitchUtil.hpp"
 #include "Library/Thread/Functor.hpp"
 #include "Project/AreaObj/AreaShapeCube.hpp"
 #include "Project/AreaObj/AreaShapeCylinder.hpp"

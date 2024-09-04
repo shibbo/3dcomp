@@ -7,6 +7,7 @@
 namespace al {
     class ActorInitInfo;
     class PlacementInfo;
+    class PlacementId;
 
     bool tryGetZoneMatrixTR(sead::Matrix34f*, const ActorInitInfo&);
     bool tryGetZoneID(s32*, const PlacementInfo&);
@@ -25,13 +26,28 @@ namespace al {
 
     s32 calcLinkChildNum(const PlacementInfo&, const char*);
 
+    s32 calcLinkCountClassName(const PlacementInfo&, const char*);
+
     void getLinksInfo(PlacementInfo*, const PlacementInfo&, const char*);
 
     void getLinksInfoByIndex(PlacementInfo*, const ActorInitInfo&, const char*, s32);
 
+    bool tryGetPlacementInfoByKey(PlacementInfo*, const PlacementInfo&, const char*);
+
     bool isEqualPlacementID(const PlacementInfo&, const PlacementInfo&);
 
     bool isSingleMode(const ActorInitInfo&);
+
+    s32 getCountPlacementInfo(const PlacementInfo&);
+
+    bool tryGetPlacementID(PlacementId*, const PlacementInfo&);
+
+    bool tryGetPlacementInfoAndKeyNameByIndex(PlacementInfo*, const char**, const PlacementInfo&,
+                                              s32);
+
+    bool tryGetPlacementInfoByIndex(PlacementInfo*, const PlacementInfo&, s32);
+
+    bool isClassName(const PlacementInfo&, const char*);
 };  // namespace al
 
 namespace alPlacementFunction {

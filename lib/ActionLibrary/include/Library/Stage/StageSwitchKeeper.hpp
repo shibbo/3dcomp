@@ -13,6 +13,7 @@ namespace al {
 
         void init(StageSwitchDirector*, const PlacementInfo&);
         StageSwitchAccesser* tryGetStageSwitchAccesser(const char*) const;
+        bool isUsingSwitchNo(s32);
 
         StageSwitchAccesser* mAccessors = nullptr;  // 0x00
         s32 mLinkCount = 0;                         // 0x8

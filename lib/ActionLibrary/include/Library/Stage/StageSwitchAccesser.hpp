@@ -21,7 +21,7 @@ namespace al {
         void* _8;
         const char* mName;  // 0x10
         u64 _18;
-        s32 _20;
+        s32 mSwitchNo;  // 0x20
         s32 _24;
         bool _28;
     };

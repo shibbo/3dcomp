@@ -45,4 +45,14 @@ namespace al {
 
         return nullptr;
     }
+
+    bool StageSwitchKeeper::isUsingSwitchNo(s32 switchNo) {
+        for (s32 i = 0; i < mLinkCount; i++) {
+            if (mAccessors[i].mSwitchNo == switchNo) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 };  // namespace al

@@ -20,4 +20,13 @@ namespace al {
             va_end(va_args);
         }
     };
+
+    class MatchStr {
+    public:
+        inline MatchStr(const char* pStr) { mStr = pStr; }
+
+        const char* mStr;  // 0x00
+    };
+
+    bool isMatchString(const char*, const MatchStr&);
 };  // namespace al

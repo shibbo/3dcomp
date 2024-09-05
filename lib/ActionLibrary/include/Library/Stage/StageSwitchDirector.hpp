@@ -7,10 +7,19 @@ namespace al {
     class StageSwitchWatcherHolder;
     class StageSwitchInfo;
     class CameraDirector_RS;
+    class StageSwitchAccesser;
 
     class StageSwitchDirector : public IUseExecutor {
     public:
         virtual void execute();
+
+        s32 useSwitch(const StageSwitchAccesser*);
+
+        void onSwitch(const StageSwitchAccesser*);
+        void offSwitch(const StageSwitchAccesser*);
+        bool isOnSwitch(const StageSwitchAccesser*) const;
+        void instantUpdate(StageSwitchAccesser*);
+        void addListener(StageSwitchListener*, StageSwitchAccesser*);
 
         StageSwitchInfo** mSwitchInfos;  // 0x8
         int _10;

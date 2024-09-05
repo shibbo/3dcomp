@@ -62,7 +62,7 @@ def genProgress():
     prog_major = (nm_major_funcs_size / TOTAL_GAME_SIZE) * 100.0
     prog_total = prog + prog_minor + prog_major
     total_size = done_size + nm_minor_funcs_size + nm_major_funcs_size
-    func_prog = (done_funcs / total_funcs)
+    func_prog = (done_funcs / total_funcs) * 100.0
     print(f"Functions: {truncate(func_prog, 4)}% [{done_funcs} / {total_funcs}]")
     print(f"{Fore.BLUE}decompiled:{Style.RESET_ALL} {truncate(prog_total, 4)}% [{total_size} / {TOTAL_GAME_SIZE}]")
     print(f"{Fore.GREEN}matching:{Style.RESET_ALL} {truncate(prog, 4)}% [{done_size} / {TOTAL_GAME_SIZE}]")

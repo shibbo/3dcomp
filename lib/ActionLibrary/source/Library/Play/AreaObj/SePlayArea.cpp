@@ -1,4 +1,4 @@
-#include "Project/Play/AreaObj/SePlayArea.hpp"
+#include "Library/Play/AreaObj/SePlayArea.hpp"
 #include "Project/AreaObj/AreaObjUtil.hpp"
 
 namespace al {

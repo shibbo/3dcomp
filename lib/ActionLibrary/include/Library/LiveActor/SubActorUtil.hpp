@@ -16,4 +16,6 @@ namespace al {
     void offSyncClippingSubActorAll(LiveActor*);
     void onSyncClippingSubActor(LiveActor*, const LiveActor*);
     void onSyncClippingSubActorAll(LiveActor*);
+
+    void registerSubActorSyncClipping(LiveActor*, LiveActor*, bool);
 };  // namespace al

@@ -48,6 +48,8 @@ namespace al {
                                               s32);
 
     bool tryGetPlacementInfoByIndex(PlacementInfo*, const PlacementInfo&, s32);
+
+    s32 calcLinkChildNum(const ActorInitInfo&, const char*);
 };  // namespace al
 
 namespace alPlacementFunction {

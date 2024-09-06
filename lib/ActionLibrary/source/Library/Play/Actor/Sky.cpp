@@ -1,9 +1,6 @@
 #include "Library/Play/Actor/Sky.hpp"
 #include "Library/Actor/ActorInitInfo.hpp"
-#include "Library/Actor/ActorPoseUtil.hpp"
-#include "Library/Clipping/ClippingUtil.hpp"
-#include "Library/Placement/PlacementFunction.hpp"
-#include "Project/Camera/CameraUtil.hpp"
+#include "Util.hpp"
 
 namespace al {
     Sky::Sky(const char* pName) : LiveActor(pName) {}

@@ -1,8 +1,10 @@
 #pragma once
 
+#include <types.hpp>
 #include "Library/Execute/IUseExecutor.hpp"
 
 namespace al {
+    class StageSwitchListener;
     class StageSwitchListenerHolder;
     class StageSwitchWatcherHolder;
     class StageSwitchInfo;

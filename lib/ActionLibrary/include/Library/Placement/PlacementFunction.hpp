@@ -18,6 +18,8 @@ namespace al {
 
     bool tryGetArg(bool*, const PlacementInfo&, const char*);
 
+    bool tryGetArg(bool*, const ActorInitInfo&, const char*);
+
     bool tryGetScale(sead::Vector3f*, const PlacementInfo&);
 
     bool tryGetMatrixTR(sead::Matrix34f*, const PlacementInfo&);

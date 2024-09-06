@@ -5,6 +5,7 @@
 #include <types.hpp>
 #include "Library/HostIO/IUseHioNode.hpp"
 #include "Library/Nerve/IUseNerve.hpp"
+#include "Library/Nerve/Nerve.hpp"
 #include "Library/Scene/IUseSceneObjHolder.hpp"
 #include "Library/Stage/IUseStageSwitch.hpp"
 #include "Project/AreaObj/IUseAreaObj.hpp"

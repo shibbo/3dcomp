@@ -18,6 +18,11 @@ namespace al {
         const Nerve* getCurrentNerve() const;
         void initNerveAction(NerveActionCtrl*);
 
+        template <class T>
+        T* getParent() {
+            return static_cast<T*>(mKeeperUser);
+        }
+
         IUseNerve* mKeeperUser;   // 0x00
         const Nerve* mLastNerve;  // 0x08
         const Nerve* mNerve;      // 0x10

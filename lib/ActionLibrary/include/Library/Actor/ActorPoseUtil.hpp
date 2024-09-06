@@ -14,6 +14,8 @@ namespace al {
     void makeMtxSRT(sead::Matrix34f*, const LiveActor*);
     void makeMtxRT(sead::Matrix34f*, const LiveActor*);
 
+    void multVecPose(sead::Vector3f*, const LiveActor*, const sead::Vector3f&);
+
     const sead::Vector3f& getGravity(const LiveActor*);
     sead::Vector3f& getTrans(const LiveActor*);
     const sead::Vector3f& getScale(const LiveActor*);

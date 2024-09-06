@@ -119,21 +119,6 @@ namespace nn {
         // void*); static size_t ConvertTexSrtExCallback(void*, const void*, const ResShaderParam*,
         //                                      const void*);
 
-        struct ResShaderAssignData {
-            nn::util::BinPtrToString pShaderArchiveName;
-            nn::util::BinPtrToString pShadingModelName;
-            nn::util::BinTPtr<nn::util::BinPtrToString> pAttrAssignArray;
-            nn::util::BinTPtr<nn::util::ResDic> pAttrAssignDic;
-            nn::util::BinTPtr<nn::util::BinPtrToString> pSamplerAssignArray;
-            nn::util::BinTPtr<nn::util::ResDic> pSamplerAssignDic;
-            nn::util::BinTPtr<nn::util::BinPtrToString> pShaderOptionArray;
-            nn::util::BinTPtr<nn::util::ResDic> pShaderOptionDic;
-            uint32_t revision;
-            uint8_t attrAssignCount;
-            uint8_t samplerAssignCount;
-            uint16_t shaderOptionCount;
-        };
-
         class ResShaderAssign : public nn::util::AccessorBase<ResShaderAssignData> {
         public:
         };

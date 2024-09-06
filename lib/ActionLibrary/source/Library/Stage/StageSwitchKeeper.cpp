@@ -1,6 +1,7 @@
 #include "Library/Stage/StageSwitchKeeper.hpp"
 #include "Library/Placement/PlacementFunction.hpp"
 #include "Library/Placement/PlacementId.hpp"
+#include "Library/Placement/PlacementUtil.hpp"
 #include "Library/Stage/StageSwitchAccesser.hpp"
 #include "Project/Base/StringUtil.hpp"
 

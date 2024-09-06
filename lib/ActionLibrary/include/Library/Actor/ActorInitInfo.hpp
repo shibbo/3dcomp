@@ -31,6 +31,7 @@ namespace al {
     class PlacementId;
     class LiveActorGroup;
     class Nerve;
+    class LiveActor;
 
     class ActorInitInfo {
     public:

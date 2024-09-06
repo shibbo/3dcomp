@@ -71,7 +71,7 @@ def genProgress():
     
 
     print("Generating JSON...")
-    genJSON(prog_total, "decompiled", "decompiled", "blue")
+    genJSON(func_prog, "decompiled", "decompiled", "blue")
 
 objs_to_check = []
 funcs_to_check = []

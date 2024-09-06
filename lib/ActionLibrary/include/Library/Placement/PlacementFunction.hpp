@@ -48,8 +48,6 @@ namespace al {
                                               s32);
 
     bool tryGetPlacementInfoByIndex(PlacementInfo*, const PlacementInfo&, s32);
-
-    bool isClassName(const PlacementInfo&, const char*);
 };  // namespace al
 
 namespace alPlacementFunction {

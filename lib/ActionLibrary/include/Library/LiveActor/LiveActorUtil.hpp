@@ -3,7 +3,11 @@
 namespace al {
     class LiveActor;
 
+    bool isAlive(const LiveActor*);
     bool isDead(const LiveActor*);
+    bool isDeadAlive(const LiveActor*);
+    bool isCountAsAlive(LiveActor*);
+    bool isNoCollide(const LiveActor*);
 
     bool isClipped(const LiveActor*);
 

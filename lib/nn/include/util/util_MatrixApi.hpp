@@ -8,37 +8,41 @@
 namespace nn {
     namespace util {
 
-        NN_FORCEINLINE float32x4x4_t MatrixRowMajor4x3fSetScaleRotateXyz(
-            float32x4x4_t matrix, float32x4_t scale, float32x4_t rotationRadian);
+        NN_FORCEINLINE float32x4x4_t MatrixRowMajor4x3fSetScaleRotateXyz(float32x4x4_t matrix, float32x4_t scale, float32x4_t rotationRadian);
 
-        NN_FORCEINLINE float32x4x4_t MatrixRowMajor4x3fSetTranslate(float32x4x4_t matrix,
-                                                                    float32x4_t translate);
+        NN_FORCEINLINE float32x4x4_t MatrixRowMajor4x3fSetTranslate(float32x4x4_t matrix, float32x4_t translate);
 
-        NN_FORCEINLINE void MatrixRowMajor4x3fStore(FloatColumnMajor4x3* pOutValue,
-                                                    float32x4x4_t source);
+        NN_FORCEINLINE void MatrixRowMajor4x3fStore(FloatColumnMajor4x3* pOutValue, float32x4x4_t source);
 
-        NN_FORCEINLINE void MatrixSetScaleRotateXyz(MatrixRowMajor4x3fType* pOutValue,
-                                                    const Vector3fType& scale,
+        NN_FORCEINLINE float32x4x4_t MatrixRowMajor4x3fIdentity();
+
+        NN_FORCEINLINE float32x4x3_t MatrixColumnMajor4x3fIdentity();
+
+        NN_FORCEINLINE void MatrixSetScaleRotateXyz(MatrixRowMajor4x3fType* pOutValue, const Vector3fType& scale,
                                                     const Vector3fType& rotationRadian) {
-            pOutValue->_m =
-                MatrixRowMajor4x3fSetScaleRotateXyz(pOutValue->_m, scale._v, rotationRadian._v);
+            pOutValue->_m = MatrixRowMajor4x3fSetScaleRotateXyz(pOutValue->_m, scale._v, rotationRadian._v);
         }
 
-        NN_FORCEINLINE void MatrixSetTranslate(MatrixRowMajor4x3fType* pOutValue,
-                                               const Vector3fType& translate) {
+        NN_FORCEINLINE void MatrixSetTranslate(MatrixRowMajor4x3fType* pOutValue, const Vector3fType& translate) {
             pOutValue->_m = MatrixRowMajor4x3fSetTranslate(pOutValue->_m, translate._v);
         }
 
-        NN_FORCEINLINE void MatrixStore(FloatColumnMajor4x3* pOutValue,
-                                        const MatrixRowMajor4x3fType& source) {
+        NN_FORCEINLINE void MatrixStore(FloatColumnMajor4x3* pOutValue, const MatrixRowMajor4x3fType& source) {
             MatrixRowMajor4x3fStore(pOutValue, source._m);
+        }
+
+        NN_FORCEINLINE void MatrixIdentity(MatrixRowMajor4x3fType* pOutValue) {
+            pOutValue->_m = MatrixRowMajor4x3fIdentity();
+        }
+
+        NN_FORCEINLINE void MatrixIdentity(MatrixColumnMajor4x3fType* pOutValue) {
+            pOutValue->_m = MatrixColumnMajor4x3fIdentity();
         }
 
         /* the sdk has a million wrappers due to the multiple variations of functions supported */
         /* we are not doing that. we are writing only the neon version */
 
-        NN_FORCEINLINE float32x4x4_t MatrixRowMajor4x3fSetScaleRotateXyz(
-            float32x4x4_t matrix, float32x4_t scale, float32x4_t rotationRadian) {
+        NN_FORCEINLINE float32x4x4_t MatrixRowMajor4x3fSetScaleRotateXyz(float32x4x4_t matrix, float32x4_t scale, float32x4_t rotationRadian) {
             float32x4_t vSinRadian, vCosRadian;
             Vector4fSinCos(&vSinRadian, &vCosRadian, rotationRadian);
 
@@ -65,12 +69,10 @@ namespace nn {
             float32x4_t NegativeOneOne = Vector4fSet(-1.f, 1.f, 0.f, 0.f);
             float32x4_t OneNegativeOne = Vector4fSet(1.f, -1.f, 0.f, 0.f);
 
-            float32x4_t row1 = vaddq_f32(vmulq_n_f32(sinYsinYOne_x_cosZsinZcosY, sinX),
-                                         vmulq_f32(NegativeOneOne, vmulq_n_f32(sinZcosZ, cosX)));
+            float32x4_t row1 = vaddq_f32(vmulq_n_f32(sinYsinYOne_x_cosZsinZcosY, sinX), vmulq_f32(NegativeOneOne, vmulq_n_f32(sinZcosZ, cosX)));
             vResult.val[1] = vmulq_n_f32(row1, Vector4fGetY(scale));
 
-            float32x4_t row2 = vaddq_f32(vmulq_n_f32(sinYsinYOne_x_cosZsinZcosY, cosX),
-                                         vmulq_f32(OneNegativeOne, vmulq_n_f32(sinZcosZ, sinX)));
+            float32x4_t row2 = vaddq_f32(vmulq_n_f32(sinYsinYOne_x_cosZsinZcosY, cosX), vmulq_f32(OneNegativeOne, vmulq_n_f32(sinZcosZ, sinX)));
             vResult.val[2] = vmulq_n_f32(row2, Vector4fGetZ(scale));
 
             vResult.val[3] = matrix.val[3];
@@ -78,8 +80,7 @@ namespace nn {
             return vResult;
         }
 
-        NN_FORCEINLINE float32x4x4_t MatrixRowMajor4x3fSetTranslate(float32x4x4_t matrix,
-                                                                    float32x4_t translate) {
+        NN_FORCEINLINE float32x4x4_t MatrixRowMajor4x3fSetTranslate(float32x4x4_t matrix, float32x4_t translate) {
             float32x4x4_t vResult;
             vResult.val[0] = matrix.val[0];
             vResult.val[1] = matrix.val[1];
@@ -104,13 +105,35 @@ namespace nn {
             return vResult;
         }
 
-        NN_FORCEINLINE void MatrixRowMajor4x3fStore(FloatColumnMajor4x3* pOutValue,
-                                                    float32x4x4_t source) {
+        NN_FORCEINLINE void MatrixRowMajor4x3fStore(FloatColumnMajor4x3* pOutValue, float32x4x4_t source) {
             float32x4x4_t matrixT = Matrix4x4fTranspose(source);
 
             Vector4fStore(pOutValue->m[0], matrixT.val[0]);
             Vector4fStore(pOutValue->m[1], matrixT.val[1]);
             Vector4fStore(pOutValue->m[2], matrixT.val[2]);
+        }
+
+        NN_FORCEINLINE float32x4x4_t MatrixRowMajor4x3fIdentity() {
+            float32x4_t vZero = Vector4fZero();
+
+            float32x4x4_t vResult;
+            vResult.val[0] = Vector4fSetX(vZero, 1.f);
+            vResult.val[1] = Vector4fSetY(vZero, 1.f);
+            vResult.val[2] = Vector4fSetZ(vZero, 1.f);
+            vResult.val[3] = vZero;
+
+            return vResult;
+        }
+
+        NN_FORCEINLINE float32x4x3_t MatrixColumnMajor4x3fIdentity() {
+            float32x4_t vZero = Vector4fZero();
+
+            float32x4x3_t vResult;
+            vResult.val[0] = Vector4fSetX(vZero, 1.f);
+            vResult.val[1] = Vector4fSetY(vZero, 1.f);
+            vResult.val[2] = Vector4fSetZ(vZero, 1.f);
+
+            return vResult;
         }
 
     };  // namespace util

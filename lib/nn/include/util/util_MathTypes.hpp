@@ -13,6 +13,17 @@ namespace nn {
             uint8_t v[4];
         };
 
+        struct Float2 {
+            union {
+                float v[2];
+
+                struct {
+                    float x;
+                    float y;
+                };
+            };
+        };
+
         struct Float3 {
             union {
                 float v[3];

@@ -5,6 +5,8 @@
 #include <math/seadVector.h>
 
 namespace al {
+    class LiveActor;
+
     class MtxConnector {
     public:
         MtxConnector();
@@ -24,4 +26,12 @@ namespace al {
         sead::Quatf _40;
         sead::Vector3f _50;
     };
+
+    MtxConnector* createMtxConnector(const LiveActor*);
+
+    void attachMtxConnectorToCollision(MtxConnector*, const LiveActor*, bool);
+
+    sead::Vector3f& getConnectBaseTrans(const MtxConnector*);
+
+    void connectPoseTrans(LiveActor*, const MtxConnector*, const sead::Vector3f&);
 };  // namespace al

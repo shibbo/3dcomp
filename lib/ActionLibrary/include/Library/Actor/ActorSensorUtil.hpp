@@ -13,4 +13,12 @@ namespace al {
 
     bool isMsgFloorTouch(const SensorMsg*);
 
+    bool isMsgAskSafetyPoint(const SensorMsg*);
+
+    bool isMsgHideModel(const SensorMsg*);
+
+    bool isMsgSink(const SensorMsg*);
+
+    bool isMsgShowModel(const SensorMsg*);
+
 };  // namespace al

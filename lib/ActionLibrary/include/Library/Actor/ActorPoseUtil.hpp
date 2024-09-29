@@ -1,6 +1,7 @@
 #pragma once
 
 #include <math/seadMatrix.h>
+#include <math/seadQuat.h>
 #include <math/seadVector.h>
 #include <types.hpp>
 
@@ -44,5 +45,7 @@ namespace al {
     void setScaleX(LiveActor*, f32);
     void setScaleY(LiveActor*, f32);
     void setScaleZ(LiveActor*, f32);
+
+    sead::Quatf* getQuatPtr(LiveActor*);
 
 };  // namespace al

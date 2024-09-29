@@ -9,6 +9,7 @@
 #include "Library/Clipping/ClippingUtil.hpp"
 #include "Library/Execute/ActorSystemFunction.hpp"
 #include "Library/Item/ActorItemFunction.hpp"
+#include "Library/Key/KeyPoseUtil.hpp"
 #include "Library/LiveActor/ActorActionFunction.hpp"
 #include "Library/LiveActor/ActorAnimFunction.hpp"
 #include "Library/LiveActor/ActorMovementFunction.hpp"

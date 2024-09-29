@@ -14,7 +14,7 @@ namespace al {
 
     bool tryGetArg(s32*, const ActorInitInfo&, const char*);
     bool tryGetArg(s32*, const PlacementInfo&, const char*);
-
+    bool tryGetArg(f32*, const ActorInitInfo&, const char*);
     bool tryGetArg(f32*, const PlacementInfo&, const char*);
 
     bool tryGetArg(bool*, const PlacementInfo&, const char*);

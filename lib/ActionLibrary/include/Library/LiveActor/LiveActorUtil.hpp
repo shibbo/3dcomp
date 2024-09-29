@@ -1,6 +1,7 @@
 #pragma once
 
 namespace al {
+    class ActorInitInfo;
     class LiveActor;
 
     bool isAlive(const LiveActor*);
@@ -17,4 +18,6 @@ namespace al {
 
     void invalidateClipping(LiveActor*);
     void validateClipping(LiveActor*);
+
+    void initMapPartsActor(LiveActor*, const ActorInitInfo&, const char*, s32);
 };  // namespace al

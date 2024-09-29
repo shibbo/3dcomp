@@ -12,6 +12,7 @@ namespace al {
     bool tryGetZoneMatrixTR(sead::Matrix34f*, const ActorInitInfo&);
     bool tryGetZoneID(s32*, const PlacementInfo&);
 
+    bool tryGetArg(s32*, const ActorInitInfo&, const char*);
     bool tryGetArg(s32*, const PlacementInfo&, const char*);
 
     bool tryGetArg(f32*, const PlacementInfo&, const char*);
@@ -44,8 +45,7 @@ namespace al {
 
     bool tryGetPlacementID(PlacementId*, const PlacementInfo&);
 
-    bool tryGetPlacementInfoAndKeyNameByIndex(PlacementInfo*, const char**, const PlacementInfo&,
-                                              s32);
+    bool tryGetPlacementInfoAndKeyNameByIndex(PlacementInfo*, const char**, const PlacementInfo&, s32);
 
     bool tryGetPlacementInfoByIndex(PlacementInfo*, const PlacementInfo&, s32);
 

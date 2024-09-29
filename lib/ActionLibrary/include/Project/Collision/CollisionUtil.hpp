@@ -9,8 +9,17 @@ namespace al {
     bool isCollidedWall(const LiveActor*);
     bool isCollidedCeiling(const LiveActor*);
 
+    void validateCollisionParts(LiveActor*);
+    void invalidateCollisionParts(LiveActor*);
+
     void validateCollisionPartsBySystem(LiveActor*);
     void invalidateCollisionPartsBySystem(LiveActor*);
+
+    void validateAllCollisionParts(LiveActor*);
+    void invalidateAllCollisionParts(LiveActor*);
+    void disableAllCollisionParts(LiveActor*);
+    void enableAllCollisionParts(LiveActor*);
+    bool isValidCollisionParts(const LiveActor*);
 
     void syncCollisionMtx(LiveActor*, const sead::Matrix34f&);
 

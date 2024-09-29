@@ -126,7 +126,7 @@ for sym in funcs_to_check:
 
     if path == "":
         print("Unable to find symbol.")
-        sys.exit(1)
+        continue
 
     functionSize, functionAddr = helpers.getFunctionSizeAndAddr(sym)
     funcData = helpers.getFunctionData(functionAddr, functionSize)

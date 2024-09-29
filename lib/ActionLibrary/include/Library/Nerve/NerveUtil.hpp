@@ -26,4 +26,6 @@ namespace al {
     f32 calcNerveEaseInRate(const IUseNerve*, s32);
     f32 calcNerveEaseInRate(const IUseNerve*, s32, s32);
 
+    f32 calcNerveValue(const IUseNerve *, s32, f32, f32);
+
 };  // namespace al

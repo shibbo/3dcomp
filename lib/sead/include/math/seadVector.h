@@ -31,6 +31,10 @@ namespace sead {
             return out;
         }
 
+        friend Vector3 operator*(T mult, const Vector3& vec) {
+            return operator*(vec, mult);
+        }
+
         friend Vector3 operator+(const Vector3& a, const Vector3& b) {
             Vector3 o;
             add(o, a, b);
@@ -117,6 +121,7 @@ namespace sead {
         }
 
         static Vector3<T> zero;
+        static const Vector3<T> ey;
         static const Vector3<T> ez;
     };
 

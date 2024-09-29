@@ -11,6 +11,9 @@ namespace al {
 
     bool isHideModel(const LiveActor*);
 
+    void hideModel(LiveActor*);
+    void showModel(LiveActor*);
+
     void showModelIfHide(LiveActor*);
     void hideModelIfShow(LiveActor*);
 

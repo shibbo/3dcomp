@@ -6,7 +6,9 @@
 namespace al {
     class NerveAction : public Nerve {
     public:
-        virtual const char* getName() const = 0;
+        NerveAction();
+
+        virtual const char* getActionName() const = 0;
 
         NerveAction* mNextNode;
     };

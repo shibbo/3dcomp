@@ -1,0 +1,18 @@
+[submodule "lib/sead"]
+	path = lib/sead
+	url = https://github.com/open-ead/sead.git
+[submodule "lib/NintendoSDK"]
+	path = lib/NintendoSDK
+	url = https://github.com/open-ead/nnheaders.git
+[submodule "lib/agl"]
+	path = lib/agl
+	url = https://github.com/open-ead/agl.git
+[submodule "toolchain/musl"]
+	path = toolchain/musl
+	url = https://github.com/open-ead/botw-lib-musl.git
+[submodule "tools/common"]
+	path = tools/common
+	url = https://github.com/open-ead/nx-decomp-tools.git
+[submodule "lib/eui"]
+	path = lib/eui
+	url = https://github.com/open-ead/eui.git

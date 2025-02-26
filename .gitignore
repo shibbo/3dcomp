@@ -1,21 +1,57 @@
-compilers/*
-*.o
-.vscode/*
-.ninja_log
-.ninja_deps
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+*.dist-info/
+.mypy_cache/
+.benchmarks/
+
+# Binaries
+*.so
+*.dll
+*.elf
 *.nso
-__pycache__/*
-build.ninja
-lib/**/*.map
-map/*.map
-tools/*
+dist/
+build/
+build-*/
+bin/
+
+# IDEs
+.idea/
+.vscode/
+.vs
+.cache/
+.DS_Store
+/cmake-build-*
+compile_commands.json
+.clangd
+
+# IDA
 *.id0
 *.id1
 *.id2
+*.idb
+*.i64
 *.nam
 *.til
-*.idb
-*.zip
-*.txt
-*.elf
-*.exe
+
+# Ghidra
+*.gpr
+*.rep/
+*.lock
+!flake.lock
+
+# Debugging
+perf.data
+perf.data.old
+.gdb_history
+
+# Tooling
+/toolchain/clang-*
+tools/check
+tools/listsym
+tools/decompme
+
+# direnv
+.direnv/
+.envrc.private

@@ -42,8 +42,8 @@ target_compile_options(bf PRIVATE -Wno-unused-parameter -Wno-unused-private-fiel
 target_compile_options(bf PRIVATE -fno-strict-aliasing)
 target_compile_options(bf PRIVATE -Wno-invalid-offsetof)
 
-set(NN_WARE 3.5.1)
-set(NN_SDK 3.5.1)
+set(NN_WARE 10.4.0)
+set(NN_SDK 10.4.0)
 set(NN_SDK_TYPE "Release")
 
 include_directories(lib)

@@ -1,5 +1,6 @@
 functions_csv = "data/bf_functions.csv"
 build_target = "bf"
+skip_got_section = true
 
 [decomp_me]
 compiler_name = "clang-8.0.0"

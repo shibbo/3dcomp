@@ -32,11 +32,11 @@ def prepare_executable(original_nso: Optional[Path]):
     nso_hash = hashlib.sha256(nso_data).hexdigest()
 
     if nso_hash == UNCOMPRESSED_V10_HASH:
-        print(">>> found uncompressed 1.0 NSO")
+        print(">>> found uncompressed 1.0 Kiosk Demo NSO")
         TARGET_PATH.write_bytes(nso_data)
 
     elif nso_hash == COMPRESSED_V10_HASH:
-        print(">>> found compressed 1.0 NSO")
+        print(">>> found compressed 1.0 Kiosk Demo NSO")
         setup._decompress_nso(original_nso, TARGET_PATH)
 
     else:
@@ -70,7 +70,7 @@ def main():
     parser = argparse.ArgumentParser(
         "setup.py", description="Set up the Super Mario 3DW + BF decompilation project")
     parser.add_argument("original_nso", type=Path,
-                        help="Path to the original NSO (1.0, compressed or not)", nargs="?")
+                        help="Path to the original NSO (Kisok Demo 1.0, compressed or not)", nargs="?")
     parser.add_argument("--cmake_backend", type=str,
                         help="CMake backend to use (Ninja, Unix Makefiles, etc.)", nargs="?", default="Ninja")
     parser.add_argument("--project-only", action="store_true",

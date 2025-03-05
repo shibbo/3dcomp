@@ -1,9 +1,6 @@
 [submodule "toolchain/musl"]
 	path = toolchain/musl
 	url = https://github.com/open-ead/botw-lib-musl.git
-[submodule "tools/common"]
-	path = tools/common
-	url = https://github.com/open-ead/nx-decomp-tools.git
 [submodule "lib/sead"]
 	path = lib/sead
 	url = https://github.com/3DWCommunity/sead.git
@@ -16,3 +13,6 @@
 [submodule "lib/NintendoSDK"]
 	path = lib/NintendoSDK
 	url = https://github.com/3DWCommunity/nnheaders.git
+[submodule "tools/common"]
+	path = tools/common
+	url = https://github.com/3DWCommunity/nx-decomp-tools.git

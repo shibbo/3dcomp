@@ -80,7 +80,7 @@ Additionally, you'll also need:
 
 2. Run `git submodule update --init --recursive`
 
-   Next, you'll need to acquire the **original 1.0 `main` NSO executable**.
+   Next, you'll need to acquire the **original 1.0 Kiosk Demo `main` NSO executable**.
 
     * To dump it from a Switch,
       follow [the instructions on the wiki](https://zeldamods.org/wiki/Help:Dumping_games#Dumping_binaries_.28executable_files.29).
@@ -113,10 +113,6 @@ To check whether everything built correctly, just run `tools/check` after the bu
 # Contributing
 
 Anyone is welcome to contribute to this project, just send a pull request!
-
-### TODO
-
-- Enable comparison between different versions and check for mis-matches in all versions using `tools/check`
 
 #### from the re-organization
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <libms/MessageSetBase.hpp>
+#include "libms/MessageSetBase.hpp"
 #include "Library/Resource/Resource.hpp"
 
 namespace sead {

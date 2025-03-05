@@ -1,6 +1,6 @@
 #pragma once
 
-#include <libms/seadMessageProject.hpp>
+#include "libms/seadMessageProject.hpp"
 
 namespace al {
     class MessageProjectEx : public sead::MessageProject {

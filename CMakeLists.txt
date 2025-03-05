@@ -19,7 +19,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 file(GLOB_RECURSE SOURCES_GAME ${PROJECT_SOURCE_DIR}/src/*.cpp ${PROJECT_SOURCE_DIR}/src/*.c ${PROJECT_SOURCE_DIR}/src/*.hpp ${PROJECT_SOURCE_DIR}/src/*.h)
-file(GLOB_RECURSE SOURCES_AL ${PROJECT_SOURCE_DIR}/lib/al/*.cpp ${PROJECT_SOURCE_DIR}/lib/al/*.c ${PROJECT_SOURCE_DIR}/lib/al/*.h ${PROJECT_SOURCE_DIR}/lib/al/*.hpp)
+file(GLOB_RECURSE SOURCES_AL ${PROJECT_SOURCE_DIR}/lib/al/src/*.cpp ${PROJECT_SOURCE_DIR}/lib/al/src/*.c ${PROJECT_SOURCE_DIR}/lib/al/include/*.h ${PROJECT_SOURCE_DIR}/lib/al/include/*.hpp)
 
 add_executable(bf ${SOURCES_GAME} ${SOURCES_AL})
 
@@ -34,7 +34,7 @@ foreach (SOURCE ${SOURCES_COMBINED})
 endforeach ()
 
 target_include_directories(bf PRIVATE src)
-target_include_directories(bf PRIVATE lib/al)
+target_include_directories(bf PRIVATE lib/al/include)
 target_compile_definitions(bf PRIVATE NON_MATCHING)
 target_compile_options(bf PRIVATE -fno-exceptions)
 target_compile_options(bf PRIVATE -Wall -Wextra -Wdeprecated)

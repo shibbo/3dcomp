@@ -1,0 +1,1001 @@
+[1/187] Building CXX object CMakeFiles/bf.dir/lib/al/src/Library/Nerve/NerveKeeper.cpp.o
+FAILED: CMakeFiles/bf.dir/lib/al/src/Library/Nerve/NerveKeeper.cpp.o 
+"/mnt/c/Program Files/LLVM/bin/clang++.exe" -DNON_MATCHING -I/home/shibbo/3dcomp/src -I/home/shibbo/3dcomp/lib/al/include -I/home/shibbo/3dcomp/lib -I/home/shibbo/3dcomp/lib/aarch64 -I/home/shibbo/3dcomp/lib/NintendoSDK/include -I/home/shibbo/3dcomp/lib/sead/include -I/home/shibbo/3dcomp/lib/agl/include -I/home/shibbo/3dcomp/lib/eui/include -fcolor-diagnostics -Wno-unused-command-line-argument -fdebug-prefix-map=/tmp=/home/shibbo/3dcomp/build -fno-exceptions -Wall -Wextra -Wdeprecated -Wno-unused-parameter -Wno-unused-private-field -fno-strict-aliasing -Wno-invalid-offsetof -std=c++17 -o CMakeFiles/bf.dir/lib/al/src/Library/Nerve/NerveKeeper.cpp.o -c /home/shibbo/3dcomp/lib/al/src/Library/Nerve/NerveKeeper.cpp
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Nerve/NerveKeeper.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Nerve/NerveKeeper.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:8:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:898:1: error: static_assert failed "error STL1000: Unexpected compiler version, expected Clang 17.0.0 or newer."
+_EMIT_STL_ERROR(STL1000, "Unexpected compiler version, expected Clang 17.0.0 or newer.");
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:519:44: note: expanded from macro '_EMIT_STL_ERROR'
+#define _EMIT_STL_ERROR(NUMBER, MESSAGE)   static_assert(false, "error " #NUMBER ": " MESSAGE)
+                                           ^             ~~~~~
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Nerve/NerveKeeper.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Nerve/NerveKeeper.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:12:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:178:12: error: use of undeclared identifier '__builtin_is_constant_evaluated'; did you mean '_Is_constant_evaluated'?
+    return __builtin_is_constant_evaluated();
+           ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:177:27: note: '_Is_constant_evaluated' declared here
+_NODISCARD constexpr bool _Is_constant_evaluated() noexcept { // Internal function for any standard mode
+                          ^
+2 errors generated.
+[2/187] Building CXX object CMakeFiles/bf.dir/lib/al/src/Library/Nerve/NerveAction.cpp.o
+FAILED: CMakeFiles/bf.dir/lib/al/src/Library/Nerve/NerveAction.cpp.o 
+"/mnt/c/Program Files/LLVM/bin/clang++.exe" -DNON_MATCHING -I/home/shibbo/3dcomp/src -I/home/shibbo/3dcomp/lib/al/include -I/home/shibbo/3dcomp/lib -I/home/shibbo/3dcomp/lib/aarch64 -I/home/shibbo/3dcomp/lib/NintendoSDK/include -I/home/shibbo/3dcomp/lib/sead/include -I/home/shibbo/3dcomp/lib/agl/include -I/home/shibbo/3dcomp/lib/eui/include -fcolor-diagnostics -Wno-unused-command-line-argument -fdebug-prefix-map=/tmp=/home/shibbo/3dcomp/build -fno-exceptions -Wall -Wextra -Wdeprecated -Wno-unused-parameter -Wno-unused-private-field -fno-strict-aliasing -Wno-invalid-offsetof -std=c++17 -o CMakeFiles/bf.dir/lib/al/src/Library/Nerve/NerveAction.cpp.o -c /home/shibbo/3dcomp/lib/al/src/Library/Nerve/NerveAction.cpp
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Nerve/NerveAction.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Nerve/NerveAction.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:8:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:898:1: error: static_assert failed "error STL1000: Unexpected compiler version, expected Clang 17.0.0 or newer."
+_EMIT_STL_ERROR(STL1000, "Unexpected compiler version, expected Clang 17.0.0 or newer.");
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:519:44: note: expanded from macro '_EMIT_STL_ERROR'
+#define _EMIT_STL_ERROR(NUMBER, MESSAGE)   static_assert(false, "error " #NUMBER ": " MESSAGE)
+                                           ^             ~~~~~
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Nerve/NerveAction.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Nerve/NerveAction.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:12:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:178:12: error: use of undeclared identifier '__builtin_is_constant_evaluated'; did you mean '_Is_constant_evaluated'?
+    return __builtin_is_constant_evaluated();
+           ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:177:27: note: '_Is_constant_evaluated' declared here
+_NODISCARD constexpr bool _Is_constant_evaluated() noexcept { // Internal function for any standard mode
+                          ^
+2 errors generated.
+[3/187] Building CXX object CMakeFiles/bf.dir/lib/al/src/Library/Nerve/NerveExecutor.cpp.o
+FAILED: CMakeFiles/bf.dir/lib/al/src/Library/Nerve/NerveExecutor.cpp.o 
+"/mnt/c/Program Files/LLVM/bin/clang++.exe" -DNON_MATCHING -I/home/shibbo/3dcomp/src -I/home/shibbo/3dcomp/lib/al/include -I/home/shibbo/3dcomp/lib -I/home/shibbo/3dcomp/lib/aarch64 -I/home/shibbo/3dcomp/lib/NintendoSDK/include -I/home/shibbo/3dcomp/lib/sead/include -I/home/shibbo/3dcomp/lib/agl/include -I/home/shibbo/3dcomp/lib/eui/include -fcolor-diagnostics -Wno-unused-command-line-argument -fdebug-prefix-map=/tmp=/home/shibbo/3dcomp/build -fno-exceptions -Wall -Wextra -Wdeprecated -Wno-unused-parameter -Wno-unused-private-field -fno-strict-aliasing -Wno-invalid-offsetof -std=c++17 -o CMakeFiles/bf.dir/lib/al/src/Library/Nerve/NerveExecutor.cpp.o -c /home/shibbo/3dcomp/lib/al/src/Library/Nerve/NerveExecutor.cpp
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Nerve/NerveExecutor.cpp:2:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Nerve/NerveKeeper.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:8:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:898:1: error: static_assert failed "error STL1000: Unexpected compiler version, expected Clang 17.0.0 or newer."
+_EMIT_STL_ERROR(STL1000, "Unexpected compiler version, expected Clang 17.0.0 or newer.");
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:519:44: note: expanded from macro '_EMIT_STL_ERROR'
+#define _EMIT_STL_ERROR(NUMBER, MESSAGE)   static_assert(false, "error " #NUMBER ": " MESSAGE)
+                                           ^             ~~~~~
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Nerve/NerveExecutor.cpp:2:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Nerve/NerveKeeper.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:12:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:178:12: error: use of undeclared identifier '__builtin_is_constant_evaluated'; did you mean '_Is_constant_evaluated'?
+    return __builtin_is_constant_evaluated();
+           ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:177:27: note: '_Is_constant_evaluated' declared here
+_NODISCARD constexpr bool _Is_constant_evaluated() noexcept { // Internal function for any standard mode
+                          ^
+2 errors generated.
+[4/187] Building CXX object CMakeFiles/bf.dir/lib/al/src/Library/Nerve/NerveStateCtrl.cpp.o
+FAILED: CMakeFiles/bf.dir/lib/al/src/Library/Nerve/NerveStateCtrl.cpp.o 
+"/mnt/c/Program Files/LLVM/bin/clang++.exe" -DNON_MATCHING -I/home/shibbo/3dcomp/src -I/home/shibbo/3dcomp/lib/al/include -I/home/shibbo/3dcomp/lib -I/home/shibbo/3dcomp/lib/aarch64 -I/home/shibbo/3dcomp/lib/NintendoSDK/include -I/home/shibbo/3dcomp/lib/sead/include -I/home/shibbo/3dcomp/lib/agl/include -I/home/shibbo/3dcomp/lib/eui/include -fcolor-diagnostics -Wno-unused-command-line-argument -fdebug-prefix-map=/tmp=/home/shibbo/3dcomp/build -fno-exceptions -Wall -Wextra -Wdeprecated -Wno-unused-parameter -Wno-unused-private-field -fno-strict-aliasing -Wno-invalid-offsetof -std=c++17 -o CMakeFiles/bf.dir/lib/al/src/Library/Nerve/NerveStateCtrl.cpp.o -c /home/shibbo/3dcomp/lib/al/src/Library/Nerve/NerveStateCtrl.cpp
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Nerve/NerveStateCtrl.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Nerve/NerveStateCtrl.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:8:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:898:1: error: static_assert failed "error STL1000: Unexpected compiler version, expected Clang 17.0.0 or newer."
+_EMIT_STL_ERROR(STL1000, "Unexpected compiler version, expected Clang 17.0.0 or newer.");
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:519:44: note: expanded from macro '_EMIT_STL_ERROR'
+#define _EMIT_STL_ERROR(NUMBER, MESSAGE)   static_assert(false, "error " #NUMBER ": " MESSAGE)
+                                           ^             ~~~~~
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Nerve/NerveStateCtrl.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Nerve/NerveStateCtrl.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:12:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:178:12: error: use of undeclared identifier '__builtin_is_constant_evaluated'; did you mean '_Is_constant_evaluated'?
+    return __builtin_is_constant_evaluated();
+           ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:177:27: note: '_Is_constant_evaluated' declared here
+_NODISCARD constexpr bool _Is_constant_evaluated() noexcept { // Internal function for any standard mode
+                          ^
+2 errors generated.
+[5/187] Building CXX object CMakeFiles/bf.dir/lib/al/src/Library/Item/ActorScoreKeeper.cpp.o
+FAILED: CMakeFiles/bf.dir/lib/al/src/Library/Item/ActorScoreKeeper.cpp.o 
+"/mnt/c/Program Files/LLVM/bin/clang++.exe" -DNON_MATCHING -I/home/shibbo/3dcomp/src -I/home/shibbo/3dcomp/lib/al/include -I/home/shibbo/3dcomp/lib -I/home/shibbo/3dcomp/lib/aarch64 -I/home/shibbo/3dcomp/lib/NintendoSDK/include -I/home/shibbo/3dcomp/lib/sead/include -I/home/shibbo/3dcomp/lib/agl/include -I/home/shibbo/3dcomp/lib/eui/include -fcolor-diagnostics -Wno-unused-command-line-argument -fdebug-prefix-map=/tmp=/home/shibbo/3dcomp/build -fno-exceptions -Wall -Wextra -Wdeprecated -Wno-unused-parameter -Wno-unused-private-field -fno-strict-aliasing -Wno-invalid-offsetof -std=c++17 -o CMakeFiles/bf.dir/lib/al/src/Library/Item/ActorScoreKeeper.cpp.o -c /home/shibbo/3dcomp/lib/al/src/Library/Item/ActorScoreKeeper.cpp
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Item/ActorScoreKeeper.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Item/ActorScoreKeeper.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Yaml/ByamlIter.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:8:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:898:1: error: static_assert failed "error STL1000: Unexpected compiler version, expected Clang 17.0.0 or newer."
+_EMIT_STL_ERROR(STL1000, "Unexpected compiler version, expected Clang 17.0.0 or newer.");
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:519:44: note: expanded from macro '_EMIT_STL_ERROR'
+#define _EMIT_STL_ERROR(NUMBER, MESSAGE)   static_assert(false, "error " #NUMBER ": " MESSAGE)
+                                           ^             ~~~~~
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Item/ActorScoreKeeper.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Item/ActorScoreKeeper.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Yaml/ByamlIter.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:12:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:178:12: error: use of undeclared identifier '__builtin_is_constant_evaluated'; did you mean '_Is_constant_evaluated'?
+    return __builtin_is_constant_evaluated();
+           ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:177:27: note: '_Is_constant_evaluated' declared here
+_NODISCARD constexpr bool _Is_constant_evaluated() noexcept { // Internal function for any standard mode
+                          ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Item/ActorScoreKeeper.cpp:2:
+In file included from /home/shibbo/3dcomp/lib/al/include\Project/Base/StringUtil.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\prim/seadSafeString.hpp:3:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\algorithm:11:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xmemory:13:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\new:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\exception:12:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\type_traits:2492:31: error: '_To' does not refer to a value
+    return __builtin_bit_cast(_To, _Val);
+                              ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\type_traits:2487:17: note: declared here
+template <class _To, class _From,
+                ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Item/ActorScoreKeeper.cpp:2:
+In file included from /home/shibbo/3dcomp/lib/al/include\Project/Base/StringUtil.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\prim/seadSafeString.hpp:3:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\algorithm:11:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xmemory:15:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xutility:11:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\__msvc_iter_core.hpp:10:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:226:9: error: expected member name or ';' after declaration specifiers
+        !conjunction_v<_Is_implicitly_default_constructible<_Uty1>, _Is_implicitly_default_constructible<_Uty2>>)
+        ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:226:9: error: expected ')'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:225:23: note: to match this '('
+    constexpr explicit(
+                      ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:24: error: expected member name or ';' after declaration specifiers
+    constexpr explicit(!conjunction_v<is_convertible<const _Other1&, _Ty1>, is_convertible<const _Other2&, _Ty2>>)
+    ~~~~~~~~~~~~~~~~~~ ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:24: error: expected ')'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:23: note: to match this '('
+    constexpr explicit(!conjunction_v<is_convertible<const _Other1&, _Ty1>, is_convertible<const _Other2&, _Ty2>>)
+                      ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Item/ActorScoreKeeper.cpp:2:
+In file included from /home/shibbo/3dcomp/lib/al/include\Project/Base/StringUtil.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\prim/seadSafeString.hpp:6:
+/home/shibbo/3dcomp/lib/sead/include\prim/seadMemUtil.h:34:2: error: "Unknown platform"
+#error "Unknown platform"
+ ^
+8 errors generated.
+[6/187] Building CXX object CMakeFiles/bf.dir/lib/al/src/Library/Item/ActorItemInfo.cpp.o
+FAILED: CMakeFiles/bf.dir/lib/al/src/Library/Item/ActorItemInfo.cpp.o 
+"/mnt/c/Program Files/LLVM/bin/clang++.exe" -DNON_MATCHING -I/home/shibbo/3dcomp/src -I/home/shibbo/3dcomp/lib/al/include -I/home/shibbo/3dcomp/lib -I/home/shibbo/3dcomp/lib/aarch64 -I/home/shibbo/3dcomp/lib/NintendoSDK/include -I/home/shibbo/3dcomp/lib/sead/include -I/home/shibbo/3dcomp/lib/agl/include -I/home/shibbo/3dcomp/lib/eui/include -fcolor-diagnostics -Wno-unused-command-line-argument -fdebug-prefix-map=/tmp=/home/shibbo/3dcomp/build -fno-exceptions -Wall -Wextra -Wdeprecated -Wno-unused-parameter -Wno-unused-private-field -fno-strict-aliasing -Wno-invalid-offsetof -std=c++17 -o CMakeFiles/bf.dir/lib/al/src/Library/Item/ActorItemInfo.cpp.o -c /home/shibbo/3dcomp/lib/al/src/Library/Item/ActorItemInfo.cpp
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Item/ActorItemInfo.cpp:2:
+In file included from /home/shibbo/3dcomp/lib/al/include\Project/Base/StringUtil.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\prim/seadSafeString.hpp:3:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\algorithm:8:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:898:1: error: static_assert failed "error STL1000: Unexpected compiler version, expected Clang 17.0.0 or newer."
+_EMIT_STL_ERROR(STL1000, "Unexpected compiler version, expected Clang 17.0.0 or newer.");
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:519:44: note: expanded from macro '_EMIT_STL_ERROR'
+#define _EMIT_STL_ERROR(NUMBER, MESSAGE)   static_assert(false, "error " #NUMBER ": " MESSAGE)
+                                           ^             ~~~~~
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Item/ActorItemInfo.cpp:2:
+In file included from /home/shibbo/3dcomp/lib/al/include\Project/Base/StringUtil.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\prim/seadSafeString.hpp:3:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\algorithm:11:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xmemory:12:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\limits:13:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:178:12: error: use of undeclared identifier '__builtin_is_constant_evaluated'; did you mean '_Is_constant_evaluated'?
+    return __builtin_is_constant_evaluated();
+           ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:177:27: note: '_Is_constant_evaluated' declared here
+_NODISCARD constexpr bool _Is_constant_evaluated() noexcept { // Internal function for any standard mode
+                          ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Item/ActorItemInfo.cpp:2:
+In file included from /home/shibbo/3dcomp/lib/al/include\Project/Base/StringUtil.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\prim/seadSafeString.hpp:3:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\algorithm:11:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xmemory:13:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\new:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\exception:12:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\type_traits:2492:31: error: '_To' does not refer to a value
+    return __builtin_bit_cast(_To, _Val);
+                              ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\type_traits:2487:17: note: declared here
+template <class _To, class _From,
+                ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Item/ActorItemInfo.cpp:2:
+In file included from /home/shibbo/3dcomp/lib/al/include\Project/Base/StringUtil.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\prim/seadSafeString.hpp:3:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\algorithm:11:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xmemory:15:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xutility:11:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\__msvc_iter_core.hpp:10:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:226:9: error: expected member name or ';' after declaration specifiers
+        !conjunction_v<_Is_implicitly_default_constructible<_Uty1>, _Is_implicitly_default_constructible<_Uty2>>)
+        ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:226:9: error: expected ')'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:225:23: note: to match this '('
+    constexpr explicit(
+                      ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:24: error: expected member name or ';' after declaration specifiers
+    constexpr explicit(!conjunction_v<is_convertible<const _Other1&, _Ty1>, is_convertible<const _Other2&, _Ty2>>)
+    ~~~~~~~~~~~~~~~~~~ ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:24: error: expected ')'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:23: note: to match this '('
+    constexpr explicit(!conjunction_v<is_convertible<const _Other1&, _Ty1>, is_convertible<const _Other2&, _Ty2>>)
+                      ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Item/ActorItemInfo.cpp:2:
+In file included from /home/shibbo/3dcomp/lib/al/include\Project/Base/StringUtil.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\prim/seadSafeString.hpp:6:
+/home/shibbo/3dcomp/lib/sead/include\prim/seadMemUtil.h:34:2: error: "Unknown platform"
+#error "Unknown platform"
+ ^
+8 errors generated.
+[7/187] Building CXX object CMakeFiles/bf.dir/lib/al/src/Library/Actor/ActorPoseKeeper.cpp.o
+FAILED: CMakeFiles/bf.dir/lib/al/src/Library/Actor/ActorPoseKeeper.cpp.o 
+"/mnt/c/Program Files/LLVM/bin/clang++.exe" -DNON_MATCHING -I/home/shibbo/3dcomp/src -I/home/shibbo/3dcomp/lib/al/include -I/home/shibbo/3dcomp/lib -I/home/shibbo/3dcomp/lib/aarch64 -I/home/shibbo/3dcomp/lib/NintendoSDK/include -I/home/shibbo/3dcomp/lib/sead/include -I/home/shibbo/3dcomp/lib/agl/include -I/home/shibbo/3dcomp/lib/eui/include -fcolor-diagnostics -Wno-unused-command-line-argument -fdebug-prefix-map=/tmp=/home/shibbo/3dcomp/build -fno-exceptions -Wall -Wextra -Wdeprecated -Wno-unused-parameter -Wno-unused-private-field -fno-strict-aliasing -Wno-invalid-offsetof -std=c++17 -o CMakeFiles/bf.dir/lib/al/src/Library/Actor/ActorPoseKeeper.cpp.o -c /home/shibbo/3dcomp/lib/al/src/Library/Actor/ActorPoseKeeper.cpp
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Actor/ActorPoseKeeper.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Actor/ActorPoseKeeper.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:8:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:898:1: error: static_assert failed "error STL1000: Unexpected compiler version, expected Clang 17.0.0 or newer."
+_EMIT_STL_ERROR(STL1000, "Unexpected compiler version, expected Clang 17.0.0 or newer.");
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:519:44: note: expanded from macro '_EMIT_STL_ERROR'
+#define _EMIT_STL_ERROR(NUMBER, MESSAGE)   static_assert(false, "error " #NUMBER ": " MESSAGE)
+                                           ^             ~~~~~
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Actor/ActorPoseKeeper.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Actor/ActorPoseKeeper.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:12:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:178:12: error: use of undeclared identifier '__builtin_is_constant_evaluated'; did you mean '_Is_constant_evaluated'?
+    return __builtin_is_constant_evaluated();
+           ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:177:27: note: '_Is_constant_evaluated' declared here
+_NODISCARD constexpr bool _Is_constant_evaluated() noexcept { // Internal function for any standard mode
+                          ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Actor/ActorPoseKeeper.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Actor/ActorPoseKeeper.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:4:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathPolicies.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathBase.h:3:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\array:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xutility:11:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\__msvc_iter_core.hpp:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:11:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\type_traits:2492:31: error: '_To' does not refer to a value
+    return __builtin_bit_cast(_To, _Val);
+                              ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\type_traits:2487:17: note: declared here
+template <class _To, class _From,
+                ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Actor/ActorPoseKeeper.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Actor/ActorPoseKeeper.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:4:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathPolicies.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathBase.h:3:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\array:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xutility:11:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\__msvc_iter_core.hpp:10:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:226:9: error: expected member name or ';' after declaration specifiers
+        !conjunction_v<_Is_implicitly_default_constructible<_Uty1>, _Is_implicitly_default_constructible<_Uty2>>)
+        ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:226:9: error: expected ')'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:225:23: note: to match this '('
+    constexpr explicit(
+                      ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:24: error: expected member name or ';' after declaration specifiers
+    constexpr explicit(!conjunction_v<is_convertible<const _Other1&, _Ty1>, is_convertible<const _Other2&, _Ty2>>)
+    ~~~~~~~~~~~~~~~~~~ ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:24: error: expected ')'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:23: note: to match this '('
+    constexpr explicit(!conjunction_v<is_convertible<const _Other1&, _Ty1>, is_convertible<const _Other2&, _Ty2>>)
+                      ^
+7 errors generated.
+[8/187] Building CXX object CMakeFiles/bf.dir/lib/al/src/Library/Math/MathUtil.cpp.o
+FAILED: CMakeFiles/bf.dir/lib/al/src/Library/Math/MathUtil.cpp.o 
+"/mnt/c/Program Files/LLVM/bin/clang++.exe" -DNON_MATCHING -I/home/shibbo/3dcomp/src -I/home/shibbo/3dcomp/lib/al/include -I/home/shibbo/3dcomp/lib -I/home/shibbo/3dcomp/lib/aarch64 -I/home/shibbo/3dcomp/lib/NintendoSDK/include -I/home/shibbo/3dcomp/lib/sead/include -I/home/shibbo/3dcomp/lib/agl/include -I/home/shibbo/3dcomp/lib/eui/include -fcolor-diagnostics -Wno-unused-command-line-argument -fdebug-prefix-map=/tmp=/home/shibbo/3dcomp/build -fno-exceptions -Wall -Wextra -Wdeprecated -Wno-unused-parameter -Wno-unused-private-field -fno-strict-aliasing -Wno-invalid-offsetof -std=c++17 -o CMakeFiles/bf.dir/lib/al/src/Library/Math/MathUtil.cpp.o -c /home/shibbo/3dcomp/lib/al/src/Library/Math/MathUtil.cpp
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Math/MathUtil.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Math/MathUtil.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:8:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:898:1: error: static_assert failed "error STL1000: Unexpected compiler version, expected Clang 17.0.0 or newer."
+_EMIT_STL_ERROR(STL1000, "Unexpected compiler version, expected Clang 17.0.0 or newer.");
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:519:44: note: expanded from macro '_EMIT_STL_ERROR'
+#define _EMIT_STL_ERROR(NUMBER, MESSAGE)   static_assert(false, "error " #NUMBER ": " MESSAGE)
+                                           ^             ~~~~~
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Math/MathUtil.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Math/MathUtil.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:12:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:178:12: error: use of undeclared identifier '__builtin_is_constant_evaluated'; did you mean '_Is_constant_evaluated'?
+    return __builtin_is_constant_evaluated();
+           ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:177:27: note: '_Is_constant_evaluated' declared here
+_NODISCARD constexpr bool _Is_constant_evaluated() noexcept { // Internal function for any standard mode
+                          ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Math/MathUtil.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Math/MathUtil.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:4:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathPolicies.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathBase.h:3:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\array:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xutility:11:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\__msvc_iter_core.hpp:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:11:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\type_traits:2492:31: error: '_To' does not refer to a value
+    return __builtin_bit_cast(_To, _Val);
+                              ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\type_traits:2487:17: note: declared here
+template <class _To, class _From,
+                ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Math/MathUtil.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Math/MathUtil.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:4:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathPolicies.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathBase.h:3:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\array:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xutility:11:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\__msvc_iter_core.hpp:10:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:226:9: error: expected member name or ';' after declaration specifiers
+        !conjunction_v<_Is_implicitly_default_constructible<_Uty1>, _Is_implicitly_default_constructible<_Uty2>>)
+        ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:226:9: error: expected ')'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:225:23: note: to match this '('
+    constexpr explicit(
+                      ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:24: error: expected member name or ';' after declaration specifiers
+    constexpr explicit(!conjunction_v<is_convertible<const _Other1&, _Ty1>, is_convertible<const _Other2&, _Ty2>>)
+    ~~~~~~~~~~~~~~~~~~ ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:24: error: expected ')'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:23: note: to match this '('
+    constexpr explicit(!conjunction_v<is_convertible<const _Other1&, _Ty1>, is_convertible<const _Other2&, _Ty2>>)
+                      ^
+/home/shibbo/3dcomp/lib/al/src/Library/Math/MathUtil.cpp:2:10: fatal error: 'math/nerd.hpp' file not found
+#include <math/nerd.hpp>
+         ^~~~~~~~~~~~~~~
+8 errors generated.
+[9/187] Building CXX object CMakeFiles/bf.dir/lib/al/src/Library/LiveActor/LiveActorGroup.cpp.o
+FAILED: CMakeFiles/bf.dir/lib/al/src/Library/LiveActor/LiveActorGroup.cpp.o 
+"/mnt/c/Program Files/LLVM/bin/clang++.exe" -DNON_MATCHING -I/home/shibbo/3dcomp/src -I/home/shibbo/3dcomp/lib/al/include -I/home/shibbo/3dcomp/lib -I/home/shibbo/3dcomp/lib/aarch64 -I/home/shibbo/3dcomp/lib/NintendoSDK/include -I/home/shibbo/3dcomp/lib/sead/include -I/home/shibbo/3dcomp/lib/agl/include -I/home/shibbo/3dcomp/lib/eui/include -fcolor-diagnostics -Wno-unused-command-line-argument -fdebug-prefix-map=/tmp=/home/shibbo/3dcomp/build -fno-exceptions -Wall -Wextra -Wdeprecated -Wno-unused-parameter -Wno-unused-private-field -fno-strict-aliasing -Wno-invalid-offsetof -std=c++17 -o CMakeFiles/bf.dir/lib/al/src/Library/LiveActor/LiveActorGroup.cpp.o -c /home/shibbo/3dcomp/lib/al/src/Library/LiveActor/LiveActorGroup.cpp
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/LiveActor/LiveActorGroup.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/LiveActor/LiveActorGroup.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/LiveActor/LiveActor.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:8:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:898:1: error: static_assert failed "error STL1000: Unexpected compiler version, expected Clang 17.0.0 or newer."
+_EMIT_STL_ERROR(STL1000, "Unexpected compiler version, expected Clang 17.0.0 or newer.");
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:519:44: note: expanded from macro '_EMIT_STL_ERROR'
+#define _EMIT_STL_ERROR(NUMBER, MESSAGE)   static_assert(false, "error " #NUMBER ": " MESSAGE)
+                                           ^             ~~~~~
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/LiveActor/LiveActorGroup.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/LiveActor/LiveActorGroup.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/LiveActor/LiveActor.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:12:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:178:12: error: use of undeclared identifier '__builtin_is_constant_evaluated'; did you mean '_Is_constant_evaluated'?
+    return __builtin_is_constant_evaluated();
+           ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:177:27: note: '_Is_constant_evaluated' declared here
+_NODISCARD constexpr bool _Is_constant_evaluated() noexcept { // Internal function for any standard mode
+                          ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/LiveActor/LiveActorGroup.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/LiveActor/LiveActorGroup.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/LiveActor/LiveActor.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:4:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathPolicies.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathBase.h:3:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\array:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xutility:11:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\__msvc_iter_core.hpp:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:11:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\type_traits:2492:31: error: '_To' does not refer to a value
+    return __builtin_bit_cast(_To, _Val);
+                              ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\type_traits:2487:17: note: declared here
+template <class _To, class _From,
+                ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/LiveActor/LiveActorGroup.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/LiveActor/LiveActorGroup.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/LiveActor/LiveActor.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:4:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathPolicies.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathBase.h:3:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\array:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xutility:11:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\__msvc_iter_core.hpp:10:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:226:9: error: expected member name or ';' after declaration specifiers
+        !conjunction_v<_Is_implicitly_default_constructible<_Uty1>, _Is_implicitly_default_constructible<_Uty2>>)
+        ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:226:9: error: expected ')'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:225:23: note: to match this '('
+    constexpr explicit(
+                      ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:24: error: expected member name or ';' after declaration specifiers
+    constexpr explicit(!conjunction_v<is_convertible<const _Other1&, _Ty1>, is_convertible<const _Other2&, _Ty2>>)
+    ~~~~~~~~~~~~~~~~~~ ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:24: error: expected ')'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:23: note: to match this '('
+    constexpr explicit(!conjunction_v<is_convertible<const _Other1&, _Ty1>, is_convertible<const _Other2&, _Ty2>>)
+                      ^
+/home/shibbo/3dcomp/lib/al/src/Library/LiveActor/LiveActorGroup.cpp:2:10: fatal error: 'Util.hpp' file not found
+#include "Util.hpp"
+         ^~~~~~~~~~
+8 errors generated.
+[10/187] Building CXX object CMakeFiles/bf.dir/lib/al/src/Library/Actor/ActorPoseUtil.cpp.o
+FAILED: CMakeFiles/bf.dir/lib/al/src/Library/Actor/ActorPoseUtil.cpp.o 
+"/mnt/c/Program Files/LLVM/bin/clang++.exe" -DNON_MATCHING -I/home/shibbo/3dcomp/src -I/home/shibbo/3dcomp/lib/al/include -I/home/shibbo/3dcomp/lib -I/home/shibbo/3dcomp/lib/aarch64 -I/home/shibbo/3dcomp/lib/NintendoSDK/include -I/home/shibbo/3dcomp/lib/sead/include -I/home/shibbo/3dcomp/lib/agl/include -I/home/shibbo/3dcomp/lib/eui/include -fcolor-diagnostics -Wno-unused-command-line-argument -fdebug-prefix-map=/tmp=/home/shibbo/3dcomp/build -fno-exceptions -Wall -Wextra -Wdeprecated -Wno-unused-parameter -Wno-unused-private-field -fno-strict-aliasing -Wno-invalid-offsetof -std=c++17 -o CMakeFiles/bf.dir/lib/al/src/Library/Actor/ActorPoseUtil.cpp.o -c /home/shibbo/3dcomp/lib/al/src/Library/Actor/ActorPoseUtil.cpp
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Actor/ActorPoseUtil.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Actor/ActorPoseUtil.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:8:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:898:1: error: static_assert failed "error STL1000: Unexpected compiler version, expected Clang 17.0.0 or newer."
+_EMIT_STL_ERROR(STL1000, "Unexpected compiler version, expected Clang 17.0.0 or newer.");
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:519:44: note: expanded from macro '_EMIT_STL_ERROR'
+#define _EMIT_STL_ERROR(NUMBER, MESSAGE)   static_assert(false, "error " #NUMBER ": " MESSAGE)
+                                           ^             ~~~~~
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Actor/ActorPoseUtil.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Actor/ActorPoseUtil.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:12:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:178:12: error: use of undeclared identifier '__builtin_is_constant_evaluated'; did you mean '_Is_constant_evaluated'?
+    return __builtin_is_constant_evaluated();
+           ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:177:27: note: '_Is_constant_evaluated' declared here
+_NODISCARD constexpr bool _Is_constant_evaluated() noexcept { // Internal function for any standard mode
+                          ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Actor/ActorPoseUtil.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Actor/ActorPoseUtil.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:4:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathPolicies.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathBase.h:3:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\array:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xutility:11:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\__msvc_iter_core.hpp:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:11:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\type_traits:2492:31: error: '_To' does not refer to a value
+    return __builtin_bit_cast(_To, _Val);
+                              ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\type_traits:2487:17: note: declared here
+template <class _To, class _From,
+                ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Actor/ActorPoseUtil.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Actor/ActorPoseUtil.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:4:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathPolicies.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathBase.h:3:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\array:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xutility:11:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\__msvc_iter_core.hpp:10:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:226:9: error: expected member name or ';' after declaration specifiers
+        !conjunction_v<_Is_implicitly_default_constructible<_Uty1>, _Is_implicitly_default_constructible<_Uty2>>)
+        ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:226:9: error: expected ')'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:225:23: note: to match this '('
+    constexpr explicit(
+                      ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:24: error: expected member name or ';' after declaration specifiers
+    constexpr explicit(!conjunction_v<is_convertible<const _Other1&, _Ty1>, is_convertible<const _Other2&, _Ty2>>)
+    ~~~~~~~~~~~~~~~~~~ ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:24: error: expected ')'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:23: note: to match this '('
+    constexpr explicit(!conjunction_v<is_convertible<const _Other1&, _Ty1>, is_convertible<const _Other2&, _Ty2>>)
+                      ^
+7 errors generated.
+[11/187] Building CXX object CMakeFiles/bf.dir/lib/al/src/Library/Item/ActorItemKeeper.cpp.o
+FAILED: CMakeFiles/bf.dir/lib/al/src/Library/Item/ActorItemKeeper.cpp.o 
+"/mnt/c/Program Files/LLVM/bin/clang++.exe" -DNON_MATCHING -I/home/shibbo/3dcomp/src -I/home/shibbo/3dcomp/lib/al/include -I/home/shibbo/3dcomp/lib -I/home/shibbo/3dcomp/lib/aarch64 -I/home/shibbo/3dcomp/lib/NintendoSDK/include -I/home/shibbo/3dcomp/lib/sead/include -I/home/shibbo/3dcomp/lib/agl/include -I/home/shibbo/3dcomp/lib/eui/include -fcolor-diagnostics -Wno-unused-command-line-argument -fdebug-prefix-map=/tmp=/home/shibbo/3dcomp/build -fno-exceptions -Wall -Wextra -Wdeprecated -Wno-unused-parameter -Wno-unused-private-field -fno-strict-aliasing -Wno-invalid-offsetof -std=c++17 -o CMakeFiles/bf.dir/lib/al/src/Library/Item/ActorItemKeeper.cpp.o -c /home/shibbo/3dcomp/lib/al/src/Library/Item/ActorItemKeeper.cpp
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Item/ActorItemKeeper.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Item/ActorItemKeeper.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadVector.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:8:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:898:1: error: static_assert failed "error STL1000: Unexpected compiler version, expected Clang 17.0.0 or newer."
+_EMIT_STL_ERROR(STL1000, "Unexpected compiler version, expected Clang 17.0.0 or newer.");
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:519:44: note: expanded from macro '_EMIT_STL_ERROR'
+#define _EMIT_STL_ERROR(NUMBER, MESSAGE)   static_assert(false, "error " #NUMBER ": " MESSAGE)
+                                           ^             ~~~~~
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Item/ActorItemKeeper.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Item/ActorItemKeeper.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadVector.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:12:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:178:12: error: use of undeclared identifier '__builtin_is_constant_evaluated'; did you mean '_Is_constant_evaluated'?
+    return __builtin_is_constant_evaluated();
+           ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:177:27: note: '_Is_constant_evaluated' declared here
+_NODISCARD constexpr bool _Is_constant_evaluated() noexcept { // Internal function for any standard mode
+                          ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Item/ActorItemKeeper.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Item/ActorItemKeeper.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadVector.h:5:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathCalcCommon.h:7:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\type_traits:2492:31: error: '_To' does not refer to a value
+    return __builtin_bit_cast(_To, _Val);
+                              ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\type_traits:2487:17: note: declared here
+template <class _To, class _From,
+                ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Item/ActorItemKeeper.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Item/ActorItemKeeper.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadVector.h:6:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathPolicies.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathBase.h:3:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\array:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xutility:11:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\__msvc_iter_core.hpp:10:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:226:9: error: expected member name or ';' after declaration specifiers
+        !conjunction_v<_Is_implicitly_default_constructible<_Uty1>, _Is_implicitly_default_constructible<_Uty2>>)
+        ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:226:9: error: expected ')'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:225:23: note: to match this '('
+    constexpr explicit(
+                      ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:24: error: expected member name or ';' after declaration specifiers
+    constexpr explicit(!conjunction_v<is_convertible<const _Other1&, _Ty1>, is_convertible<const _Other2&, _Ty2>>)
+    ~~~~~~~~~~~~~~~~~~ ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:24: error: expected ')'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:23: note: to match this '('
+    constexpr explicit(!conjunction_v<is_convertible<const _Other1&, _Ty1>, is_convertible<const _Other2&, _Ty2>>)
+                      ^
+7 errors generated.
+[12/187] Building CXX object CMakeFiles/bf.dir/lib/al/src/Library/LiveActor/LiveActor.cpp.o
+FAILED: CMakeFiles/bf.dir/lib/al/src/Library/LiveActor/LiveActor.cpp.o 
+"/mnt/c/Program Files/LLVM/bin/clang++.exe" -DNON_MATCHING -I/home/shibbo/3dcomp/src -I/home/shibbo/3dcomp/lib/al/include -I/home/shibbo/3dcomp/lib -I/home/shibbo/3dcomp/lib/aarch64 -I/home/shibbo/3dcomp/lib/NintendoSDK/include -I/home/shibbo/3dcomp/lib/sead/include -I/home/shibbo/3dcomp/lib/agl/include -I/home/shibbo/3dcomp/lib/eui/include -fcolor-diagnostics -Wno-unused-command-line-argument -fdebug-prefix-map=/tmp=/home/shibbo/3dcomp/build -fno-exceptions -Wall -Wextra -Wdeprecated -Wno-unused-parameter -Wno-unused-private-field -fno-strict-aliasing -Wno-invalid-offsetof -std=c++17 -o CMakeFiles/bf.dir/lib/al/src/Library/LiveActor/LiveActor.cpp.o -c /home/shibbo/3dcomp/lib/al/src/Library/LiveActor/LiveActor.cpp
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/LiveActor/LiveActor.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/LiveActor/LiveActor.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:8:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:898:1: error: static_assert failed "error STL1000: Unexpected compiler version, expected Clang 17.0.0 or newer."
+_EMIT_STL_ERROR(STL1000, "Unexpected compiler version, expected Clang 17.0.0 or newer.");
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:519:44: note: expanded from macro '_EMIT_STL_ERROR'
+#define _EMIT_STL_ERROR(NUMBER, MESSAGE)   static_assert(false, "error " #NUMBER ": " MESSAGE)
+                                           ^             ~~~~~
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/LiveActor/LiveActor.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/LiveActor/LiveActor.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:12:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:178:12: error: use of undeclared identifier '__builtin_is_constant_evaluated'; did you mean '_Is_constant_evaluated'?
+    return __builtin_is_constant_evaluated();
+           ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:177:27: note: '_Is_constant_evaluated' declared here
+_NODISCARD constexpr bool _Is_constant_evaluated() noexcept { // Internal function for any standard mode
+                          ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/LiveActor/LiveActor.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/LiveActor/LiveActor.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:4:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathPolicies.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathBase.h:3:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\array:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xutility:11:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\__msvc_iter_core.hpp:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:11:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\type_traits:2492:31: error: '_To' does not refer to a value
+    return __builtin_bit_cast(_To, _Val);
+                              ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\type_traits:2487:17: note: declared here
+template <class _To, class _From,
+                ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/LiveActor/LiveActor.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/LiveActor/LiveActor.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:4:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathPolicies.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathBase.h:3:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\array:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xutility:11:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\__msvc_iter_core.hpp:10:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:226:9: error: expected member name or ';' after declaration specifiers
+        !conjunction_v<_Is_implicitly_default_constructible<_Uty1>, _Is_implicitly_default_constructible<_Uty2>>)
+        ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:226:9: error: expected ')'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:225:23: note: to match this '('
+    constexpr explicit(
+                      ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:24: error: expected member name or ';' after declaration specifiers
+    constexpr explicit(!conjunction_v<is_convertible<const _Other1&, _Ty1>, is_convertible<const _Other2&, _Ty2>>)
+    ~~~~~~~~~~~~~~~~~~ ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:24: error: expected ')'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:23: note: to match this '('
+    constexpr explicit(!conjunction_v<is_convertible<const _Other1&, _Ty1>, is_convertible<const _Other2&, _Ty2>>)
+                      ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/LiveActor/LiveActor.cpp:7:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Actor/ActorPrePassLightKeeper.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\container/seadPtrArray.h:7:
+/home/shibbo/3dcomp/lib/sead/include\prim/seadMemUtil.h:34:2: error: "Unknown platform"
+#error "Unknown platform"
+ ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/LiveActor/LiveActor.cpp:15:
+/home/shibbo/3dcomp/lib/al/include\Library/HitSensor/HitSensorKeeper.hpp:5:10: fatal error: 'seadTypes.h' file not found
+#include <seadTypes.h>
+         ^~~~~~~~~~~~~
+9 errors generated.
+[13/187] Building CXX object CMakeFiles/bf.dir/lib/al/src/Library/HitSensor/SensorHitGroup.cpp.o
+FAILED: CMakeFiles/bf.dir/lib/al/src/Library/HitSensor/SensorHitGroup.cpp.o 
+"/mnt/c/Program Files/LLVM/bin/clang++.exe" -DNON_MATCHING -I/home/shibbo/3dcomp/src -I/home/shibbo/3dcomp/lib/al/include -I/home/shibbo/3dcomp/lib -I/home/shibbo/3dcomp/lib/aarch64 -I/home/shibbo/3dcomp/lib/NintendoSDK/include -I/home/shibbo/3dcomp/lib/sead/include -I/home/shibbo/3dcomp/lib/agl/include -I/home/shibbo/3dcomp/lib/eui/include -fcolor-diagnostics -Wno-unused-command-line-argument -fdebug-prefix-map=/tmp=/home/shibbo/3dcomp/build -fno-exceptions -Wall -Wextra -Wdeprecated -Wno-unused-parameter -Wno-unused-private-field -fno-strict-aliasing -Wno-invalid-offsetof -std=c++17 -o CMakeFiles/bf.dir/lib/al/src/Library/HitSensor/SensorHitGroup.cpp.o -c /home/shibbo/3dcomp/lib/al/src/Library/HitSensor/SensorHitGroup.cpp
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/HitSensor/SensorHitGroup.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/HitSensor/SensorHitGroup.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:8:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:898:1: error: static_assert failed "error STL1000: Unexpected compiler version, expected Clang 17.0.0 or newer."
+_EMIT_STL_ERROR(STL1000, "Unexpected compiler version, expected Clang 17.0.0 or newer.");
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:519:44: note: expanded from macro '_EMIT_STL_ERROR'
+#define _EMIT_STL_ERROR(NUMBER, MESSAGE)   static_assert(false, "error " #NUMBER ": " MESSAGE)
+                                           ^             ~~~~~
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/HitSensor/SensorHitGroup.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/HitSensor/SensorHitGroup.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:12:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:178:12: error: use of undeclared identifier '__builtin_is_constant_evaluated'; did you mean '_Is_constant_evaluated'?
+    return __builtin_is_constant_evaluated();
+           ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:177:27: note: '_Is_constant_evaluated' declared here
+_NODISCARD constexpr bool _Is_constant_evaluated() noexcept { // Internal function for any standard mode
+                          ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/HitSensor/SensorHitGroup.cpp:2:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/HitSensor/HitSensor.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:4:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathPolicies.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathBase.h:3:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\array:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xutility:11:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\__msvc_iter_core.hpp:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:11:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\type_traits:2492:31: error: '_To' does not refer to a value
+    return __builtin_bit_cast(_To, _Val);
+                              ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\type_traits:2487:17: note: declared here
+template <class _To, class _From,
+                ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/HitSensor/SensorHitGroup.cpp:2:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/HitSensor/HitSensor.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:4:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathPolicies.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathBase.h:3:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\array:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xutility:11:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\__msvc_iter_core.hpp:10:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:226:9: error: expected member name or ';' after declaration specifiers
+        !conjunction_v<_Is_implicitly_default_constructible<_Uty1>, _Is_implicitly_default_constructible<_Uty2>>)
+        ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:226:9: error: expected ')'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:225:23: note: to match this '('
+    constexpr explicit(
+                      ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:24: error: expected member name or ';' after declaration specifiers
+    constexpr explicit(!conjunction_v<is_convertible<const _Other1&, _Ty1>, is_convertible<const _Other2&, _Ty2>>)
+    ~~~~~~~~~~~~~~~~~~ ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:24: error: expected ')'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:23: note: to match this '('
+    constexpr explicit(!conjunction_v<is_convertible<const _Other1&, _Ty1>, is_convertible<const _Other2&, _Ty2>>)
+                      ^
+7 errors generated.
+[14/187] Building CXX object CMakeFiles/bf.dir/lib/al/src/Library/Actor/ActorSensorController.cpp.o
+FAILED: CMakeFiles/bf.dir/lib/al/src/Library/Actor/ActorSensorController.cpp.o 
+"/mnt/c/Program Files/LLVM/bin/clang++.exe" -DNON_MATCHING -I/home/shibbo/3dcomp/src -I/home/shibbo/3dcomp/lib/al/include -I/home/shibbo/3dcomp/lib -I/home/shibbo/3dcomp/lib/aarch64 -I/home/shibbo/3dcomp/lib/NintendoSDK/include -I/home/shibbo/3dcomp/lib/sead/include -I/home/shibbo/3dcomp/lib/agl/include -I/home/shibbo/3dcomp/lib/eui/include -fcolor-diagnostics -Wno-unused-command-line-argument -fdebug-prefix-map=/tmp=/home/shibbo/3dcomp/build -fno-exceptions -Wall -Wextra -Wdeprecated -Wno-unused-parameter -Wno-unused-private-field -fno-strict-aliasing -Wno-invalid-offsetof -std=c++17 -o CMakeFiles/bf.dir/lib/al/src/Library/Actor/ActorSensorController.cpp.o -c /home/shibbo/3dcomp/lib/al/src/Library/Actor/ActorSensorController.cpp
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Actor/ActorSensorController.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Actor/ActorSensorController.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadVector.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:8:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:898:1: error: static_assert failed "error STL1000: Unexpected compiler version, expected Clang 17.0.0 or newer."
+_EMIT_STL_ERROR(STL1000, "Unexpected compiler version, expected Clang 17.0.0 or newer.");
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:519:44: note: expanded from macro '_EMIT_STL_ERROR'
+#define _EMIT_STL_ERROR(NUMBER, MESSAGE)   static_assert(false, "error " #NUMBER ": " MESSAGE)
+                                           ^             ~~~~~
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Actor/ActorSensorController.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Actor/ActorSensorController.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadVector.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:12:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:178:12: error: use of undeclared identifier '__builtin_is_constant_evaluated'; did you mean '_Is_constant_evaluated'?
+    return __builtin_is_constant_evaluated();
+           ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:177:27: note: '_Is_constant_evaluated' declared here
+_NODISCARD constexpr bool _Is_constant_evaluated() noexcept { // Internal function for any standard mode
+                          ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Actor/ActorSensorController.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Actor/ActorSensorController.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadVector.h:5:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathCalcCommon.h:7:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\type_traits:2492:31: error: '_To' does not refer to a value
+    return __builtin_bit_cast(_To, _Val);
+                              ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\type_traits:2487:17: note: declared here
+template <class _To, class _From,
+                ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Actor/ActorSensorController.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Actor/ActorSensorController.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadVector.h:6:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathPolicies.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathBase.h:3:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\array:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xutility:11:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\__msvc_iter_core.hpp:10:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:226:9: error: expected member name or ';' after declaration specifiers
+        !conjunction_v<_Is_implicitly_default_constructible<_Uty1>, _Is_implicitly_default_constructible<_Uty2>>)
+        ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:226:9: error: expected ')'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:225:23: note: to match this '('
+    constexpr explicit(
+                      ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:24: error: expected member name or ';' after declaration specifiers
+    constexpr explicit(!conjunction_v<is_convertible<const _Other1&, _Ty1>, is_convertible<const _Other2&, _Ty2>>)
+    ~~~~~~~~~~~~~~~~~~ ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:24: error: expected ')'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:23: note: to match this '('
+    constexpr explicit(!conjunction_v<is_convertible<const _Other1&, _Ty1>, is_convertible<const _Other2&, _Ty2>>)
+                      ^
+7 errors generated.
+[15/187] Building CXX object CMakeFiles/bf.dir/lib/al/src/Library/HitSensor/HitSensorKeeper.cpp.o
+FAILED: CMakeFiles/bf.dir/lib/al/src/Library/HitSensor/HitSensorKeeper.cpp.o 
+"/mnt/c/Program Files/LLVM/bin/clang++.exe" -DNON_MATCHING -I/home/shibbo/3dcomp/src -I/home/shibbo/3dcomp/lib/al/include -I/home/shibbo/3dcomp/lib -I/home/shibbo/3dcomp/lib/aarch64 -I/home/shibbo/3dcomp/lib/NintendoSDK/include -I/home/shibbo/3dcomp/lib/sead/include -I/home/shibbo/3dcomp/lib/agl/include -I/home/shibbo/3dcomp/lib/eui/include -fcolor-diagnostics -Wno-unused-command-line-argument -fdebug-prefix-map=/tmp=/home/shibbo/3dcomp/build -fno-exceptions -Wall -Wextra -Wdeprecated -Wno-unused-parameter -Wno-unused-private-field -fno-strict-aliasing -Wno-invalid-offsetof -std=c++17 -o CMakeFiles/bf.dir/lib/al/src/Library/HitSensor/HitSensorKeeper.cpp.o -c /home/shibbo/3dcomp/lib/al/src/Library/HitSensor/HitSensorKeeper.cpp
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/HitSensor/HitSensorKeeper.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/HitSensor/HitSensorKeeper.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:8:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:898:1: error: static_assert failed "error STL1000: Unexpected compiler version, expected Clang 17.0.0 or newer."
+_EMIT_STL_ERROR(STL1000, "Unexpected compiler version, expected Clang 17.0.0 or newer.");
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:519:44: note: expanded from macro '_EMIT_STL_ERROR'
+#define _EMIT_STL_ERROR(NUMBER, MESSAGE)   static_assert(false, "error " #NUMBER ": " MESSAGE)
+                                           ^             ~~~~~
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/HitSensor/HitSensorKeeper.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/HitSensor/HitSensorKeeper.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:12:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:178:12: error: use of undeclared identifier '__builtin_is_constant_evaluated'; did you mean '_Is_constant_evaluated'?
+    return __builtin_is_constant_evaluated();
+           ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:177:27: note: '_Is_constant_evaluated' declared here
+_NODISCARD constexpr bool _Is_constant_evaluated() noexcept { // Internal function for any standard mode
+                          ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/HitSensor/HitSensorKeeper.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/HitSensor/HitSensorKeeper.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:4:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathPolicies.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathBase.h:3:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\array:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xutility:11:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\__msvc_iter_core.hpp:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:11:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\type_traits:2492:31: error: '_To' does not refer to a value
+    return __builtin_bit_cast(_To, _Val);
+                              ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\type_traits:2487:17: note: declared here
+template <class _To, class _From,
+                ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/HitSensor/HitSensorKeeper.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/HitSensor/HitSensorKeeper.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:4:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathPolicies.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathBase.h:3:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\array:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xutility:11:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\__msvc_iter_core.hpp:10:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:226:9: error: expected member name or ';' after declaration specifiers
+        !conjunction_v<_Is_implicitly_default_constructible<_Uty1>, _Is_implicitly_default_constructible<_Uty2>>)
+        ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:226:9: error: expected ')'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:225:23: note: to match this '('
+    constexpr explicit(
+                      ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:24: error: expected member name or ';' after declaration specifiers
+    constexpr explicit(!conjunction_v<is_convertible<const _Other1&, _Ty1>, is_convertible<const _Other2&, _Ty2>>)
+    ~~~~~~~~~~~~~~~~~~ ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:24: error: expected ')'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:23: note: to match this '('
+    constexpr explicit(!conjunction_v<is_convertible<const _Other1&, _Ty1>, is_convertible<const _Other2&, _Ty2>>)
+                      ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/HitSensor/HitSensorKeeper.cpp:1:
+/home/shibbo/3dcomp/lib/al/include\Library/HitSensor/HitSensorKeeper.hpp:5:10: fatal error: 'seadTypes.h' file not found
+#include <seadTypes.h>
+         ^~~~~~~~~~~~~
+8 errors generated.
+[16/187] Building CXX object CMakeFiles/bf.dir/lib/al/src/Library/Actor/ActorSensorUtil.cpp.o
+FAILED: CMakeFiles/bf.dir/lib/al/src/Library/Actor/ActorSensorUtil.cpp.o 
+"/mnt/c/Program Files/LLVM/bin/clang++.exe" -DNON_MATCHING -I/home/shibbo/3dcomp/src -I/home/shibbo/3dcomp/lib/al/include -I/home/shibbo/3dcomp/lib -I/home/shibbo/3dcomp/lib/aarch64 -I/home/shibbo/3dcomp/lib/NintendoSDK/include -I/home/shibbo/3dcomp/lib/sead/include -I/home/shibbo/3dcomp/lib/agl/include -I/home/shibbo/3dcomp/lib/eui/include -fcolor-diagnostics -Wno-unused-command-line-argument -fdebug-prefix-map=/tmp=/home/shibbo/3dcomp/build -fno-exceptions -Wall -Wextra -Wdeprecated -Wno-unused-parameter -Wno-unused-private-field -fno-strict-aliasing -Wno-invalid-offsetof -std=c++17 -o CMakeFiles/bf.dir/lib/al/src/Library/Actor/ActorSensorUtil.cpp.o -c /home/shibbo/3dcomp/lib/al/src/Library/Actor/ActorSensorUtil.cpp
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Actor/ActorSensorUtil.cpp:2:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Actor/ActorSensorController.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadVector.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:8:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:898:1: error: static_assert failed "error STL1000: Unexpected compiler version, expected Clang 17.0.0 or newer."
+_EMIT_STL_ERROR(STL1000, "Unexpected compiler version, expected Clang 17.0.0 or newer.");
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:519:44: note: expanded from macro '_EMIT_STL_ERROR'
+#define _EMIT_STL_ERROR(NUMBER, MESSAGE)   static_assert(false, "error " #NUMBER ": " MESSAGE)
+                                           ^             ~~~~~
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Actor/ActorSensorUtil.cpp:2:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Actor/ActorSensorController.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadVector.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:12:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:178:12: error: use of undeclared identifier '__builtin_is_constant_evaluated'; did you mean '_Is_constant_evaluated'?
+    return __builtin_is_constant_evaluated();
+           ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:177:27: note: '_Is_constant_evaluated' declared here
+_NODISCARD constexpr bool _Is_constant_evaluated() noexcept { // Internal function for any standard mode
+                          ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Actor/ActorSensorUtil.cpp:2:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Actor/ActorSensorController.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadVector.h:5:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathCalcCommon.h:7:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\type_traits:2492:31: error: '_To' does not refer to a value
+    return __builtin_bit_cast(_To, _Val);
+                              ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\type_traits:2487:17: note: declared here
+template <class _To, class _From,
+                ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Actor/ActorSensorUtil.cpp:2:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Actor/ActorSensorController.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadVector.h:6:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathPolicies.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathBase.h:3:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\array:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xutility:11:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\__msvc_iter_core.hpp:10:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:226:9: error: expected member name or ';' after declaration specifiers
+        !conjunction_v<_Is_implicitly_default_constructible<_Uty1>, _Is_implicitly_default_constructible<_Uty2>>)
+        ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:226:9: error: expected ')'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:225:23: note: to match this '('
+    constexpr explicit(
+                      ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:24: error: expected member name or ';' after declaration specifiers
+    constexpr explicit(!conjunction_v<is_convertible<const _Other1&, _Ty1>, is_convertible<const _Other2&, _Ty2>>)
+    ~~~~~~~~~~~~~~~~~~ ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:24: error: expected ')'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:23: note: to match this '('
+    constexpr explicit(!conjunction_v<is_convertible<const _Other1&, _Ty1>, is_convertible<const _Other2&, _Ty2>>)
+                      ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Actor/ActorSensorUtil.cpp:5:
+/home/shibbo/3dcomp/lib/al/include\Library/HitSensor/HitSensorKeeper.hpp:5:10: fatal error: 'seadTypes.h' file not found
+#include <seadTypes.h>
+         ^~~~~~~~~~~~~
+8 errors generated.
+[17/187] Building CXX object CMakeFiles/bf.dir/lib/al/src/Library/HitSensor/HitSensor.cpp.o
+FAILED: CMakeFiles/bf.dir/lib/al/src/Library/HitSensor/HitSensor.cpp.o 
+"/mnt/c/Program Files/LLVM/bin/clang++.exe" -DNON_MATCHING -I/home/shibbo/3dcomp/src -I/home/shibbo/3dcomp/lib/al/include -I/home/shibbo/3dcomp/lib -I/home/shibbo/3dcomp/lib/aarch64 -I/home/shibbo/3dcomp/lib/NintendoSDK/include -I/home/shibbo/3dcomp/lib/sead/include -I/home/shibbo/3dcomp/lib/agl/include -I/home/shibbo/3dcomp/lib/eui/include -fcolor-diagnostics -Wno-unused-command-line-argument -fdebug-prefix-map=/tmp=/home/shibbo/3dcomp/build -fno-exceptions -Wall -Wextra -Wdeprecated -Wno-unused-parameter -Wno-unused-private-field -fno-strict-aliasing -Wno-invalid-offsetof -std=c++17 -o CMakeFiles/bf.dir/lib/al/src/Library/HitSensor/HitSensor.cpp.o -c /home/shibbo/3dcomp/lib/al/src/Library/HitSensor/HitSensor.cpp
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/HitSensor/HitSensor.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/HitSensor/HitSensor.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:8:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:898:1: error: static_assert failed "error STL1000: Unexpected compiler version, expected Clang 17.0.0 or newer."
+_EMIT_STL_ERROR(STL1000, "Unexpected compiler version, expected Clang 17.0.0 or newer.");
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:519:44: note: expanded from macro '_EMIT_STL_ERROR'
+#define _EMIT_STL_ERROR(NUMBER, MESSAGE)   static_assert(false, "error " #NUMBER ": " MESSAGE)
+                                           ^             ~~~~~
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/HitSensor/HitSensor.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/HitSensor/HitSensor.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:12:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:178:12: error: use of undeclared identifier '__builtin_is_constant_evaluated'; did you mean '_Is_constant_evaluated'?
+    return __builtin_is_constant_evaluated();
+           ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:177:27: note: '_Is_constant_evaluated' declared here
+_NODISCARD constexpr bool _Is_constant_evaluated() noexcept { // Internal function for any standard mode
+                          ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/HitSensor/HitSensor.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/HitSensor/HitSensor.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:4:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathPolicies.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathBase.h:3:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\array:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xutility:11:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\__msvc_iter_core.hpp:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:11:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\type_traits:2492:31: error: '_To' does not refer to a value
+    return __builtin_bit_cast(_To, _Val);
+                              ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\type_traits:2487:17: note: declared here
+template <class _To, class _From,
+                ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/HitSensor/HitSensor.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/HitSensor/HitSensor.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:4:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathPolicies.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathBase.h:3:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\array:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xutility:11:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\__msvc_iter_core.hpp:10:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:226:9: error: expected member name or ';' after declaration specifiers
+        !conjunction_v<_Is_implicitly_default_constructible<_Uty1>, _Is_implicitly_default_constructible<_Uty2>>)
+        ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:226:9: error: expected ')'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:225:23: note: to match this '('
+    constexpr explicit(
+                      ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:24: error: expected member name or ';' after declaration specifiers
+    constexpr explicit(!conjunction_v<is_convertible<const _Other1&, _Ty1>, is_convertible<const _Other2&, _Ty2>>)
+    ~~~~~~~~~~~~~~~~~~ ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:24: error: expected ')'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:23: note: to match this '('
+    constexpr explicit(!conjunction_v<is_convertible<const _Other1&, _Ty1>, is_convertible<const _Other2&, _Ty2>>)
+                      ^
+/home/shibbo/3dcomp/lib/al/src/Library/HitSensor/HitSensor.cpp:5:10: fatal error: 'os/os_TickApi.hpp' file not found
+#include <os/os_TickApi.hpp>
+         ^~~~~~~~~~~~~~~~~~~
+8 errors generated.
+[18/187] Building CXX object CMakeFiles/bf.dir/lib/al/src/Library/Item/ActorItemFunction.cpp.o
+FAILED: CMakeFiles/bf.dir/lib/al/src/Library/Item/ActorItemFunction.cpp.o 
+"/mnt/c/Program Files/LLVM/bin/clang++.exe" -DNON_MATCHING -I/home/shibbo/3dcomp/src -I/home/shibbo/3dcomp/lib/al/include -I/home/shibbo/3dcomp/lib -I/home/shibbo/3dcomp/lib/aarch64 -I/home/shibbo/3dcomp/lib/NintendoSDK/include -I/home/shibbo/3dcomp/lib/sead/include -I/home/shibbo/3dcomp/lib/agl/include -I/home/shibbo/3dcomp/lib/eui/include -fcolor-diagnostics -Wno-unused-command-line-argument -fdebug-prefix-map=/tmp=/home/shibbo/3dcomp/build -fno-exceptions -Wall -Wextra -Wdeprecated -Wno-unused-parameter -Wno-unused-private-field -fno-strict-aliasing -Wno-invalid-offsetof -std=c++17 -o CMakeFiles/bf.dir/lib/al/src/Library/Item/ActorItemFunction.cpp.o -c /home/shibbo/3dcomp/lib/al/src/Library/Item/ActorItemFunction.cpp
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Item/ActorItemFunction.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Item/ActorItemFunction.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Actor/ActorSceneInfo.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:8:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:898:1: error: static_assert failed "error STL1000: Unexpected compiler version, expected Clang 17.0.0 or newer."
+_EMIT_STL_ERROR(STL1000, "Unexpected compiler version, expected Clang 17.0.0 or newer.");
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\yvals_core.h:519:44: note: expanded from macro '_EMIT_STL_ERROR'
+#define _EMIT_STL_ERROR(NUMBER, MESSAGE)   static_assert(false, "error " #NUMBER ": " MESSAGE)
+                                           ^             ~~~~~
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Item/ActorItemFunction.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Item/ActorItemFunction.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Actor/ActorSceneInfo.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\basis/seadTypes.h:7:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\cstddef:12:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:178:12: error: use of undeclared identifier '__builtin_is_constant_evaluated'; did you mean '_Is_constant_evaluated'?
+    return __builtin_is_constant_evaluated();
+           ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xtr1common:177:27: note: '_Is_constant_evaluated' declared here
+_NODISCARD constexpr bool _Is_constant_evaluated() noexcept { // Internal function for any standard mode
+                          ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Item/ActorItemFunction.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Item/ActorItemFunction.hpp:4:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/HitSensor/HitSensor.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:4:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathPolicies.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathBase.h:3:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\array:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xutility:11:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\__msvc_iter_core.hpp:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:11:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\type_traits:2492:31: error: '_To' does not refer to a value
+    return __builtin_bit_cast(_To, _Val);
+                              ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\type_traits:2487:17: note: declared here
+template <class _To, class _From,
+                ^
+In file included from /home/shibbo/3dcomp/lib/al/src/Library/Item/ActorItemFunction.cpp:1:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/Item/ActorItemFunction.hpp:4:
+In file included from /home/shibbo/3dcomp/lib/al/include\Library/HitSensor/HitSensor.hpp:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMatrix.h:4:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathPolicies.h:3:
+In file included from /home/shibbo/3dcomp/lib/sead/include\math/seadMathBase.h:3:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\array:10:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xutility:11:
+In file included from C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\__msvc_iter_core.hpp:10:
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:226:9: error: expected member name or ';' after declaration specifiers
+        !conjunction_v<_Is_implicitly_default_constructible<_Uty1>, _Is_implicitly_default_constructible<_Uty2>>)
+        ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:226:9: error: expected ')'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:225:23: note: to match this '('
+    constexpr explicit(
+                      ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:24: error: expected member name or ';' after declaration specifiers
+    constexpr explicit(!conjunction_v<is_convertible<const _Other1&, _Ty1>, is_convertible<const _Other2&, _Ty2>>)
+    ~~~~~~~~~~~~~~~~~~ ^
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:24: error: expected ')'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\utility:265:23: note: to match this '('
+    constexpr explicit(!conjunction_v<is_convertible<const _Other1&, _Ty1>, is_convertible<const _Other2&, _Ty2>>)
+                      ^
+7 errors generated.
+ninja: build stopped: subcommand failed.

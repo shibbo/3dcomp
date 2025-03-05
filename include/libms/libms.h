@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cstddef>
-#include <seadTypes.h>
+#include <basis/seadTypes.h>
 
 #ifdef __cplusplus
 extern "C" {

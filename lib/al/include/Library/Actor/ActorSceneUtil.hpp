@@ -1,7 +1,7 @@
 #pragma once
 
 namespace al {
-    class LiveActor;
+class LiveActor;
 
-    bool isSingleMode(const LiveActor*);
-};  // namespace al
+bool isSingleMode(const LiveActor*);
+}  // namespace al

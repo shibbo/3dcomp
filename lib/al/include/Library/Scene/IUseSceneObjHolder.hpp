@@ -1,10 +1,10 @@
 #pragma once
 
 namespace al {
-    class SceneObjHolder;
+class SceneObjHolder;
 
-    class IUseSceneObjHolder {
-    public:
-        virtual SceneObjHolder* getSceneObjHolder() const = 0;
-    };
+class IUseSceneObjHolder {
+public:
+    virtual SceneObjHolder* getSceneObjHolder() const = 0;
 };
+}  // namespace al

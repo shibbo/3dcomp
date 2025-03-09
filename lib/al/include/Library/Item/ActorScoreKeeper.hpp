@@ -1,27 +1,29 @@
 #pragma once
 
-#include "Library/Yaml/ByamlIter.hpp"
+#include <basis/seadTypes.h>
 
 namespace al {
-    class ActorScoreInfo {
-    public:
-        ActorScoreInfo();
+class ByamlIter;
 
-        void init(const ByamlIter&);
+class ActorScoreInfo {
+public:
+    ActorScoreInfo();
 
-        const char* mFactorName = nullptr;    // 0x00
-        const char* mCategoryName = nullptr;  // 0x08
-    };
+    void init(const ByamlIter&);
 
-    class ActorScoreKeeper {
-    public:
-        ActorScoreKeeper();
+    const char* mFactorName = nullptr;
+    const char* mCategoryName = nullptr;
+};
 
-        void init(const ByamlIter&);
-        const char* getCategoryName() const;
-        const char* tryGetCategoryName(const char*) const;
+class ActorScoreKeeper {
+public:
+    ActorScoreKeeper();
 
-        ActorScoreInfo* mScoreInfos = nullptr;  // 0x00
-        s32 mScoreNum = 0;                      // 0x08
-    };
-};  // namespace al
+    void init(const ByamlIter&);
+    const char* getCategoryName() const;
+    const char* tryGetCategoryName(const char*) const;
+
+    ActorScoreInfo* mScoreInfos = nullptr;
+    s32 mScoreNum = 0;
+};
+}  // namespace al

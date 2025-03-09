@@ -3,33 +3,33 @@
 #include "Library/Nerve/NerveExecutor.hpp"
 
 namespace al {
-    class LiveActor;
+class LiveActor;
 
-    class NerveStateBase : public NerveExecutor {
-    public:
-        NerveStateBase(const char*);
+class NerveStateBase : public NerveExecutor {
+public:
+    NerveStateBase(const char*);
 
-        virtual ~NerveStateBase();
+    virtual ~NerveStateBase();
 
-        virtual void init() {}
+    virtual void init() {}
 
-        virtual void appear() { mIsDead = false; }
+    virtual void appear() { mIsDead = false; }
 
-        virtual void kill() { mIsDead = true; }
+    virtual void kill() { mIsDead = true; }
 
-        virtual bool update();
+    virtual bool update();
 
-        virtual void control() {}
+    virtual void control() {}
 
-        bool mIsDead = true;  // 0x10
-    };
+    bool mIsDead = true;
+};
 
-    class ActorStateBase : public NerveStateBase {
-    public:
-        ActorStateBase(const char*, LiveActor*);
+class ActorStateBase : public NerveStateBase {
+public:
+    ActorStateBase(const char*, LiveActor*);
 
-        virtual ~ActorStateBase();
+    virtual ~ActorStateBase();
 
-        LiveActor* mHostActor;  // 0x18
-    };
-};  // namespace al
+    LiveActor* mHostActor;
+};
+}  // namespace al

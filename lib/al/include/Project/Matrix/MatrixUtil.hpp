@@ -4,11 +4,9 @@
 #include <math/seadVector.h>
 
 namespace al {
-    class LiveActor;
+class LiveActor;
 
-    void syncCollisionMtx(LiveActor*, const sead::Matrix34f*);
+void preScaleMtx(sead::Matrix34f*, const sead::Vector3f&);
 
-    void preScaleMtx(sead::Matrix34f*, const sead::Vector3f&);
-
-    void calcMtxLocalTrans(sead::Vector3f*, const sead::Matrix34f&, const sead::Vector3f&);
-};  // namespace al
+void calcMtxLocalTrans(sead::Vector3f*, const sead::Matrix34f&, const sead::Vector3f&);
+}  // namespace al

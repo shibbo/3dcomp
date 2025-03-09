@@ -1,52 +1,51 @@
 #include "Library/HitSensor/SensorHitGroup.hpp"
+
 #include "Library/HitSensor/HitSensor.hpp"
 
 namespace al {
-    SensorHitGroup::SensorHitGroup(int maxSensors, const char *pName) {
-        mMaxSize = maxSensors;
-        mCurSize = 0;
-        mSensors = new HitSensor*[maxSensors];
+SensorHitGroup::SensorHitGroup(s32 maxSensors, const char* pName) {
+    mMaxSize = maxSensors;
+    mCurSize = 0;
+    mSensors = new HitSensor*[maxSensors];
 
-        for (int i = 0; i < mMaxSize; i++) {
-            mSensors[i] = nullptr;
-        }
+    for (s32 i = 0; i < mMaxSize; i++)
+        mSensors[i] = nullptr;
+}
+
+void SensorHitGroup::add(HitSensor* pSensor) {
+    mSensors[mCurSize] = pSensor;
+    mCurSize++;
+}
+
+/*
+void SensorHitGroup::remove(HitSensor *pSensor) {
+    if (mCurSize < 1) {
+        return;
     }
 
-    void SensorHitGroup::add(HitSensor *pSensor) {
-        mSensors[mCurSize] = pSensor;
-        mCurSize++;
-    }
+    HitSensor** sensors = mSensors;
+    s32 idx = 0;
 
-    /*
-    void SensorHitGroup::remove(HitSensor *pSensor) {
-        if (mCurSize < 1) {
+    while (*(sensors++) != pSensor) {
+        if (idx++ >= mCurSize) {
             return;
         }
+     }
 
-        HitSensor** sensors = mSensors;
-        int idx = 0;
+    *sensors = mSensors[idx];
+    mCurSize--;
+}*/
 
-        while (*(sensors++) != pSensor) {
-            if (idx++ >= mCurSize) {
-                return;
-            }
-         }
+HitSensor* SensorHitGroup::getSensor(s32 idx) const {
+    return mSensors[idx];
+}
 
-        *sensors = mSensors[idx];
-        mCurSize--;
-    }*/
-   
-    HitSensor* SensorHitGroup::getSensor(int idx) const {
-        return mSensors[idx];
-    }
+void SensorHitGroup::clear() const {
+    for (s32 i = 0; i < mCurSize; i++)
+        mSensors[i]->mNumSensors = 0;
+}
 
-    void SensorHitGroup::clear() const {
-        for (int i = 0; i < mCurSize; i++) {
-            mSensors[i]->mNumSensors = 0;
-        }
-    }
-
-    // al::SensorHitGroup::executeHitCheckGroup
-    // al::SensorHitGroup::executeHitCheck
-    // al::SensorHitGroup::executeHitCheckInSameGroup
-};
+// SensorHitGroup::executeHitCheckGroup
+// SensorHitGroup::executeHitCheck
+// SensorHitGroup::executeHitCheckInSameGroup
+}  // namespace al

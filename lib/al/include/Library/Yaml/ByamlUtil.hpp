@@ -1,13 +1,14 @@
 #pragma once
 
 #include <basis/seadTypes.h>
+#include <math/seadVector.h>
 
 namespace al {
-    class ByamlIter;
+class ByamlIter;
 
-    bool tryGetByamlU8(u8 *, const ByamlIter &, const char *);
+bool tryGetByamlU8(u8*, const ByamlIter&, const char*);
 
-    bool tryGetByamlS32(s32 *, const ByamlIter &, const char *);
+bool tryGetByamlS32(s32*, const ByamlIter&, const char*);
 
-    bool tryGetByamlV3f(sead::Vector3f *, const ByamlIter &, const char *);
-};
+bool tryGetByamlV3f(sead::Vector3f*, const ByamlIter&, const char*);
+}  // namespace al

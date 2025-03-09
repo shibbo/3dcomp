@@ -1,10 +1,10 @@
 #pragma once
 
 namespace al {
-    class OceanWaveKeeper;
+class OceanWaveKeeper;
 
-    class IUseOceanWave {
-    public:
-        OceanWaveKeeper* mOceanWaveKeeper = nullptr;  // 0x00
-    };
-};  // namespace al
+class IUseOceanWave {
+public:
+    OceanWaveKeeper* mOceanWaveKeeper = nullptr;
+};
+}  // namespace al

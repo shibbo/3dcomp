@@ -1,23 +1,25 @@
 #pragma once
 
+#include <basis/seadTypes.h>
+
 namespace al {
-    class ActorInitInfo;
-    class LiveActor;
+class ActorInitInfo;
+class LiveActor;
 
-    bool isAlive(const LiveActor*);
-    bool isDead(const LiveActor*);
-    bool isDeadAlive(const LiveActor*);
-    bool isCountAsAlive(LiveActor*);
-    bool isNoCollide(const LiveActor*);
+bool isAlive(const LiveActor*);
+bool isDead(const LiveActor*);
+bool isDeadAlive(const LiveActor*);
+bool isCountAsAlive(LiveActor*);
+bool isNoCollide(const LiveActor*);
 
-    bool isClipped(const LiveActor*);
+bool isClipped(const LiveActor*);
 
-    bool isHideModel(const LiveActor*);
+bool isHideModel(const LiveActor*);
 
-    void setVelocityZero(LiveActor*);
+void setVelocityZero(LiveActor*);
 
-    void invalidateClipping(LiveActor*);
-    void validateClipping(LiveActor*);
+void invalidateClipping(LiveActor*);
+void validateClipping(LiveActor*);
 
-    void initMapPartsActor(LiveActor*, const ActorInitInfo&, const char*, s32);
-};  // namespace al
+void initMapPartsActor(LiveActor*, const ActorInitInfo&, const char*, s32);
+}  // namespace al

@@ -3,14 +3,14 @@
 #include <basis/seadTypes.h>
 
 namespace al {
-    class LiveActor;
-};
+class LiveActor;
+}
 
 namespace alActorSystemFunction {
-    void addToExecutorMovement(al::LiveActor*);
-    void addToExecutorDraw(al::LiveActor*);
-    void removeFromExecutorMovement(al::LiveActor*);
-    void removeFromExecutorDraw(al::LiveActor*);
+void addToExecutorMovement(al::LiveActor*);
+void addToExecutorDraw(al::LiveActor*);
+void removeFromExecutorMovement(al::LiveActor*);
+void removeFromExecutorDraw(al::LiveActor*);
 
-    void addToExecutorDrawImmediate(al::LiveActor*);
-};  // namespace alActorSystemFunction
+void addToExecutorDrawImmediate(al::LiveActor*);
+}  // namespace alActorSystemFunction

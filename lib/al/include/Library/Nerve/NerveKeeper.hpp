@@ -3,32 +3,32 @@
 #include <basis/seadTypes.h>
 
 namespace al {
-    class Nerve;
-    class NerveActionCtrl;
-    class NerveStateCtrl;
-    class IUseNerve;
+class Nerve;
+class NerveActionCtrl;
+class NerveStateCtrl;
+class IUseNerve;
 
-    class NerveKeeper {
-    public:
-        NerveKeeper(void*, const Nerve*, s32);
+class NerveKeeper {
+public:
+    NerveKeeper(void*, const Nerve*, s32);
 
-        void update();
-        void tryChangeNerve();
-        void setNerve(const Nerve*);
-        const Nerve* getCurrentNerve() const;
-        void initNerveAction(NerveActionCtrl*);
+    void update();
+    void tryChangeNerve();
+    void setNerve(const Nerve*);
+    const Nerve* getCurrentNerve() const;
+    void initNerveAction(NerveActionCtrl*);
 
-        template <class T>
-        T* getParent() {
-            return static_cast<T*>(mKeeperUser);
-        }
+    template <class T>
+    T* getParent() {
+        return static_cast<T*>(mKeeperUser);
+    }
 
-        IUseNerve* mKeeperUser;   // 0x00
-        const Nerve* mLastNerve;  // 0x08
-        const Nerve* mNerve;      // 0x10
-        u32 mNerveStep;           // 0x18
-        u32 _1C;
-        NerveStateCtrl* mStateCtrl;    // 0x20
-        NerveActionCtrl* mActionCtrl;  // 0x28
-    };
-};  // namespace al
+    IUseNerve* mKeeperUser;
+    const Nerve* mLastNerve;
+    const Nerve* mNerve;
+    u32 mNerveStep;
+    u32 _1c;
+    NerveStateCtrl* mStateCtrl;
+    NerveActionCtrl* mActionCtrl;
+};
+}  // namespace al

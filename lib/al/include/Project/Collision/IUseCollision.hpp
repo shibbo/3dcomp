@@ -1,10 +1,10 @@
 #pragma once
 
 namespace al {
-    class CollisionDirector;
+class CollisionDirector;
 
-    class IUseCollision {
-    public:
-        virtual CollisionDirector* getCollisionDirector() const = 0;
-    };
+class IUseCollision {
+public:
+    virtual CollisionDirector* getCollisionDirector() const = 0;
 };
+}  // namespace al

@@ -1,7 +1,13 @@
 #pragma once
 
 namespace al {
-    class IUseHioNode {};
+class IUseHioNode {
+public:
+    // ??
+};
 
-    class HioNode : public IUseHioNode {};
-};  // namespace al
+class HioNode : public IUseHioNode {
+public:
+    // ??
+};
+}  // namespace al

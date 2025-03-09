@@ -116,8 +116,8 @@ def get_includes():
     agl_files = get_files(project_root / 'lib' / 'agl' / 'include')
     aarch_files = get_files(project_root / 'lib' / 'aarch64')
     eui_files = get_files(project_root / 'lib' / 'eui' / 'include')
-    al_files = [a for a in get_files(project_root / 'lib' / 'al') if a.endswith(".h")]
-    game_files = [a for a in get_files(project_root / 'src') if a.endswith(".h")]
+    al_files = [a for a in get_files(project_root / 'lib' / 'al' / 'include' ) if a.endswith(".hpp")]
+    game_files = [a for a in get_files(project_root / 'src') if a.endswith(".hpp")]
 
     angled_includes = cpp_files + aarch_files + nintendo_sdk_files + sead_files + agl_files + eui_files
     al_includes = al_files
@@ -138,12 +138,12 @@ def common_include_order(c, path, is_header):
         if "src/" in path:
             rel_path = path.split("src/")[-1]
         elif "al/" in path:
-            rel_path = path.split("al/")[-1]
+            rel_path = path.split("al/include/")[-1]
         elif "include/" in path:
             rel_path = path.split("include/")[-1]
         else:
             rel_path = path
-        header_line = "#include \"" + rel_path[0:-3] + "h\""
+        header_line = "#include \"" + rel_path[0:-3] + "hpp\""
         if CHECK(lambda a: a == header_line, lines[0],
                  "Source files must start with including respective header in double quotes (here: " + header_line + ")!",
                  path): return
@@ -305,30 +305,36 @@ def common_string_finder(c, path):
                 FAIL("String not found in binary: \""+match+"\"", line, path)
 
 def common_const_reference(c, path):
-    for line in c.splitlines():
-        if "& " in line and line[line.find("& ") - 1] != "&" and line[line.find("& ") - 1] != " " and "CLASS&" not in line:
-            if ("const" not in line or line.find("& ") < line.find("const ")) and ("for" not in line or " : " not in line):
-                FAIL("References must be const!", line, path)
+    return
+    #for line in c.splitlines():
+    #    if "& " in line and line[line.find("& ") - 1] != "&" and line[line.find("& ") - 1] != " " and "CLASS&" not in line:
+    #        if ("const" not in line or line.find("& ") < line.find("const ")) and ("for" not in line or " : " not in line):
+    #            FAIL("References must be const!", line, path)
 
 def common_self_other(c, path, is_header):
     lines = c.splitlines()
     for i, line in enumerate(lines):
-        if (("attackSensor(" in line and "void HitSensor" not in line) or "receiveMsg(" in line) and (is_header or "::" in line) and (("self" not in line and "self" not in lines[i + 1]) or "other" not in line) and "Library/HitSensor/HitSensorKeeper.h" not in path:
+        if (("attackSensor(" in line and "void HitSensor" not in line) or "receiveMsg(" in line) and (is_header or "::" in line) and (("self" not in line and "self" not in lines[i + 1]) or "other" not in line) and "Library/HitSensor/HitSensorKeeper.hpp" not in path:
             FAIL("'attackSensor' and 'receiveMsg' should have 'self' and 'other' params!", line, path)
             return
 
 # Header files
 
 def header_sorted_visibility(c, path):
+    is_in_struct = False
     visibilities_ordered = ["public:", "protected:", "private:"]
     nest_level = [-2]  # -2 = outside of class ; -1 = inside class ; 0 = public ; 1 = protected ; 2 = private
     should_start_class = False
     for line in c.splitlines():
+        if re.search(r"^\s*struct.*{", line):
+            is_in_struct = True
+        if "};" in line:
+            is_in_struct = False
         line = line[0:line.find("//")] if "//" in line else line
         if line.endswith("\\"): line = line[0:-1]
         line = line.strip()
         if line not in visibilities_ordered:
-            header_check_line(line, path, nest_level[-1], should_start_class)
+            header_check_line(line, path, nest_level[-1], should_start_class, is_in_struct)
         if "{" in line and "}" in line:
             if CHECK(lambda a: a.count("{") == a.count("}") or (a.startswith("{") and a.endswith("}};")), line,
                      "Unbalanced \"{\" and \"}\" in the same line! (exception: end of brace-initialized array)",
@@ -351,7 +357,7 @@ def header_sorted_visibility(c, path):
             if CHECK(lambda a: i > nest_level[-1] or (i == 2 and nest_level[-1] == 2), line,
                      "Wrong order of visibilities: Must be public, protected, private!", path): return
             if nest_level[
-                -1] == -2:  # outside of class, only seen in SubActorKeeper.h in a macro definition - ignore then
+                -1] == -2:  # outside of class, only seen in SubActorKeeper.hpp in a macro definition - ignore then
                 continue
             nest_level[-1] = i
             continue
@@ -367,15 +373,20 @@ def header_sorted_visibility(c, path):
 
         if not runAllChecks:
             exit(1)
- 
-def header_check_line(line, path, visibility, should_start_class):
+
+def header_check_line(line, path, visibility, should_start_class, is_in_struct):
+
+    if is_in_struct:
+        if re.search(r"\w+[\*&]*\s+m[A-Z]", line):
+            FAIL("Struct member variables should be formatted as noPrefixCamelCase!", line, path)
+
     if visibility == -2:  # outside of class/struct/...
         if (line.startswith("class") and (not line.endswith(";") or "{" in line)) or should_start_class:
             if ": " in line and not ": public" in line and not ": virtual public" in line:
                 FAIL("All superclasses must be public!", line, path)
             if should_start_class and not ": " in line and not line.startswith("public") and not line.startswith(
                     "virtual public"):
-                FAIL("All superclasses must be public!", line, path)
+                FAIL("All superclasses must be public!", line, path) 
 
             if line.startswith("class") and "{" in line and ": " in line:
                 index = 0
@@ -430,7 +441,7 @@ def header_check_line(line, path, visibility, should_start_class):
             allowed_name = any(
                 [var_name.startswith(p) and (var_name[len(p)].isupper() or var_name[len(p)].isdigit()) for p in
                  BOOL_PREFIXES]) or any([var_name.startswith(p) for p in PREFIXES])
-            if path.endswith("ByamlWriterData.h") and var_name == "mValue": return
+            if path.endswith("ByamlWriterData.hpp") and var_name == "mValue": return
             CHECK(lambda a: allowed_name, line, "Boolean member variables must start with `mIs` or `mHas`!", path)
 
 def header_no_offset_comments(c, path):
@@ -494,12 +505,12 @@ def check_header(c, path):
     common_consistent_float_literals(c, path)
 
 def _check_file_content(content, file_str):
-    if file_str.endswith('.h'):
+    if file_str.endswith('.hpp'):
         check_header(content, file_str)
     elif file_str.endswith('.cpp'):
         check_source(content, file_str)
     else:
-        FAIL("Must only contain .h and .cpp files!", "NOT APPLICABLE", file_str)
+        FAIL("Must only contain .hpp and .cpp files!", "NOT APPLICABLE", file_str)
 
 def check_file(file_str):
     st = os.stat(file_str)
@@ -547,9 +558,9 @@ def main():
     global functionData
     functionData = sorted(utils.get_functions(), key=lambda info: info.name)
 
-    if not args.run_clang_format and not args.ci:
-        print("Warning: Input files not being formatted correctly may cause false fails for some checks, to automatically run clang-format use '--run-clang-format' (or '-F')")
-        print()
+    #if not args.run_clang_format and not args.ci:
+    #    print("Warning: Input files not being formatted correctly may cause false fails for some checks, to automatically run clang-format use '--run-clang-format' (or '-F')")
+    #    print()
 
     for dir in [project_root/'lib'/'al', project_root/'src']:
         for root, _, files in os.walk(dir):

@@ -3,10 +3,10 @@
 #include <basis/seadTypes.h>
 
 namespace al {
-    class AudioKeeper;
+class AudioKeeper;
 
-    class IUseAudioKeeper {
-    public:
-        virtual AudioKeeper* getAudioKeeper() const = 0;
-    };
+class IUseAudioKeeper {
+public:
+    virtual AudioKeeper* getAudioKeeper() const = 0;
 };
+}  // namespace al

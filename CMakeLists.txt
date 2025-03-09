@@ -48,6 +48,7 @@ set(NN_SDK_TYPE "Release")
 
 include_directories(lib)
 include_directories(lib/aarch64)
+include_directories(lib/ms/include)
 
 add_subdirectory(lib/NintendoSDK)
 target_link_libraries(bf PUBLIC NintendoSDK)

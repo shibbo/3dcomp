@@ -1,26 +1,27 @@
 #pragma once
 
+#include <basis/seadTypes.h>
+
 namespace al {
-    struct UnkStruct {
-        int num;  // 0x00
-    };
+struct UnkStruct {
+    s32 num;
+};
 
-    template <typename T>
-    class AudioInfoList {
-    public:
-        int getInfoNum() const {
-            int num = _0->num;
+template <typename T>
+class AudioInfoList {
+public:
+    s32 getInfoNum() const {
+        s32 num = _0->num;
 
-            if (mInfoList != nullptr) {
-                return mInfoList->getInfoNum() + num;
-            }
+        if (mInfoList != nullptr)
+            return mInfoList->getInfoNum() + num;
 
-            return num;
-        }
+        return num;
+    }
 
-        void sortInfo();
+    void sortInfo();
 
-        UnkStruct* _0;
-        AudioInfoList<T>* mInfoList;  // 0x08
-    };
-};  // namespace al
+    UnkStruct* _0;
+    AudioInfoList<T>* mInfoList;
+};
+}  // namespace al

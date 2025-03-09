@@ -1,12 +1,12 @@
 #pragma once
 
 /*
-#include "libms/MessageSetBase.hpp"
-#include "Library/Resource/Resource.hpp"
+// #include "Library/Resource/Resource.hpp"
+// #include "libms/MessageSetBase.hpp" // dont you *dare* use leaked material
 
 namespace sead {
     class FrameHeap;
-};
+}
 
 namespace al {
     class MessageHolder {
@@ -29,7 +29,7 @@ namespace al {
         u32 getStyleByIndex(s32) const;
         u32 trySearchStyleIndexByLabel(const char*) const;
 
-        sead::MessageSet<char16_t>* mMsgBase;  // 0x8
+        sead::MessageSet<s16>* mMsgBase;
     };
 
     class MessageSystem;
@@ -45,10 +45,10 @@ namespace al {
         MessageProjectEx* getMessageProject() const;
         MessageHolder* getSystemMessageHolder(const char*, const char*) const;
 
-        MessageProjectEx* mProject;  // 0x00
+        MessageProjectEx* mProject;
         u64 _8;
         u64 _10;
-        sead::FrameHeap* mHeap;  // 0x18
+        sead::FrameHeap* mHeap;
     };
-};  // namespace al
+}  // namespace al
 */

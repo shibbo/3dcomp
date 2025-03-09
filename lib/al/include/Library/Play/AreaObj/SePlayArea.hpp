@@ -3,12 +3,12 @@
 #include "Project/AreaObj/AreaObj.hpp"
 
 namespace al {
-    class SePlayArea : public AreaObj {
-    public:
-        SePlayArea(const char*);
+class SePlayArea : public AreaObj {
+public:
+    SePlayArea(const char*);
 
-        virtual void init(const AreaInitInfo&);
+    virtual void init(const AreaInitInfo&);
 
-        const char* mPlayName = nullptr;  // 0x88
-    };
-};  // namespace al
+    const char* mPlayName = nullptr;
+};
+}  // namespace al

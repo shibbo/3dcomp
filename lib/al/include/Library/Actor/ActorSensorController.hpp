@@ -1,36 +1,36 @@
 #pragma once
 
-#include <math/seadVector.h>
 #include <basis/seadTypes.h>
-#include "Library/HitSensor/HitSensor.hpp"
+#include <math/seadVector.h>
 
 namespace al {
-    class LiveActor;
+class LiveActor;
+class HitSensor;
 
-    class ActorSensorController {
-    public:
-        ActorSensorController(LiveActor*, const char*);
+class ActorSensorController {
+public:
+    ActorSensorController(LiveActor*, const char*);
 
-        void setSensorScale(f32);
-        void setSensorRadius(f32);
-        void setSensorFollowPosOffset(const sead::Vector3f&);
-        void resetActorSensorController();
+    void setSensorScale(f32);
+    void setSensorRadius(f32);
+    void setSensorFollowPosOffset(const sead::Vector3f&);
+    void resetActorSensorController();
 
-        HitSensor* mSensor = nullptr;   // 0x00
-        f32 mSensorRadius = 0;          // 0x08
-        sead::Vector3f mFollowPosOffs;  // 0x0C
-    };
+    HitSensor* mSensor = nullptr;
+    f32 mSensorRadius = 0.0f;
+    sead::Vector3f mFollowPosOffs = {0.0f, 0.0f, 0.0f};
+};
 
-    class ActorSensorControllerList {
-    public:
-        ActorSensorControllerList(int);
+class ActorSensorControllerList {
+public:
+    ActorSensorControllerList(s32);
 
-        void addSensor(LiveActor*, const char*);
-        void setAllSensorScale(f32);
-        void resetAllActorSensorController();
+    void addSensor(LiveActor*, const char*);
+    void setAllSensorScale(f32);
+    void resetAllActorSensorController();
 
-        ActorSensorController** mControllers;  // 0x00
-        s32 mMaxControllers;                   // 0x08
-        s32 mNumControllers;                   // 0x0C
-    };
-};  // namespace al
+    ActorSensorController** mSensorControllers;
+    s32 mMaxControllers;
+    s32 mNumControllers = 0;
+};
+}  // namespace al

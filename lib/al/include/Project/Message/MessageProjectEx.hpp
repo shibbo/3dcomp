@@ -1,7 +1,7 @@
 #pragma once
 
 /*
-#include "libms/seadMessageProject.hpp"
+// #include "libms/seadMessageProject.hpp" // dont you *dare* use leaked material
 
 namespace al {
     class MessageProjectEx : public sead::MessageProject {
